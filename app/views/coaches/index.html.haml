@@ -1,0 +1,19 @@
+- title "Coaches"
+
+%table
+  %tr
+    %th Name
+    %th Lastname
+    %th Team
+    %th Email
+  - for coach in @coaches
+    %tr
+      %td= coach.name
+      %td= coach.lastname
+      %td= coach.team_id
+      %td= coach.email
+      %td= link_to 'Show', coach
+      %td= link_to 'Edit', edit_coach_path(coach)
+      %td= link_to 'Destroy', coach, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Coach", new_coach_path

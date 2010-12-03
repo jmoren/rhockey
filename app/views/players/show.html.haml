@@ -1,0 +1,30 @@
+- title "Player"
+
+%p
+  %strong Name:
+  = @player.name
+%p
+  %strong Lastname:
+  = @player.lastname
+%p
+  %strong Email:
+  = @player.email
+%p
+  %strong Team:
+  = @player.team_id
+%p
+  %strong Goalkeeper:
+  = @player.goalkeeper
+%p
+  %strong Age:
+  = @player.age
+%p
+  %strong Birthday:
+  = @player.birthday
+
+%p
+  = link_to "Edit", edit_player_path(@player)
+  |
+  = link_to "Destroy", @player, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", players_path

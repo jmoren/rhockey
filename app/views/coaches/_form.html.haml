@@ -1,0 +1,19 @@
+- form_for @coach do |f|
+  = f.error_messages
+  %p
+    = f.label :name, "Nombre"
+    %br
+    = f.text_field :name
+  %p
+    = f.label :lastname, "Apellido"
+    %br
+    = f.text_field :lastname
+  %p
+    = f.label :email, "Email"
+    %br
+    = f.text_field :email
+  %p
+    = f.label :team_id, "Equipo"
+    = collection_select(:coach, :team_id, Team.all, :id, :name)
+  %p
+    = f.submit

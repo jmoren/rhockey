@@ -6,7 +6,8 @@ gem 'rails', '3.0.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'haml'
+gem 'nifty-generators'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -15,7 +16,7 @@ gem 'mysql2'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
-# gem 'ruby-debug19'
+ gem 'ruby-debug19'
 
 # Bundle the extra gems:
 # gem 'bj'
@@ -29,3 +30,4 @@ gem 'mysql2'
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "mocha", :group => :test
