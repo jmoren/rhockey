@@ -2,11 +2,10 @@
   = f.error_messages
   %p
     = f.label :name
-    %br
-    = f.text_field :name
+    = f.text_field :name, :id => "name_field"
+    %span{:class => "inputTipContainer"}
   %p
     = f.label :category_id
-    %br
-    = f.text_field :category_id
+    = collection_select(:team,:category_id, Category.all, :id, :name)
   %p
     = f.submit

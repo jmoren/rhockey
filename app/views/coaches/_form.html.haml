@@ -3,15 +3,18 @@
   %p
     = f.label :name, "Nombre"
     %br
-    = f.text_field :name
+    = f.text_field :name, :id => "name_field"
+    %span{:class => "inputTipContainer"}
   %p
     = f.label :lastname, "Apellido"
     %br
-    = f.text_field :lastname
+    = f.text_field :lastname, :id => "lastname_field"
+    %span{:class => "inputTipContainer"}
   %p
     = f.label :email, "Email"
     %br
-    = f.text_field :email
+    = f.text_field :email, :id => "email_field"
+    %span{:class => "inputTipContainer"}
   %p
     = f.label :team_id, "Equipo"
     = collection_select(:coach, :team_id, Team.all, :id, :name)

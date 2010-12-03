@@ -1,39 +1,41 @@
-- form_for @player do |f|
-  = f.error_messages
-  %p
-    = f.label :name, "Nombre"
-    %br
-    = f.text_field :name
-  %p
-    = f.label :lastname, "Apellido"
-    %br
-    = f.text_field :lastname
-  %p
-    = f.label :email, "Email"
-    %br
-    = f.text_field :email
-  %p
-    = f.label :age, "Edad"
-    = f.select :age, 18..50
-  %p
-    = f.label :birthday, "Nacimiento"
-    %br
-    = f.date_select :birthday, :start_year => 1950
-  %p
-    = f.label :gender, "Genero"
-    = f.select :gender, ApplicationController::GENDER
-  %p
-    = f.label :team_id
-    = collection_select(:player, :team_id, Team.all, :id, :name)
-    =#, {:disabled => lambda{|category| category.archived? }})
+#form
+  - form_for @player do |f|
+    = f.error_messages
+    %p
+      = f.label :name, "Nombre"
+      %br
+      = f.text_field :name, :id => "name_field"
+      %span{:class => "inputTipContainer"}
+    %p
+      = f.label :lastname, "Apellido"
+      %br
+      = f.text_field :lastname, :id => "lastname_field"
+      %span{:class => "inputTipContainer"}
+    %p
+      = f.label :email, "Email"
+      %br
+      = f.text_field :email, :id => "email_field"
+      %span{:class => "inputTipContainer"}
+    %p
+      = f.label :age, "Edad"
+      = f.select :age, 18..50
+    %p
+      = f.label :birthday, "Nacimiento"
+      %br
+      = f.date_select :birthday, :start_year => 1950
+    %p
+      = f.label :gender, "Genero"
+      = f.select :gender, ApplicationController::GENDER
+    %p
+      = f.label :team_id
+      = collection_select(:player, :team_id, Team.all, :id, :name)
+      =#, {:disabled => lambda{|category| category.archived? }})
 
-  %p
-    = f.check_box :captain
-    = f.label :captain, "Capitan?"
-  %p
-    = f.check_box :goalkeeper
-    = f.label :goalkeeper, "Arquero?"
-
-
-  %p
-    = f.submit
+    %p
+      = f.check_box :captain
+      = f.label :captain, "Capitan?"
+    %p
+      = f.check_box :goalkeeper
+      = f.label :goalkeeper, "Arquero?"
+    %p
+      = f.submit

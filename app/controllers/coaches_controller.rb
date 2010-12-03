@@ -41,4 +41,12 @@ class CoachesController < ApplicationController
     flash[:notice] = "Successfully destroyed coach."
     redirect_to coaches_url
   end
+  def check_email
+    email = params[:coach][:email]
+    @coach = Coach.find_by_email(email)
+    respond_to do |format|
+      format.json { render :json => !@coach }
+    end
+  end
+
 end

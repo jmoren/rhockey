@@ -41,4 +41,12 @@ class PlayersController < ApplicationController
     flash[:notice] = "Successfully destroyed player."
     redirect_to players_url
   end
+  def check_email
+    email = params[:player][:email]
+    @player = Player.find_by_email(email)
+    respond_to do |format|
+      format.json { render :json => !@player }
+    end
+  end
+
 end
