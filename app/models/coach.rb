@@ -1,6 +1,8 @@
 class Coach < ActiveRecord::Base
   belongs_to :team
-  attr_accessible :name, :lastname, :team_id, :email
+  has_one :photo, :as => :photoable, :dependent => :destroy
+  accepts_nested_attributes_for :photo, :allow_destroy => true
+  attr_accessible :name, :lastname, :team_id, :email, :image_attributes
 #validations
   validates :email, :team_id, :name, :lastname, :presence => true
   validates_length_of :name, :lastname, :within => 3..20

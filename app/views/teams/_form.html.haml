@@ -1,11 +1,16 @@
-- form_for @team do |f|
-  = f.error_messages
-  %p
-    = f.label :name
-    = f.text_field :name, :id => "name_field"
-    %span{:class => "inputTipContainer"}
-  %p
-    = f.label :category_id
-    = collection_select(:team,:category_id, Category.all, :id, :name)
-  %p
-    = f.submit
+#form
+  = form_for @team, :html => {:multipart => true } do |f|
+    = f.error_messages
+    .formTitle
+      %h3 Personal information
+      = f.fields_for @photo do |photo_field|
+        = render 'shared/photo_field', :f => photo_field
+    %p
+      = f.label :name
+      = f.text_field :name, :id => "name_field"
+      %span{:class => "inputTipContainer"}
+    %p
+      = f.label :category_id
+      = collection_select(:team,:category_id, Category.all, :id, :name)
+    %p
+      = f.submit

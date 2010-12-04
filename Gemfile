@@ -9,6 +9,8 @@ gem 'mysql2'
 gem 'haml'
 gem 'nifty-generators'
 gem 'jquery-rails'
+gem 'paperclip','2.3.6'
+gem 'gravtastic'
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,30 +1,44 @@
-- title "Player"
+- title "#{@player.name.capitalize} #{@player.lastname.capitalize}"
+#player_data
+  #player_photo
+    - unless  @player.photo.nil?
+      =image_tag(@player.photo.thumb.url(:thumb)) unless @player.photo.nil?
+    - else
+      = image_tag @player.gravatar_url
+    %br
+    %span.icon.icon-edit
+      = link_to "edit photo"
+  .player_field
+    %b Nombre:
+    = @player.name
+  .player_field
+    %b Apellido:
+    = @player.lastname
+  .player_field
+    %b Email:
+    = @player.email
+  .player_field
+    %b Equipo:
+    = link_to @player.team.name, team_path(@player.team.id), :class =>'info', :title => "#{render :partial => 'shared/team_info'}"
+  - if @player.goalkeeper
+    .player_field
+      %b Arquero:
+      = image_tag('check.png')
+  - if @player.captain
+    .player_field
+      %b Capitan:
+      = image_tag('check.png')
+  .player_field
+    %b Edad:
+    = Time.now.year - @player.birthday.year
+  .player_field
+    %b Fec. Nacimiento:
+    = @player.birthday.strftime('%d de %B, %Y')
 
 %p
-  %strong Name:
-  = @player.name
-%p
-  %strong Lastname:
-  = @player.lastname
-%p
-  %strong Email:
-  = @player.email
-%p
-  %strong Team:
-  = @player.team_id
-%p
-  %strong Goalkeeper:
-  = @player.goalkeeper
-%p
-  %strong Age:
-  = @player.age
-%p
-  %strong Birthday:
-  = @player.birthday
-
-%p
-  = link_to "Edit", edit_player_path(@player)
-  |
-  = link_to "Destroy", @player, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", players_path
+  %span.icon.icon-edit
+    = link_to  "editar", edit_player_path(@player)
+  %span.icon.icon-delete
+    = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
+  %span.icon.icon-move
+    = link_to "Volver", players_path

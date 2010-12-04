@@ -5,14 +5,17 @@ class PlayersController < ApplicationController
   
   def show
     @player = Player.find(params[:id])
+    @team = @player.team
   end
   
   def new
     @player = Player.new
+    @photo = @player.build_photo
   end
   
   def create
     @player = Player.new(params[:player])
+    @photo = @player.build_photo
     if @player.save
       flash[:notice] = "Successfully created player."
       redirect_to @player
@@ -23,10 +26,16 @@ class PlayersController < ApplicationController
   
   def edit
     @player = Player.find(params[:id])
+    if @player.photo
+      @photo = @player.photo
+    else
+      @photo = @player.build_photo
+    end
   end
   
   def update
     @player = Player.find(params[:id])
+    @photo = @player.photo
     if @player.update_attributes(params[:player])
       flash[:notice] = "Successfully updated player."
       redirect_to @player

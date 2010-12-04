@@ -9,10 +9,12 @@ class TeamsController < ApplicationController
   
   def new
     @team = Team.new
+    @photo = @team.build_photo
   end
   
   def create
     @team = Team.new(params[:team])
+    @photo = @team.build_photo
     if @team.save
       flash[:notice] = "Successfully created team."
       redirect_to @team
@@ -23,10 +25,16 @@ class TeamsController < ApplicationController
   
   def edit
     @team = Team.find(params[:id])
+    if @team.photo
+      @photo = @team.photo
+    else
+      @photo = @team.build_photo
+    end
   end
   
   def update
     @team = Team.find(params[:id])
+    @photo = @team.photo
     if @team.update_attributes(params[:team])
       flash[:notice] = "Successfully updated team."
       redirect_to @team

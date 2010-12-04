@@ -1,6 +1,12 @@
 class Player < ActiveRecord::Base
+  include Gravtastic
+  has_gravatar
   belongs_to :team, :counter_cache => true
-  attr_accessible :name, :lastname, :email, :team_id, :captain, :gender, :goalkeeper, :age, :birthday
+  has_one :photo, :as => :photoable, :dependent => :destroy
+  accepts_nested_attributes_for :photo, :allow_destroy => true
+
+  attr_accessible :name, :lastname, :email, :team_id, :captain, :gender, :goalkeeper, 
+                  :age, :birthday, :photo_attributes
 #validations
   validates_length_of :name, :lastname, :within => 3..20
   validates :name, :lastname, :email, :presence => true

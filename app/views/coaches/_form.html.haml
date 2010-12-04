@@ -1,22 +1,26 @@
-- form_for @coach do |f|
-  = f.error_messages
-  %p
-    = f.label :name, "Nombre"
-    %br
-    = f.text_field :name, :id => "name_field"
-    %span{:class => "inputTipContainer"}
-  %p
-    = f.label :lastname, "Apellido"
-    %br
-    = f.text_field :lastname, :id => "lastname_field"
-    %span{:class => "inputTipContainer"}
-  %p
-    = f.label :email, "Email"
-    %br
-    = f.text_field :email, :id => "email_field"
-    %span{:class => "inputTipContainer"}
-  %p
-    = f.label :team_id, "Equipo"
-    = collection_select(:coach, :team_id, Team.all, :id, :name)
-  %p
-    = f.submit
+#form
+  = form_for @coach, :html => {:multipart => true } do |f|
+    .formTitle
+      %h3 Personal information
+    = f.fields_for @photo do |photo_field|
+      = render 'shared/photo_field', :f => photo_field
+    %p
+      = f.label :name, "Nombre"
+      %br
+      = f.text_field :name, :id => "name_field"
+      %span{:class => "inputTipContainer"}
+    %p
+      = f.label :lastname, "Apellido"
+      %br
+      = f.text_field :lastname, :id => "lastname_field"
+      %span{:class => "inputTipContainer"}
+    %p
+      = f.label :email, "Email"
+      %br
+      = f.text_field :email, :id => "email_field"
+      %span{:class => "inputTipContainer"}
+    %p
+      = f.label :team_id, "Equipo"
+      = collection_select(:coach, :team_id, Team.all, :id, :name)
+    %p
+      = f.submit

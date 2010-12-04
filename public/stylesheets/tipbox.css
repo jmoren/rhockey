@@ -1,5 +1,9 @@
 .inputTipContainer {
   background: #eff285;
+  border: solid 1px #cecece;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
   color: #222222;
   display: none;
   position: absolute;
@@ -11,9 +15,9 @@
 .badInputTipContainer {
   color: #660000;
   font-weight: bold;
-  background: url("/images/error.png") no-repeat 5px; }
+  background: #ffeeee url("/images/error.png") no-repeat 5px; }
 
 .goodInputTipContainer {
   color: #006600;
   font-weight: bold;
-  background: url("/images/check.png") no-repeat 5px; }
+  background: #eeffee url("/images/check.png") no-repeat 5px; }

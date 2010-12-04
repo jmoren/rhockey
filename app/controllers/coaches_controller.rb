@@ -9,10 +9,12 @@ class CoachesController < ApplicationController
   
   def new
     @coach = Coach.new
+    @photo = @coach.build_photo
   end
   
   def create
     @coach = Coach.new(params[:coach])
+    @photo = @coach.build_photo
     if @coach.save
       flash[:notice] = "Successfully created coach."
       redirect_to @coach
@@ -23,6 +25,11 @@ class CoachesController < ApplicationController
   
   def edit
     @coach = Coach.find(params[:id])
+    if @coach.photo
+      @photo = @coach.photo
+    else
+      @photo = @coach.build_photo
+    end
   end
   
   def update
