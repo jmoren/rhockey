@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+
   def index
     @players = Player.all
   end
@@ -6,6 +7,9 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @team = @player.team
+    if @player.recategorizar?
+      @categorias = Category.where("minage <= ? and topage >= ?", @player.edad, @player.edad)
+    end
   end
   
   def new

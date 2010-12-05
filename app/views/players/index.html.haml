@@ -7,7 +7,7 @@
     %th Email
     %th Team
     %th Goalkeeper
-    %th Age
+    %th Edad
     %th Birthday
   - for player in @players
     %tr
@@ -16,7 +16,7 @@
       %td= player.email
       %td= player.team_id
       %td= player.goalkeeper
-      %td= player.age
+      %td= player.edad
       %td= player.birthday
       %td= link_to 'Show', player
       %td= link_to 'Edit', edit_player_path(player)

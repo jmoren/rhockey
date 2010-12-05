@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   end
   
   def show
-    @team = Team.find(params[:id])
+    @team = Team.find_by_name(params[:id])
   end
   
   def new
@@ -24,7 +24,7 @@ class TeamsController < ApplicationController
   end
   
   def edit
-    @team = Team.find(params[:id])
+    @team = Team.find_by_name(params[:id])
     if @team.photo
       @photo = @team.photo
     else
@@ -33,7 +33,7 @@ class TeamsController < ApplicationController
   end
   
   def update
-    @team = Team.find(params[:id])
+    @team = Team.find_by_name(params[:id])
     @photo = @team.photo
     if @team.update_attributes(params[:team])
       flash[:notice] = "Successfully updated team."
@@ -44,7 +44,7 @@ class TeamsController < ApplicationController
   end
   
   def destroy
-    @team = Team.find(params[:id])
+    @team = Team.find_by_name(params[:id])
     @team.destroy
     flash[:notice] = "Successfully destroyed team."
     redirect_to teams_url

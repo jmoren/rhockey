@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(:version => 20101203225848) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.integer  "topage"
+    t.integer  "minage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20101203225848) do
   end
 
   create_table "photos", :force => true do |t|
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "thumb_file_name"
@@ -41,7 +45,6 @@ ActiveRecord::Schema.define(:version => 20101203225848) do
     t.string   "lastname"
     t.string   "email"
     t.string   "gender"
-    t.integer  "age"
     t.date     "birthday"
     t.boolean  "captain"
     t.integer  "team_id"

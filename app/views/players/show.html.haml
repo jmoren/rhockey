@@ -1,44 +1,67 @@
-- title "#{@player.name.capitalize} #{@player.lastname.capitalize}"
-#player_data
-  #player_photo
-    - unless  @player.photo.nil?
-      =image_tag(@player.photo.thumb.url(:thumb)) unless @player.photo.nil?
+- title "Ficha Jugador"
+#player
+  #controls
+    %span.icon.icon-edit
+      = link_to  "editar", edit_player_path(@player)
+    %span.icon.icon-delete
+      = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
+    %span.icon.icon-move
+      = link_to "Volver", players_path
+  .clearfix
+  #player_header
+    - unless  @player.photo
+      =image_tag(@player.photo.thumb.url(:thumb))
     - else
       = image_tag @player.gravatar_url
-    %br
-    %span.icon.icon-edit
+    .player_name
+      = @player.name.capitalize
+      = @player.lastname.capitalize
+  .clearfix
+  #player_info
+    %small.icon.icon-edit
       = link_to "edit photo"
-  .player_field
-    %b Nombre:
-    = @player.name
-  .player_field
-    %b Apellido:
-    = @player.lastname
-  .player_field
-    %b Email:
-    = @player.email
-  .player_field
-    %b Equipo:
-    = link_to @player.team.name, team_path(@player.team.id), :class =>'info', :title => "#{render :partial => 'shared/team_info'}"
-  - if @player.goalkeeper
+    %p
+      - if @player.can_play?
+        %span#flash_error
+          Este jugador se encuentra deshabilitado
     .player_field
-      %b Arquero:
-      = image_tag('check.png')
-  - if @player.captain
+      %b Email:
+      = @player.email
     .player_field
-      %b Capitan:
-      = image_tag('check.png')
-  .player_field
-    %b Edad:
-    = Time.now.year - @player.birthday.year
-  .player_field
-    %b Fec. Nacimiento:
-    = @player.birthday.strftime('%d de %B, %Y')
+      %b Fec. Nacimiento:
+      = @player.birthday.strftime('%d de %B, %Y')
+    .player_field
+      %b Edad:
+      = @player.edad
+    .player_field
+      %b Categoria:
+      = @player.team.category.name
+    .player_field
+      %b Equipo:
+      = link_to @player.team.name, team_path(@player.team.id), :class =>'info', :title => "Categoria:  #{@player.team.category.name}"
 
-%p
-  %span.icon.icon-edit
-    = link_to  "editar", edit_player_path(@player)
-  %span.icon.icon-delete
-    = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
-  %span.icon.icon-move
-    = link_to "Volver", players_path
+  #hockey_info
+    #title
+      Informacion General
+    - if @player.recategorizar?
+      #flash_alert
+        = @player.name
+        = @player.lastname
+        debe ser recategorizado.
+        - unless @categorias.empty?
+          == Categorias posibles (#{@categorias.size}) :[
+          - @categorias.each do |c|
+            %b= c.name.capitalize
+          ]
+    - if @player.captain
+      %h3
+        == Capitan #{image_tag('check.png')}
+    %h3 Partidos jugados
+    %h3 Goles
+    %h3 Asistencias
+
+    - if @player.goalkeeper
+      %h3
+        == Arquero: #{image_tag('check.png')}
+      %h3 Saves
+

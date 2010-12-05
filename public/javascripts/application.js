@@ -96,4 +96,9 @@ $(document).ready(function() {
                 // True if the validation should be performed on every key/up event (false by default)
                 validateInRealTime: true
             });
+          hideFlash();
         });
+function hideFlash() {
+  var flash_div = $(".flash");
+  setTimeout(function() { flash_div.fadeOut(2000, function() { flash_div.html(""); flash_div.hide(); })}, 2500);
+}

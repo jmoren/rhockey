@@ -29,15 +29,36 @@ a
 #flash_alert
   padding: 5px 8px
   margin: 10px 0
+.flash
+  float: left
+  position: absolute
+  top: 300px
+  left: 500px
+
 
 #flash_notice
+  padding: 15px 15px 15px 30px
   background-color: #ccffcc
   border: solid 1px #66cc66
+  background-image: url('/images/check.png')
+  background-position: 10px
+  background-repeat: no-repeat
 
-#flash_error,
-#flash_alert
+#flash_error
+  padding: 5px 5px 5px 30px
+  background-image: url('/images/error.png')
+  background-position: 10px
+  background-repeat: no-repeat
   background-color: #ffcccc
   border: solid 1px #cc6666
+
+#flash_alert
+  padding: 5px 5px 5px 30px
+  background-image: url('/images/error.png')
+  background-position: 10px
+  background-repeat: no-repeat
+  background-color: #E8F27C
+  border: solid 1px #DAE83F
 
 .fieldWithErrors
   display: inline
@@ -64,23 +85,56 @@ a
     margin: 8px 10px
   ul
     margin: 0
+.clearfix
+  clear: both
+.left
+  float: left
+.right
+  float: right
 #form
   input
     padding: 5px
-#player_data
-  #player_photo
+#player
+  border: solid 1px #cecece
+  border-radius: 8px
+  -moz-border-radius: 8px
+  -webkit-border-radius: 8px
+  padding: 10px
+  margin: auto
+  #player_header
+    margin: 20px 0
     img
+      float: left
       padding: 5px
       border: 3px solid #cecece
-  .player_field
-    margin: 15px 0
-    padding: 6px 5px
-    &:hover
-      background: #EFFbbb
-      border: solid 1px #EFFbbb
-      border-radius: 4px
-      -moz-border-radius: 4px
-      -webkit-border-radius: 4px
+    .player_name
+      margin-left: 20px
+      padding: 20px
+      font:
+        size: 50px
+        weight: bold
+      float: left
+
+  #player_info
+    .player_field
+      font-size: 20px
+      margin: 10px 0
+      padding: 5px
+      line-height: 25px
+  #hockey_info
+    #title
+      font:
+        size: 25px
+        weight: bold
+      padding: 10px
+      background: #cecece
+      border: solid 1px #cecece
+      border-radius: 8px
+      -moz-border-radius: 8px
+      -webkit-border-radius: 8px
+
+  #controls
+    float: right
 .icon
   background-position: 0% 50%
   background-repeat: no-repeat

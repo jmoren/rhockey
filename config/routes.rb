@@ -1,8 +1,6 @@
 Rhockey::Application.routes.draw do
   resources :teams
-
   resources :coaches
-
   resources :players
 
   # The priority is based upon order of creation:

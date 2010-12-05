@@ -1,12 +1,20 @@
-- title "Team"
+- title "Equipo #{@team.name}"
 
 %p
   %strong Name:
   = @team.name
 %p
   %strong Category:
-  = @team.category_id
-
+  = @team.category.name
+%p
+  - if @team.players.empty?
+    #flash_error
+      No hay jugadores
+  - else
+    - @team.players.each do |player|
+      %p
+        = player.name
+        = player.lastname
 %p
   = link_to "Edit", edit_team_path(@team)
   |

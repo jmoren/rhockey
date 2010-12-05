@@ -6,9 +6,9 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :lastname
       t.string :email
       t.string :gender
-      t.integer :age
       t.date :birthday
     #hockey information
+      t.boolean :can_play, :default => true
       t.boolean :captain, :default => nil
       t.integer :team_id
       t.boolean :goalkeeper, :default => nil
