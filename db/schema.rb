@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20101203225848) do
     t.string   "email"
     t.string   "gender"
     t.date     "birthday"
+    t.boolean  "can_play",   :default => true
     t.boolean  "captain"
     t.integer  "team_id"
     t.boolean  "goalkeeper"

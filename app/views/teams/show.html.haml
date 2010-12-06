@@ -16,8 +16,10 @@
         = player.name
         = player.lastname
 %p
-  = link_to "Edit", edit_team_path(@team)
+  = link_to 'Add Players', team_addPlayers_path(@team)
   |
-  = link_to "Destroy", @team, :confirm => 'Are you sure?', :method => :delete
+  = link_to "Editar", edit_team_path(@team)
+%p
+  = link_to "Eliminar", @team, :confirm => 'Are you sure?', :method => :delete
   |
-  = link_to "View All", teams_path
+  = link_to "Ver todos", teams_path

@@ -14,32 +14,27 @@ class PlayersController < ApplicationController
   
   def new
     @player = Player.new
-    @photo = @player.build_photo
   end
   
   def create
     @player = Player.new(params[:player])
-    @photo = @player.build_photo
     if @player.save
+      @team = @player.team.reload
       flash[:notice] = "Successfully created player."
-      redirect_to @player
-    else
-      render :action => 'new'
+      #respond_to do |format|
+      #  format.js
+      #end
+    #else
+      #render :action => 'new'
     end
   end
   
   def edit
     @player = Player.find(params[:id])
-    if @player.photo
-      @photo = @player.photo
-    else
-      @photo = @player.build_photo
-    end
   end
   
   def update
     @player = Player.find(params[:id])
-    @photo = @player.photo
     if @player.update_attributes(params[:player])
       flash[:notice] = "Successfully updated player."
       redirect_to @player
@@ -52,7 +47,7 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @player.destroy
     flash[:notice] = "Successfully destroyed player."
-    redirect_to players_url
+    redirect_to :back
   end
   def check_email
     email = params[:player][:email]

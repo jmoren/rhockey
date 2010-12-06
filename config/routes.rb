@@ -1,5 +1,7 @@
 Rhockey::Application.routes.draw do
-  resources :teams
+  resources :teams do
+    get "/addPlayers" => "teams#add_players"
+  end
   resources :coaches
   resources :players
 

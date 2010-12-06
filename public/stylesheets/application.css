@@ -30,7 +30,7 @@ a {
 .flash {
   float: left;
   position: absolute;
-  top: 300px;
+  top: 150px;
   left: 500px; }
 
 #flash_notice {
@@ -175,3 +175,46 @@ a {
 
 .tipsy-west {
   background-position: left center; }
+
+#add_players {
+  border: solid 1px #cecece;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding: 10px;
+  margin-top: 10px; }
+  #add_players #add_player_form {
+    float: right;
+    margin-right: 15px; }
+  #add_players #players_list {
+    float: left;
+    width: 68%;
+    border-right: solid 1px #cecece;
+    padding: 0 15px;
+    min-height: 250px; }
+
+#players_team_list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 15px 0;
+  line-height: 25px;
+  text-align: center; }
+  #players_team_list th {
+    color: white;
+    background-color: #26456d;
+    padding: 6px; }
+    #players_team_list th .last {
+      margin-right: 35px; }
+  #players_team_list td {
+    padding: 6px 30px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 18px; }
+    #players_team_list td img {
+      vertical-align: middle; }
+  #players_team_list tr:hover {
+    background: #cecece; }
+  #players_team_list .last {
+    text-align: right;
+    padding-right: 15px; }
+  #players_team_list .nombres {
+    text-align: left; }

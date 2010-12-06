@@ -4,7 +4,7 @@ class CreatePlayers < ActiveRecord::Migration
     #personal information
       t.string :name
       t.string :lastname
-      t.string :email
+      t.string :email, :default => "exapmle@example.com"
       t.string :gender
       t.date :birthday
     #hockey information

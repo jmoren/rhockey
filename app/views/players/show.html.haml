@@ -6,10 +6,10 @@
     %span.icon.icon-delete
       = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
     %span.icon.icon-move
-      = link_to "Volver", players_path
+      = link_to "Volver", :back
   .clearfix
   #player_header
-    - unless  @player.photo
+    - if  @player.photo
       =image_tag(@player.photo.thumb.url(:thumb))
     - else
       = image_tag @player.gravatar_url
