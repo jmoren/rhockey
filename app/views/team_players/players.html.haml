@@ -1,0 +1,26 @@
+- title "Add / Remove Players"
+#player
+  #player_info
+    .player_field
+      %b Nombre:
+      = @team.name
+    .player_field
+      %b Categoria:
+      = @team.category.name
+    .player_field
+      %b Entrenadores
+      -  unless @team.coaches
+        - @team.coaches.each do |c|
+          = c.name
+          = c.lastname
+      - else
+        #flash_alert
+          No tiene entrenador!
+#team_players
+  #add_player
+    = render :partial => 'buttons_players'
+
+  #players_list
+    = render :partial => 'shared/players', :object => @team
+
+

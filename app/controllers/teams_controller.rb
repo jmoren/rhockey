@@ -49,9 +49,4 @@ class TeamsController < ApplicationController
     flash[:notice] = "Successfully destroyed team."
     redirect_to teams_url
   end
-
-  def players
-    @team = Team.find_by_name(params[:team_id])
-  end
-  
 end
