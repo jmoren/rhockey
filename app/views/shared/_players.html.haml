@@ -12,15 +12,16 @@
           %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
             %td= n +1
             %td{:class => "nombres"}
-              = image_tag player.gravatar_url(:size => 20)
+              =# image_tag player.gravatar_url(:size => 20)
               = player.name
               = player.lastname
             %td= player.edad
             %td{:class => "last"}
               %span.icon.icon-edit
                 %small= link_to  "Ver", player_path(player)
+              %br
               %span.icon.icon-delete
-                %small= link_to "eliminar", player, :confirm => 'Are you sure?', :method => :delete
+                %small= link_to "eliminar", player, :confirm => 'Are you sure?', :method => :delete, :remote => true
 - else
   #flash_error
     No hay jugadores

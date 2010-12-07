@@ -11,6 +11,7 @@ gem 'nifty-generators'
 gem 'jquery-rails'
 gem 'paperclip','2.3.6'
 gem 'gravtastic'
+gem 'dynamic_form'
 # Use unicorn as the web server
 # gem 'unicorn'
 

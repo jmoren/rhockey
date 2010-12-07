@@ -1,7 +1,13 @@
 class PlayersController < ApplicationController
+  before_filter :set_team
 
   def index
-    @players = Player.all
+    if params[:team_id]
+      @team = Team.find_by_name(params[:team_id])
+      @players = @team.players
+    else
+      @players = Player.all
+    end
   end
   
   def show
@@ -11,24 +17,6 @@ class PlayersController < ApplicationController
       @categorias = Category.where("minage <= ? and topage >= ?", @player.edad, @player.edad)
     end
   end
-  
-  def new
-    @player = Player.new
-  end
-  
-  def create
-    @player = Player.new(params[:player])
-    if @player.save
-      @team = @player.team.reload
-      flash[:notice] = "Successfully created player."
-      #respond_to do |format|
-      #  format.js
-      #end
-    #else
-      #render :action => 'new'
-    end
-  end
-  
   def edit
     @player = Player.find(params[:id])
   end
@@ -45,16 +33,18 @@ class PlayersController < ApplicationController
   
   def destroy
     @player = Player.find(params[:id])
-    @player.destroy
-    flash[:notice] = "Successfully destroyed player."
-    redirect_to :back
-  end
-  def check_email
-    email = params[:player][:email]
-    @player = Player.find_by_email(email)
-    respond_to do |format|
-      format.json { render :json => !@player }
+    @team = @player.team
+    if @player.destroy
+      @team.players.reload
+      flash[:notice] = "Successfully destroyed player."
+      respond_to do |format|
+        format.js
+      end
     end
   end
-
+  def set_team
+    if params[:team_id]
+      @team = Team.find_by_name(params[:team_id])
+    end
+  end
 end

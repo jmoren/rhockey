@@ -25,8 +25,17 @@
         #flash_alert
           No tiene entrenador!
 #add_players
+  %script
+    function add_form(){
+    $("#add_player").html('players/add_player');
+    }
+  #add_player
+    =# render 'players/add_player'
+    %p
+      = link_to "Add Players", new_player_path,:class => "add_player_button", :remote => true
+    %br
+    %p
+      = link_to_function "Edit Players", "add_form()",:class => "add_player_button"
   #players_list
     = render :partial => 'shared/players', :object => @team
-  #add_player
-    = render 'players/add_player'
-  .clearfix
+

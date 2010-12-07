@@ -6,7 +6,6 @@
     %th Lastname
     %th Email
     %th Team
-    %th Goalkeeper
     %th Edad
     %th Birthday
   - for player in @players
@@ -14,12 +13,10 @@
       %td= player.name
       %td= player.lastname
       %td= player.email
-      %td= player.team_id
-      %td= player.goalkeeper
+      %td= link_to player.team.name, team_path(player.team)
       %td= player.edad
       %td= player.birthday
       %td= link_to 'Show', player
       %td= link_to 'Edit', edit_player_path(player)
       %td= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete
 
-%p= link_to "New Player", new_player_path

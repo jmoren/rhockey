@@ -1,0 +1,5 @@
+$("#players_list").html("<%= escape_javascript( render :partial => 'shared/players', :object => @team ) %>");
+$("#add_player").html("<%= escape_javascript( render :partial => 'teams/buttons_players') %>");
+$(".flash").fadeOut(4000);
+<% flash.discard %>
+

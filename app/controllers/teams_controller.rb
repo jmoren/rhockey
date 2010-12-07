@@ -50,7 +50,7 @@ class TeamsController < ApplicationController
     redirect_to teams_url
   end
 
-  def add_players
+  def players
     @team = Team.find_by_name(params[:team_id])
   end
   

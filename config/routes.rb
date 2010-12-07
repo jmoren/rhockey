@@ -1,10 +1,14 @@
 Rhockey::Application.routes.draw do
-  resources :teams do
-    get "/addPlayers" => "teams#add_players"
-  end
   resources :coaches
   resources :players
 
+  resources :teams do
+    get "/players" => "team#players"
+    get "/player/new" => "team_players#new"
+    post "/players" => "team_players#create"
+  end
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

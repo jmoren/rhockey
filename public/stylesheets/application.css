@@ -57,8 +57,11 @@ a {
   background-color: #e8f27c;
   border: solid 1px #dae83f; }
 
-.fieldWithErrors {
-  display: inline; }
+.field_with_errors {
+  display: inline;
+  color: red; }
+  .field_with_errors input[type=text] {
+    border: solid 2px red; }
 
 .error_messages {
   width: 400px;
@@ -94,7 +97,7 @@ a {
   padding: 5px; }
 
 #player {
-  border: solid 1px #cecece;
+  border: solid 3px #cecece;
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -176,18 +179,33 @@ a {
 .tipsy-west {
   background-position: left center; }
 
-#add_players {
-  border: solid 1px #cecece;
+#team_players {
+  border: solid 2px #cecece;
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   padding: 10px;
   margin-top: 10px; }
-  #add_players #add_player_form {
-    float: right;
-    margin-right: 15px; }
-  #add_players #players_list {
-    float: left;
+  #team_players #add_player {
+    float: right; }
+    #team_players #add_player .form {
+      position: absolute;
+      right: 250px; }
+    #team_players #add_player .team_players_button {
+      width: 350px;
+      position: relative;
+      top: 30px;
+      right: 40px;
+      font-size: 35px;
+      text-align: center;
+      color: white;
+      background-color: #26456d;
+      text-decoration: none;
+      padding: 6px;
+      border-radius: 8px;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px; }
+  #team_players #players_list {
     width: 68%;
     border-right: solid 1px #cecece;
     padding: 0 15px;
@@ -197,7 +215,7 @@ a {
   width: 100%;
   border-collapse: collapse;
   margin: 10px 0 15px 0;
-  line-height: 25px;
+  line-height: 2em;
   text-align: center; }
   #players_team_list th {
     color: white;
