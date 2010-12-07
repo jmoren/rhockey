@@ -3,6 +3,8 @@
   #controls
     %span.icon.icon-edit
       = link_to  "editar", edit_team_path(@team)
+    %span.icon.icon-edit
+      = link_to  "players", team_players_path(@team)
     %span.icon.icon-delete
       = link_to "eliminar", @team, :confirm => 'Are you sure?', :method => :delete
     %span.icon.icon-move
@@ -24,10 +26,4 @@
       - else
         #flash_alert
           No tiene entrenador!
-#team_players
-  #add_player
-    = render :partial => 'buttons_players'
-
-  #players_list
-    = render :partial => 'shared/players', :object => @team
-
+= render 'shared/players'
