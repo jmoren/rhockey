@@ -34,11 +34,8 @@
       %b Edad:
       = @player.edad
     .player_field
-      %b Categoria:
-      = @player.team.category.name
-    .player_field
       %b Equipo:
-      = link_to @player.team.name, team_path(@player.team.id), :class =>'info', :title => "Categoria:  #{@player.team.category.name}"
+      = link_to @player.team.name, team_path(@player.team), :class =>'info', :title => "Categoria:  #{@player.team.category.name}"
 
   #hockey_info
     #title

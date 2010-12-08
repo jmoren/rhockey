@@ -16,8 +16,4 @@ class TeamPlayersController < ApplicationController
       render :action => 'new'
     end
   end
-
-  def players
-    @team = Team.find_by_name(params[:team_id])
-  end
 end

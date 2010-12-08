@@ -4,11 +4,17 @@
     %span.icon.icon-edit
       = link_to  "editar", edit_team_path(@team)
     %span.icon.icon-edit
-      = link_to  "players", team_players_path(@team)
+      = link_to  "players", team_members_path(@team)
     %span.icon.icon-delete
       = link_to "eliminar", @team, :confirm => 'Are you sure?', :method => :delete
     %span.icon.icon-move
       = link_to "Volver", team_path(@team)
+  .clearfix
+  #player_header
+    - if  @team.photo.thumb.nil?
+      =image_tag(@team.photo.thumb.url(:thumb))
+    - else
+      = image_tag('rails.png')
   .clearfix
   #player_info
     .player_field
@@ -19,11 +25,12 @@
       = @team.category.name
     .player_field
       %b Entrenadores
-      - unless @team.coaches
+      - unless @team.coaches.empty?
         - @team.coaches.each do |c|
           = c.name
           = c.lastname
       - else
         #flash_alert
           No tiene entrenador!
-= render 'shared/players'
+#team_players
+  = render 'shared/players'

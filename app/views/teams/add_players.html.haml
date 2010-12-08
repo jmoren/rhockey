@@ -16,14 +16,7 @@
       %b Categoria:
       = @team.category.name
     .player_field
-      %b Entrenadores
-      - unless @team.coaches
-        - @team.coaches.each do |c|
-          = c.name
-          = c.lastname
-      - else
-        #flash_alert
-          No tiene entrenador!
+      = render 'shared/coaches', :object => @team
 #add_players
   %script
     function add_form(){

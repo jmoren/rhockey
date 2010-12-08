@@ -190,12 +190,11 @@ a {
     float: right; }
     #team_players #add_player .form {
       position: absolute;
-      right: 250px; }
+      right: 200px; }
     #team_players #add_player .team_players_button {
+      top: 60px;
+      right: 40px;
       position: relative;
-      top: 30px;
-      right: 60px;
-      width: 200px;
       font-size: 25px;
       text-align: center;
       color: white;
@@ -205,34 +204,35 @@ a {
       border-radius: 8px;
       -moz-border-radius: 8px;
       -webkit-border-radius: 8px; }
-  #team_players #players_list {
-    width: 68%;
+  #team_players #members_list {
+    width: 70%;
     padding: 0 15px;
     min-height: 250px; }
 
-#players_team_list {
+.players_team_list {
   border: 1px #cecece solid;
   width: 100%;
   border-collapse: collapse;
   margin: 10px 0 15px 0;
-  line-height: 2em;
+  line-height: 0.5em;
   text-align: center; }
-  #players_team_list th {
+  .players_team_list th {
     color: white;
     background-color: #26456d;
     padding: 6px; }
-    #players_team_list th .last {
+    .players_team_list th .last {
       margin-right: 35px; }
-  #players_team_list td {
+  .players_team_list td {
     padding: 6px 30px;
     border-bottom: 1px solid #cccccc;
     font-size: 18px; }
-    #players_team_list td img {
+    .players_team_list td img {
       vertical-align: middle; }
-  #players_team_list tr:hover {
-    background: #cecece; }
-  #players_team_list .last {
+  .players_team_list tr:hover {
+    background: #f2f07e; }
+  .players_team_list .last {
     text-align: right;
     padding-right: 15px; }
-  #players_team_list .nombres {
-    text-align: left; }
+  .players_team_list .nombres {
+    text-align: left;
+    min-width: 200px; }

@@ -3,9 +3,12 @@ Rhockey::Application.routes.draw do
   resources :players
 
   resources :teams do
-    get "/players" => "team_players#players"
+    get "/members" => "teams#members"
+
     get "/player/new" => "team_players#new"
+    get "/coach/new" => "team_coaches#new"
     post "/players" => "team_players#create"
+    post "/coaches" => "team_coaches#create"
   end
 
   

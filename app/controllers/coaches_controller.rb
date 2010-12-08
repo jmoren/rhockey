@@ -6,23 +6,6 @@ class CoachesController < ApplicationController
   def show
     @coach = Coach.find(params[:id])
   end
-  
-  def new
-    @coach = Coach.new
-    @photo = @coach.build_photo
-  end
-  
-  def create
-    @coach = Coach.new(params[:coach])
-    @photo = @coach.build_photo
-    if @coach.save
-      flash[:notice] = "Successfully created coach."
-      redirect_to @coach
-    else
-      render :action => 'new'
-    end
-  end
-  
   def edit
     @coach = Coach.find(params[:id])
     if @coach.photo
@@ -44,16 +27,13 @@ class CoachesController < ApplicationController
   
   def destroy
     @coach = Coach.find(params[:id])
-    @coach.destroy
-    flash[:notice] = "Successfully destroyed coach."
-    redirect_to coaches_url
-  end
-  def check_email
-    email = params[:coach][:email]
-    @coach = Coach.find_by_email(email)
-    respond_to do |format|
-      format.json { render :json => !@coach }
+    @team = @coach.team
+    if @coach.destroy
+      @team.coaches.reload
+      flash[:notice] = "Successfully destroyed player."
+      respond_to do |format|
+        format.js
+      end
     end
   end
-
 end

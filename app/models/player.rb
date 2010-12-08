@@ -12,6 +12,8 @@ class Player < ActiveRecord::Base
   validates :name, :lastname, :birthday, :presence => true
   #validates_format_of :email, :with => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/
   #validates_uniqueness_of :email
+  scope "arqueros", :conditions =>{:goalkeeper => true}
+  scope "jugadores", :conditions =>{:goalkeeper => false}
   def to_param
     "#{id}_#{name}_#{lastname}"
   end

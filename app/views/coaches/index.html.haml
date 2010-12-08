@@ -1,19 +1,21 @@
 - title "Coaches"
 
-%table
-  %tr
-    %th Name
-    %th Lastname
-    %th Team
-    %th Email
+%table{:class => "players_team_list"}
+  %th Mas Info
+  %th Nombre Completo
+  %th Equipo
+  %th Email
+  %th Opciones
   - for coach in @coaches
     %tr
-      %td= coach.name
-      %td= coach.lastname
-      %td= coach.team_id
+      %td
+        %span
+          %small= link_to  image_tag('lupa.png'), coach_path(coach)
+      %td= full_name(coach)
+      %td= link_to coach.team.name, team_path(coach.team)
       %td= coach.email
-      %td= link_to 'Show', coach
-      %td= link_to 'Edit', edit_coach_path(coach)
-      %td= link_to 'Destroy', coach, :confirm => 'Are you sure?', :method => :delete
+      %td{:class => "last"}
+        %span
+          %small= link_to  image_tag('edit.png'), edit_coach_path(coach)
+        
 
-%p= link_to "New Coach", new_coach_path

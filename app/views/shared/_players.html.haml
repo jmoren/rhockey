@@ -1,27 +1,41 @@
+%b Arqueros
+-unless @team.players.arqueros.empty?
+  %table{:class => "players_team_list"}
+    - @team.players.arqueros.each_with_index do |player,n|
+      %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
+        %td
+          = image_tag('missing-thumb.png')
+        %td{:class => "nombres"}
+          = full_name(player)
+        %td== #{player.edad} anios
+        %td{:class => "last"}
+          %span
+            %small= link_to  image_tag('lupa.png'), player_path(player)
+          %span
+            %small= link_to  image_tag('edit.png'), edit_player_path(player)
+          %span
+            %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
+- else
+  #flash_error
+    No hay Arqueros
 
--unless @team.players.empty?
-  %table{:id => "players_team_list"}
-    %tr
-      %th Nro
-      %th
-        Nombre Completo
-      %th Edad
-      %th{:class => "last"}
-        Opciones
-        - @team.players.each_with_index do |player,n|
-          %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
-            %td= n +1
-            %td{:class => "nombres"}
-              =# image_tag player.gravatar_url(:size => 20)
-              = player.name
-              = player.lastname
-            %td= player.edad
-            %td{:class => "last"}
-              %span.icon.icon-edit
-                %small= link_to  "Ver", player_path(player)
-              %br
-              %span.icon.icon-delete
-                %small= link_to "eliminar", player, :confirm => 'Are you sure?', :method => :delete, :remote => true
+%b Jugadores
+-unless @team.players.jugadores.empty?
+  %table{:class => "players_team_list"}
+    - @team.players.jugadores.each_with_index do |player,n|
+      %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
+        %td
+          = image_tag('missing-thumb.png')
+        %td{:class => "nombres"}
+          = full_name(player)
+        %td== #{player.edad} anios
+        %td{:class => "last"}
+          %span
+            %small= link_to  image_tag('lupa.png'), player_path(player)
+          %span
+            %small= link_to  image_tag('edit.png'), edit_player_path(player)
+          %span
+            %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
 - else
   #flash_error
     No hay jugadores

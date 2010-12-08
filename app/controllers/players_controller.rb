@@ -6,7 +6,8 @@ class PlayersController < ApplicationController
       @team = Team.find_by_name(params[:team_id])
       @players = @team.players
     else
-      @players = Player.all
+      @jugadores = Player.jugadores
+      @arqueros = Player.arqueros
     end
   end
   

@@ -1,0 +1,22 @@
+%b Entrenadores
+- unless @team.coaches.empty?
+  %table{:class => "players_team_list"}
+    - @team.coaches.each_with_index do |coach,n|
+      %tr{:class => "habilitado"}
+        %td
+          = image_tag('missing-thumb.png')
+        %td{:class => "nombres"}
+          = full_name(coach)
+        %td sin info
+        %td{:class => "last"}
+          %span
+            %small= link_to  image_tag('lupa.png'), coach_path(coach)
+          %span
+            %small= link_to  image_tag('edit.png'), edit_coach_path(coach)
+          %span
+            %small= link_to image_tag('delete.png'), coach, :confirm => 'Are you sure?', :method => :delete, :remote => true
+- else
+  #flash_alert
+    No tiene entrenador!
+- flash.each do |name, msg|
+  = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"
