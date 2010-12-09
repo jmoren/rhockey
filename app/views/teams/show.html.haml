@@ -3,7 +3,7 @@
   #controls
     %span.icon.icon-edit
       = link_to  "editar", edit_team_path(@team)
-    %span.icon.icon-edit
+    %span.icon.icon-add
       = link_to  "players", team_members_path(@team)
     %span.icon.icon-delete
       = link_to "eliminar", @team, :confirm => 'Are you sure?', :method => :delete
@@ -21,16 +21,23 @@
       %b Nombre:
       = @team.name
     .player_field
+      %b Creado:
+      = @team.created_at.strftime('%d/%m/%Y')
+    .player_field
       %b Categoria:
       = @team.category.name
     .player_field
       %b Entrenadores
       - unless @team.coaches.empty?
         - @team.coaches.each do |c|
-          = c.name
-          = c.lastname
+          = link_to full_name(c), player_path(c)
       - else
         #flash_alert
           No tiene entrenador!
-#team_players
-  = render 'shared/players'
+    .player_field
+      %b Capitan:
+      - @team.players.where(:captain => true).each do |c|
+        = link_to full_name(c), player_path(c)
+  #team_players
+  
+    = render 'shared/players'

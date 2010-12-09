@@ -7,10 +7,16 @@
       %small= f.label :name, "Nombre"
       %br
       = f.text_field :name, :size => 20
+      %br
+      %span{:style => "color: #5E5D5E"}
+        %small Solo letras o numeros.
     %p
       %small= f.label :lastname, "Apellido"
       %br
       = f.text_field :lastname, :size => 20
+      %br
+      %span{:style => "color: #5E5D5E"}
+        %small Solo letras o numeros.
     %p
       %small= f.label :birthday, "Nacimiento"
       %br

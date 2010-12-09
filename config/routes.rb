@@ -1,4 +1,6 @@
 Rhockey::Application.routes.draw do
+  get "admin/dashboard"
+
   resources :coaches
   resources :players
 
@@ -11,6 +13,7 @@ Rhockey::Application.routes.draw do
     post "/coaches" => "team_coaches#create"
   end
 
+  match '/' => redirect("/admin/dashboard")
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

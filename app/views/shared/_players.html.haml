@@ -1,13 +1,16 @@
-%b Arqueros
--unless @team.players.arqueros.empty?
-  %table{:class => "players_team_list"}
+
+%table{:class => "players_team_list"}
+  %th{:colspan => 5, :style => "text-align: left"}
+    Arqueros
+  -unless @team.players.arqueros.empty?
     - @team.players.arqueros.each_with_index do |player,n|
       %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
+        %td= n +1 
         %td
           = image_tag('missing-thumb.png')
         %td{:class => "nombres"}
           = full_name(player)
-        %td== #{player.edad} anios
+        %td== #{player.edad} años
         %td{:class => "last"}
           %span
             %small= link_to  image_tag('lupa.png'), player_path(player)
@@ -15,30 +18,36 @@
             %small= link_to  image_tag('edit.png'), edit_player_path(player)
           %span
             %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
-- else
-  #flash_error
-    No hay Arqueros
-
-%b Jugadores
--unless @team.players.jugadores.empty?
-  %table{:class => "players_team_list"}
-    - @team.players.jugadores.each_with_index do |player,n|
-      %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
-        %td
-          = image_tag('missing-thumb.png')
-        %td{:class => "nombres"}
-          = full_name(player)
-        %td== #{player.edad} anios
-        %td{:class => "last"}
-          %span
-            %small= link_to  image_tag('lupa.png'), player_path(player)
-          %span
-            %small= link_to  image_tag('edit.png'), edit_player_path(player)
-          %span
-            %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
-- else
-  #flash_error
-    No hay jugadores
+  - else
+    %tr
+      %td{:colspan => 5}
+        #flash_error
+          No hay Arqueros
+  %tr
+    %td
+  %th{:colspan => 5, :style => "text-align: left;"}
+    Jugadores
+  %tr
+    -unless @team.players.jugadores.empty?
+      - @team.players.jugadores.each_with_index do |player,n|
+        %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
+          %td= n + 1
+          %td= image_tag('missing-thumb.png')
+          %td{:class => "nombres"}
+            = full_name(player)
+          %td== #{player.edad} años
+          %td{:class => "last"}
+            %span
+              %small= link_to  image_tag('lupa.png'), player_path(player)
+            %span
+              %small= link_to  image_tag('edit.png'), edit_player_path(player)
+            %span
+              %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
+    - else
+      %tr
+        %td{:colspan => 5}
+          #flash_error
+            No hay jugadores
 
 - flash.each do |name, msg|
   = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"

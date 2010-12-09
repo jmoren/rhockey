@@ -8,14 +8,17 @@ class Player < ActiveRecord::Base
   attr_accessible :name, :lastname, :email, :team_id, :captain, :gender, :goalkeeper, 
                   :age, :birthday, :photo_attributes, :can_play
 #validations
-  validates_length_of :name, :lastname, :within => 3..20
+  validates_length_of :name, :lastname, :within => 3..15
   validates :name, :lastname, :birthday, :presence => true
-  #validates_format_of :email, :with => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/
-  #validates_uniqueness_of :email
+  before_update do
+    #validates_format_of :email, :with => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/
+    #validates :email,:uniqueness=>  true
+  end
+
   scope "arqueros", :conditions =>{:goalkeeper => true}
   scope "jugadores", :conditions =>{:goalkeeper => false}
   def to_param
-    "#{id}_#{name}_#{lastname}"
+    "#{id}-#{name}_#{lastname}"
   end
   def edad
     age = Time.now.year - self.birthday.year

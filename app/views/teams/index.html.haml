@@ -1,16 +1,25 @@
 - title "Teams"
 
-%table
+%table{:class => "players_team_list"}
   %tr
-    %th Name
-    %th Category
-  - for team in @teams
+    %th Nro
+    %th Foto
+    %th Nombre
+    %th Categoria
+    %th Opciones
+  - @teams.each_with_index do |team, n|
     %tr
-      %td= team.name
+      %td= n + 1
+      %td= image_tag('missing-thumb.png')
+      %td{:class => "nombres"}
+        = link_to team.name, team_path(team)
       %td= team.category.name
-      %td= link_to 'Show', team
-      %td= link_to 'Edit', edit_team_path(team)
-      %td=# link_to 'Add Players', team_addPlayers_path(team)
-      %td= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete
+      %td
+        %span
+          %small= link_to  image_tag('lupa.png'), team
+        %span
+          %small= link_to  image_tag('edit.png'), edit_team_path(team)
+        %span
+          %small= link_to image_tag('delete.png'), team, :confirm => 'Are you sure?', :method => :d
 
 %p= link_to "New Team", new_team_path

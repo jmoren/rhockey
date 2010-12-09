@@ -21,12 +21,6 @@ a {
   border: solid 1px black;
   margin-top: 20px; }
 
-#flash_notice,
-#flash_error,
-#flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0; }
-
 .flash {
   float: left;
   position: absolute;
@@ -42,7 +36,7 @@ a {
   background-repeat: no-repeat; }
 
 #flash_error {
-  padding: 5px 5px 5px 30px;
+  padding: 10px 5px 10px 30px;
   background-image: url("/images/error.png");
   background-position: 10px;
   background-repeat: no-repeat;
@@ -50,7 +44,7 @@ a {
   border: solid 1px #cc6666; }
 
 #flash_alert {
-  padding: 5px 5px 5px 30px;
+  padding: 10px 10px 10px 30px;
   background-image: url("/images/error.png");
   background-position: 10px;
   background-repeat: no-repeat;
@@ -142,6 +136,9 @@ a {
 .icon-edit {
   background-image: url(/images/edit.png); }
 
+.icon-add {
+  background-image: url(/images/add.png); }
+
 .icon-delete {
   background-image: url(/images/delete.png); }
 
@@ -180,10 +177,7 @@ a {
   background-position: left center; }
 
 #team_players {
-  border: solid 2px #cecece;
-  border-radius: 8px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
+  border-top: solid 2px #cecece;
   padding: 10px;
   margin-top: 10px; }
   #team_players #add_player {
@@ -210,16 +204,17 @@ a {
     min-height: 250px; }
 
 .players_team_list {
-  border: 1px #cecece solid;
   width: 100%;
   border-collapse: collapse;
   margin: 10px 0 15px 0;
   line-height: 0.5em;
   text-align: center; }
   .players_team_list th {
+    line-height: 1.7em;
     color: white;
     background-color: #26456d;
-    padding: 6px; }
+    padding: 6px;
+    margin: 10px 0; }
     .players_team_list th .last {
       margin-right: 35px; }
   .players_team_list td {
@@ -231,8 +226,39 @@ a {
   .players_team_list tr:hover {
     background: #f2f07e; }
   .players_team_list .last {
-    text-align: right;
+    text-align: center;
     padding-right: 15px; }
   .players_team_list .nombres {
     text-align: left;
     min-width: 200px; }
+
+#dashboard .buttons-admin {
+  margin: auto;
+  display: inline; }
+  #dashboard .buttons-admin .button {
+    float: left;
+    width: 220px;
+    margin: 15px;
+    height: 120px;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 5px #26456d;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+    padding: 20px; }
+    #dashboard .buttons-admin .button a {
+      color: #26456d;
+      font-weight: bold;
+      font-size: 20px; }
+    #dashboard .buttons-admin .button:hover {
+      background: #26456d; }
+      #dashboard .buttons-admin .button:hover a {
+        background: #26456d;
+        color: white; }
+  #dashboard .buttons-admin .hint {
+    width: 150px;
+    padding: 0px 22px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #989e9e; }

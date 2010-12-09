@@ -1,7 +1,11 @@
 %p
   %span
-    = link_to "Add Players", team_player_new_path(@team),:class => "team_players_button", :remote => true
+    = link_to "Nuevo jugador", team_player_new_path(@team),:class => "team_players_button", :remote => true
 %br
 %p
   %span
-    = link_to "Add Coach", team_coach_new_path(@team),:class => "team_players_button", :remote => true
+    = link_to "Nuevo arquero", team_player_new_path(@team,:arquero => true),:class => "team_players_button", :remote => true
+%br
+%p
+  %span
+    = link_to "Nuevo coach", team_coach_new_path(@team),:class => "team_players_button", :remote => true
