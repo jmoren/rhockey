@@ -1,0 +1,34 @@
+- title "Equipo #{@team.name}"
+#player
+  #controls
+    %span.icon.icon-edit
+      = link_to  "editar", edit_player_path(@team)
+    %span.icon.icon-delete
+      = link_to "eliminar", @team, :confirm => 'Are you sure?', :method => :delete
+    %span.icon.icon-move
+      = link_to "Volver", team_path(@team)
+  .clearfix
+  #player_info
+    .player_field
+      %b Nombre:
+      = @team.name
+    .player_field
+      %b Categoria:
+      = @team.category.name
+    .player_field
+      = render 'shared/coaches', :object => @team
+#add_players
+  %script
+    function add_form(){
+    $("#add_player").html('players/add_player');
+    }
+  #add_player
+    =# render 'players/add_player'
+    %p
+      = link_to "Add Players", new_player_path,:class => "add_player_button", :remote => true
+    %br
+    %p
+      = link_to_function "Edit Players", "add_form()",:class => "add_player_button"
+  #players_list
+    = render :partial => 'shared/players', :object => @team
+

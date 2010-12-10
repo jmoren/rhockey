@@ -3,19 +3,30 @@ $primary_color: #4b7399
 body
   background-color: $primary_color
   font:
+<<<<<<< HEAD
     family: Verdana, Helvetica, Arial
     size: 14px
 
+=======
+    //family: Verdana, Helvetica, Arial
+    size: 14px
+>>>>>>> feature_add-referis
 a
   color: blue
   img
     border: none
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature_add-referis
 .clear
   clear: both
   height: 0
   overflow: hidden
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature_add-referis
 #container
   width: 75%
   margin: 0 auto
@@ -24,6 +35,7 @@ a
   border: solid 1px black
   margin-top: 20px
 
+<<<<<<< HEAD
 #flash_notice,
 #flash_error,
 #flash_alert
@@ -42,6 +54,44 @@ a
 .fieldWithErrors
   display: inline
 
+=======
+.flash
+  //float: left
+  //position: absolute
+  //top: 150px
+  //left: 500px
+
+
+#flash_notice
+  padding: 5px 5px 5px 30px
+  background-color: #ccffcc
+  border: solid 1px #66cc66
+  background-image: url('/images/check.png')
+  background-position: 10px
+  background-repeat: no-repeat
+
+#flash_error
+  padding: 10px 5px 10px 30px
+  background-image: url('/images/error.png')
+  background-position: 10px
+  background-repeat: no-repeat
+  background-color: #ffcccc
+  border: solid 1px #cc6666
+
+#flash_alert
+  padding: 10px 10px 10px 30px
+  background-image: url('/images/error.png')
+  background-position: 10px
+  background-repeat: no-repeat
+  background-color: #E8F27C
+  border: solid 1px #DAE83F
+
+.field_with_errors
+  display: inline
+  color: red
+  input[type=text]
+    border: solid 2px red
+>>>>>>> feature_add-referis
 .error_messages
   width: 400px
   border: 2px solid #cf0000
@@ -64,3 +114,204 @@ a
     margin: 8px 10px
   ul
     margin: 0
+<<<<<<< HEAD
+=======
+.clearfix
+  clear: both
+.left
+  float: left
+.right
+  float: right
+#form
+  input
+    padding: 5px
+#player
+  border: solid 3px #cecece
+  border-radius: 8px
+  -moz-border-radius: 8px
+  -webkit-border-radius: 8px
+  padding: 10px
+  margin: auto
+  #player_header
+    margin: 20px 0
+    img
+      float: left
+      padding: 5px
+      border: 3px solid #cecece
+    .player_name
+      margin-left: 20px
+      padding: 20px
+      font:
+        size: 50px
+        weight: bold
+      float: left
+
+  #player_info
+    .player_field
+      font-size: 20px
+      margin: 10px 0
+      padding: 5px
+      line-height: 25px
+  #hockey_info
+    #title
+      font:
+        size: 25px
+        weight: bold
+      padding: 10px
+      background: #cecece
+      border: solid 1px #cecece
+      border-radius: 8px
+      -moz-border-radius: 8px
+      -webkit-border-radius: 8px
+
+  #controls
+    float: right
+.icon
+  background-position: 0% 50%
+  background-repeat: no-repeat
+  padding-left: 20px
+  padding-top: 2px
+  padding-bottom: 3px
+.icon-edit
+  background-image: url(/images/edit.png)
+.icon-add
+  background-image: url(/images/add.png)
+.icon-delete
+  background-image: url(/images/delete.png)
+.icon-move
+  background-image: url(/images/move.png)
+/* tipsy stles */
+.tipsy
+  padding: 5px
+  font-size: 13px
+  opacity: 0.6
+  filter: alpha(opacity = 60)
+  background-repeat: no-repeat
+  background-image: url(/images/tipsy.gif)
+
+.tipsy-inner
+  padding: 7px
+  background-color: black
+  color: white
+  font-weight: bold
+  max-width: 200px
+  text-align: left
+  -moz-border-radius: 5px
+  -webkit-border-radius: 5px
+
+.tipsy-north
+  background-position: top center
+
+.tipsy-south
+  background-position: bottom center
+
+.tipsy-east
+  background-position: right center
+
+.tipsy-west
+  background-position: left center
+
+#add_members
+  min-height: 70px
+  padding: 15px
+  .buttons
+    text-align: center
+    :margin auto
+    :position relative
+    :top 30px
+    span
+      font-size: 20px
+      margin: 15px
+      text-align: center
+      color: #fff
+      background-color: #26456D
+      padding: 10px
+      border-radius: 8px
+      -moz-border-radius: 8px
+      -webkit-border-radius: 8px
+      a
+        color: #fff
+        text-decoration: none
+  .form
+    padding: 20px
+    border: 2px solid #cecece
+    input, select, checkbox
+      padding: 5px
+      border-radius: 5px
+      -moz-border-radius: 5px
+      -webkit-border-radius: 5px
+    th
+      text-align: left
+
+#team_players
+  border-top: solid 2px #cecece
+  padding: 10px
+  margin-top: 10px
+  #members_list
+    width: 70%
+    padding: 0 15px
+    min-height: 250px
+.players_team_list
+  //border: 1px #cecece solid
+  width: 100%
+  border-collapse: collapse
+  margin: 10px 0 15px 0
+  line-height: 0.5em
+  text-align: center
+  th
+    line-height: 1.7em
+    color: #fff
+    background-color: #26456D
+    padding: 6px
+    margin: 10px 0
+    .last
+      margin-right: 35px
+  td
+    padding: 6px 30px
+    border-bottom: 1px solid #cccccc
+    font-size: 18px
+    img
+      vertical-align: middle
+  tr
+    &:hover
+      background: #F2F07E
+  .last
+    text-align: center
+    padding-right: 15px
+  .nombres
+    text-align: left
+#dashboard
+  .buttons-admin
+    margin: auto
+    display: inline
+    .button
+      float: left
+      width: 220px
+      margin: 15px
+      height: 120px
+      text-align: center
+      vertical-align: middle
+      border: solid 5px #26456D
+      border-radius: 16px
+      -moz-border-radius: 16px
+      -webkit-border-radius: 16px
+      padding: 20px
+      .hint
+        width: 150px
+        padding: 0px 22px
+        font-size: 15px
+        font-weight: bold
+        color: #989e9e
+      a
+        color: #26456D
+        font-weight: bold
+        font-size: 20px
+      &:hover
+        .hint
+          color: #fff
+        background: #26456D
+        a
+          background: #26456D
+          color: #fff
+    
+>>>>>>> feature_add-referis

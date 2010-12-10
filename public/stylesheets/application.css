@@ -1,0 +1,272 @@
+body {
+  background-color: #4b7399;
+  font-size: 14px; }
+
+a {
+  color: blue; }
+  a img {
+    border: none; }
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden; }
+
+#container {
+  width: 75%;
+  margin: 0 auto;
+  background: white;
+  padding: 20px 40px;
+  border: solid 1px black;
+  margin-top: 20px; }
+
+#flash_notice {
+  padding: 5px 5px 5px 30px;
+  background-color: #ccffcc;
+  border: solid 1px #66cc66;
+  background-image: url("/images/check.png");
+  background-position: 10px;
+  background-repeat: no-repeat; }
+
+#flash_error {
+  padding: 10px 5px 10px 30px;
+  background-image: url("/images/error.png");
+  background-position: 10px;
+  background-repeat: no-repeat;
+  background-color: #ffcccc;
+  border: solid 1px #cc6666; }
+
+#flash_alert {
+  padding: 10px 10px 10px 30px;
+  background-image: url("/images/error.png");
+  background-position: 10px;
+  background-repeat: no-repeat;
+  background-color: #e8f27c;
+  border: solid 1px #dae83f; }
+
+.field_with_errors {
+  display: inline;
+  color: red; }
+  .field_with_errors input[type=text] {
+    border: solid 2px red; }
+
+.error_messages {
+  width: 400px;
+  border: 2px solid #cf0000;
+  padding: 0;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px; }
+  .error_messages h2 {
+    text-align: left;
+    padding: 5px 5px 5px 15px;
+    margin: 0;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #cc0000;
+    color: white; }
+  .error_messages p {
+    margin: 8px 10px; }
+  .error_messages ul {
+    margin: 0; }
+
+.clearfix {
+  clear: both; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
+
+#form input {
+  padding: 5px; }
+
+#player {
+  border: solid 3px #cecece;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  padding: 10px;
+  margin: auto; }
+  #player #player_header {
+    margin: 20px 0; }
+    #player #player_header img {
+      float: left;
+      padding: 5px;
+      border: 3px solid #cecece; }
+    #player #player_header .player_name {
+      margin-left: 20px;
+      padding: 20px;
+      font-size: 50px;
+      font-weight: bold;
+      float: left; }
+  #player #player_info .player_field {
+    font-size: 20px;
+    margin: 10px 0;
+    padding: 5px;
+    line-height: 25px; }
+  #player #hockey_info #title {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px;
+    background: #cecece;
+    border: solid 1px #cecece;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px; }
+  #player #controls {
+    float: right; }
+
+.icon {
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  padding-top: 2px;
+  padding-bottom: 3px; }
+
+.icon-edit {
+  background-image: url(/images/edit.png); }
+
+.icon-add {
+  background-image: url(/images/add.png); }
+
+.icon-delete {
+  background-image: url(/images/delete.png); }
+
+.icon-move {
+  background-image: url(/images/move.png); }
+
+/* tipsy stles */
+.tipsy {
+  padding: 5px;
+  font-size: 13px;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+  background-repeat: no-repeat;
+  background-image: url(/images/tipsy.gif); }
+
+.tipsy-inner {
+  padding: 7px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  max-width: 200px;
+  text-align: left;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+
+.tipsy-north {
+  background-position: top center; }
+
+.tipsy-south {
+  background-position: bottom center; }
+
+.tipsy-east {
+  background-position: right center; }
+
+.tipsy-west {
+  background-position: left center; }
+
+#add_members {
+  min-height: 70px;
+  padding: 15px; }
+  #add_members .buttons {
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 30px; }
+    #add_members .buttons span {
+      font-size: 20px;
+      margin: 15px;
+      text-align: center;
+      color: white;
+      background-color: #26456d;
+      padding: 10px;
+      border-radius: 8px;
+      -moz-border-radius: 8px;
+      -webkit-border-radius: 8px; }
+      #add_members .buttons span a {
+        color: white;
+        text-decoration: none; }
+  #add_members .form {
+    padding: 20px;
+    border: 2px solid #cecece; }
+    #add_members .form input, #add_members .form select, #add_members .form checkbox {
+      padding: 5px;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px; }
+    #add_members .form th {
+      text-align: left; }
+
+#team_players {
+  border-top: solid 2px #cecece;
+  padding: 10px;
+  margin-top: 10px; }
+  #team_players #members_list {
+    width: 70%;
+    padding: 0 15px;
+    min-height: 250px; }
+
+.players_team_list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 15px 0;
+  line-height: 0.5em;
+  text-align: center; }
+  .players_team_list th {
+    line-height: 1.7em;
+    color: white;
+    background-color: #26456d;
+    padding: 6px;
+    margin: 10px 0; }
+    .players_team_list th .last {
+      margin-right: 35px; }
+  .players_team_list td {
+    padding: 6px 30px;
+    border-bottom: 1px solid #cccccc;
+    font-size: 18px; }
+    .players_team_list td img {
+      vertical-align: middle; }
+  .players_team_list tr:hover {
+    background: #f2f07e; }
+  .players_team_list .last {
+    text-align: center;
+    padding-right: 15px; }
+  .players_team_list .nombres {
+    text-align: left; }
+
+#dashboard .buttons-admin {
+  margin: auto;
+  display: inline; }
+  #dashboard .buttons-admin .button {
+    float: left;
+    width: 220px;
+    margin: 15px;
+    height: 120px;
+    text-align: center;
+    vertical-align: middle;
+    border: solid 5px #26456d;
+    border-radius: 16px;
+    -moz-border-radius: 16px;
+    -webkit-border-radius: 16px;
+    padding: 20px; }
+    #dashboard .buttons-admin .button .hint {
+      width: 150px;
+      padding: 0px 22px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #989e9e; }
+    #dashboard .buttons-admin .button a {
+      color: #26456d;
+      font-weight: bold;
+      font-size: 20px; }
+    #dashboard .buttons-admin .button:hover {
+      background: #26456d; }
+      #dashboard .buttons-admin .button:hover .hint {
+        color: white; }
+      #dashboard .buttons-admin .button:hover a {
+        background: #26456d;
+        color: white; }

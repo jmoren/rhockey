@@ -1,0 +1,64 @@
+- title "Ficha Jugador"
+#player
+  #controls
+    %span.icon.icon-edit
+      = link_to  "editar", edit_player_path(@player)
+    %span.icon.icon-delete
+      = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
+    %span.icon.icon-move
+      = link_to "Volver", :back
+  .clearfix
+  #player_header
+    - if  @player.photo
+      =image_tag(@player.photo.thumb.url(:thumb))
+    - else
+      = image_tag @player.gravatar_url
+    .player_name
+      = @player.name.capitalize
+      = @player.lastname.capitalize
+  .clearfix
+  #player_info
+    %small.icon.icon-edit
+      = link_to "edit photo"
+    %p
+      - if @player.can_play?
+        %span#flash_error
+          Este jugador se encuentra deshabilitado
+    .player_field
+      %b Email:
+      = @player.email
+    .player_field
+      %b Fec. Nacimiento:
+      = @player.birthday.strftime('%d de %B, %Y')
+    .player_field
+      %b Edad:
+      = @player.edad
+    .player_field
+      %b Equipo:
+      = link_to @player.team.name, team_path(@player.team), :class =>'info', :title => "Categoria:  #{@player.team.category.name}"
+
+  #hockey_info
+    #title
+      Informacion General
+    - if @player.recategorizar?
+      #flash_alert
+        = @player.name
+        = @player.lastname
+        debe ser recategorizado.
+        - unless @categorias.empty?
+          == Categorias posibles (#{@categorias.size}) :[
+          - @categorias.each do |c|
+            %b= c.name.capitalize
+          ]
+    - if @player.captain
+      %h3
+        == Capitan #{image_tag('check.png')}
+    %h3 Partidos jugados
+    %h3 Goles
+    %h3 Asistencias
+
+    - if @player.goalkeeper
+      %h3
+        == Arquero: #{image_tag('check.png')}
+      %h3 Saves
+

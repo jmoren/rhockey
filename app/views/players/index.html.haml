@@ -1,0 +1,45 @@
+- title "Players"
+%b Arqueros
+%table{:class => "players_team_list"}
+  %th Foto
+  %th Nombre Completo
+  %th Edad
+  %th Equipo
+  %th Categoria
+  %th Opciones
+  - @arqueros.each_with_index do |player,n|
+    %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
+      %td
+        = image_tag player.gravatar_url(:size => 30)
+      %td{:class => "nombres"}
+        = full_name(player)
+      %td== #{player.edad} anios
+      %td= link_to player.team.name, team_path(player.team)
+      %td= player.team.category.name
+      %td{:class => "last"}
+        %span
+          %small= link_to  image_tag('lupa.png'), player_path(player)
+
+       
+%b Jugadores
+%table{:class => "players_team_list"}
+  %th Foto
+  %th Nombre Completo
+  %th Edad
+  %th Equipo
+  %th Categoria
+  %th Opciones
+  -unless @jugadores.empty?
+    - @jugadores.each_with_index do |player,n|
+      %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
+        %td
+          = image_tag player.gravatar_url(:size => 30)
+        %td{:class => "nombres"}
+          = full_name(player)
+        %td== #{player.edad} anios
+        %td= link_to player.team.name, team_path(player.team)
+        %td= player.team.category.name
+        %td{:class => "last"}
+          %span
+            %small= link_to  image_tag('lupa.png'), player_path(player)
+          

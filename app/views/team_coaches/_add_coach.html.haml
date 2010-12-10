@@ -1,0 +1,18 @@
+.form
+  %h2 Agregar Coach
+  = form_for [:team,@coach], :remote => true do |f|
+    = error_message_on(f.object, :coach)
+    %table
+      %th= f.label :name, "Nombre"
+      %th= f.label :lastname, "Apellido"
+      %tr
+        %td
+          = f.hidden_field :team_id
+          = f.text_field :name, :size => 20
+        %td
+          = f.text_field :lastname, :size => 20
+      %tr
+        %td
+          = f.submit
+          or
+          = link_to_function "Cancel"

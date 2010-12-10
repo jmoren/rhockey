@@ -1,0 +1,21 @@
+- title "Coach"
+
+%p
+  %strong Name:
+  = @coach.name
+%p
+  %strong Lastname:
+  = @coach.lastname
+%p
+  %strong Team:
+  = @coach.team_id
+%p
+  %strong Email:
+  = @coach.email
+
+%p
+  = link_to "Edit", edit_coach_path(@coach)
+  |
+  = link_to "Destroy", @coach, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", coaches_path

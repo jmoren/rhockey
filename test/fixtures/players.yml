@@ -1,0 +1,17 @@
+one:
+  name: MyString
+  lastname: MyString
+  email: MyString
+  team_id: 1
+  goalkeeper: false
+  age: 1
+  birthday: 2010-12-03
+
+two:
+  name: MyString
+  lastname: MyString
+  email: MyString
+  team_id: 1
+  goalkeeper: false
+  age: 1
+  birthday: 2010-12-03

@@ -1,0 +1,5 @@
+.buttons
+  %span
+    = link_to "Nuevo jugador", team_player_new_path(@team),:class => "team_players_button", :remote => true
+  %span
+    = link_to "Nuevo entrenador", team_coach_new_path(@team),:class => "team_players_button", :remote => true

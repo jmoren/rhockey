@@ -1,0 +1,21 @@
+- title "Add / Remove Members"
+#player
+  %span.icon.icon-edit
+    = link_to  "editar", edit_team_path(@team)
+  %span.icon.icon-move
+    = link_to "Volver", team_path(@team)
+  #player_header
+    - if  @team.photo.thumb.nil?
+      = image_tag(@team.photo.thumb.url(:thumb))
+    - else
+      = image_tag('rails.png')
+    .player_name
+      = @team.name.capitalize
+  .clearfix
+#add_members
+  = render :partial => 'shared/buttons_players'
+#members_list
+  #players_list
+    = render :partial => 'shared/players', :object => @team
+
+

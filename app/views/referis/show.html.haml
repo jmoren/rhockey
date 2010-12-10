@@ -1,0 +1,15 @@
+- title "Referi"
+
+%p
+  %strong Name:
+  = @referi.name
+%p
+  %strong Lastname:
+  = @referi.lastname
+
+%p
+  = link_to "Edit", edit_referi_path(@referi)
+  |
+  = link_to "Destroy", @referi, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", referis_path
