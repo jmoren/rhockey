@@ -5,6 +5,7 @@
     %th Nro
     %th Foto
     %th Nombre
+    %th Integrantes
     %th Categoria
     %th Opciones
   - @teams.each_with_index do |team, n|
@@ -13,6 +14,7 @@
       %td= image_tag('missing-thumb.png')
       %td{:class => "nombres"}
         = link_to team.name, team_path(team)
+      %td= team.players_count
       %td= team.category.name
       %td
         %span

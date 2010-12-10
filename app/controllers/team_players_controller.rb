@@ -9,9 +9,6 @@ class TeamPlayersController < ApplicationController
     @player = Player.new(params[:player])
     @player.email ||= "example@example.com"
     @team = @player.team
-    if params[:arquero]
-      @player.goalkeeper == true
-    end
     if @player.save
       @team.players.reload
       flash[:notice] = "Successfully created player."

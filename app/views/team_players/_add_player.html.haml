@@ -2,26 +2,31 @@
   %h2 Agregar Jugador
   = form_for [:team,@player], :remote => true do |f|
     = error_message_on(f.object, :player)
-    %p
-      = f.hidden_field :team_id
-      %small= f.label :name, "Nombre"
-      %br
-      = f.text_field :name, :size => 20
-      %br
-      %span{:style => "color: #5E5D5E"}
-        %small Solo letras o numeros.
-    %p
-      %small= f.label :lastname, "Apellido"
-      %br
-      = f.text_field :lastname, :size => 20
-      %br
-      %span{:style => "color: #5E5D5E"}
-        %small Solo letras o numeros.
-    %p
-      %small= f.label :birthday, "Nacimiento"
-      %br
-      = f.date_select :birthday, :start_year => 1950, :end_year => Time.now.year
-    %p
-      = f.submit
-      or
-      = link_to_function "Cancel"
+    %table
+      %th= f.label :name, "Nombre"
+      %th= f.label :lastname, "Apellido"
+      %tr
+        %td
+          = f.hidden_field :team_id
+          = f.text_field :name, :size => 25
+          %br
+          %span{:style => "color: #5E5D5E"}
+            %small Solo letras o numeros.
+        %td
+          = f.text_field :lastname, :size => 25
+          %br
+          %span{:style => "color: #5E5D5E"}
+            %small Solo letras o numeros.
+      %th= f.label :birthday, "Fecha Nac."
+      %tr
+        %td
+          = f.date_select :birthday, :start_year => 1950, :end_year => Time.now.year
+      %tr
+        %td
+          == Es arquero?  #{f.check_box :goalkeeper}
+      %tr
+        %td
+          %p
+            = f.submit
+            or
+            = link_to_function "Cancel"

@@ -3,7 +3,7 @@ $primary_color: #4b7399
 body
   background-color: $primary_color
   font:
-    family: Verdana, Helvetica, Arial
+    //family: Verdana, Helvetica, Arial
     size: 14px
 a
   color: blue
@@ -22,14 +22,14 @@ a
   margin-top: 20px
 
 .flash
-  float: left
-  position: absolute
-  top: 150px
-  left: 500px
+  //float: left
+  //position: absolute
+  //top: 150px
+  //left: 500px
 
 
 #flash_notice
-  padding: 15px 15px 15px 30px
+  padding: 5px 5px 5px 30px
   background-color: #ccffcc
   border: solid 1px #66cc66
   background-image: url('/images/check.png')
@@ -174,32 +174,42 @@ a
 .tipsy-west
   background-position: left center
 
-#team_information
-#team_players
-  border-top: solid 2px #cecece
-  //border-radius: 8px
-  //-moz-border-radius: 8px
-  //-webkit-border-radius: 8px
-  padding: 10px
-  margin-top: 10px
-  #add_player
-    float: right
-    .form
-      position: absolute
-      right: 200px
-    .team_players_button
-      top: 60px
-      right: 40px
-      position: relative
-      font-size: 25px
+#add_members
+  min-height: 70px
+  padding: 15px
+  .buttons
+    text-align: center
+    :margin auto
+    :position relative
+    :top 30px
+    span
+      font-size: 20px
+      margin: 15px
       text-align: center
       color: #fff
       background-color: #26456D
-      text-decoration: none
       padding: 10px
       border-radius: 8px
       -moz-border-radius: 8px
       -webkit-border-radius: 8px
+      a
+        color: #fff
+        text-decoration: none
+  .form
+    padding: 20px
+    border: 2px solid #cecece
+    input, select, checkbox
+      padding: 5px
+      border-radius: 5px
+      -moz-border-radius: 5px
+      -webkit-border-radius: 5px
+    th
+      text-align: left
+
+#team_players
+  border-top: solid 2px #cecece
+  padding: 10px
+  margin-top: 10px
   #members_list
     width: 70%
     padding: 0 15px
@@ -233,7 +243,6 @@ a
     padding-right: 15px
   .nombres
     text-align: left
-    min-width: 200px
 #dashboard
   .buttons-admin
     margin: auto

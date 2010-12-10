@@ -5,6 +5,7 @@
   %th Nombre Completo
   %th Edad
   %th Equipo
+  %th Categoria
   %th Opciones
   - @arqueros.each_with_index do |player,n|
     %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
@@ -14,6 +15,7 @@
         = full_name(player)
       %td== #{player.edad} anios
       %td= link_to player.team.name, team_path(player.team)
+      %td= player.team.category.name
       %td{:class => "last"}
         %span
           %small= link_to  image_tag('lupa.png'), player_path(player)
@@ -24,6 +26,7 @@
   %th Nombre Completo
   %th Edad
   %th Equipo
+  %th Categoria
   %th Opciones
   -unless @jugadores.empty?
     - @jugadores.each_with_index do |player,n|
@@ -34,6 +37,7 @@
           = full_name(player)
         %td== #{player.edad} anios
         %td= link_to player.team.name, team_path(player.team)
+        %td= player.team.category.name
         %td{:class => "last"}
           %span
             %small= link_to  image_tag('lupa.png'), player_path(player)

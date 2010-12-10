@@ -1,6 +1,5 @@
 body {
   background-color: #4b7399;
-  font-family: Verdana, Helvetica, Arial;
   font-size: 14px; }
 
 a {
@@ -21,14 +20,8 @@ a {
   border: solid 1px black;
   margin-top: 20px; }
 
-.flash {
-  float: left;
-  position: absolute;
-  top: 150px;
-  left: 500px; }
-
 #flash_notice {
-  padding: 15px 15px 15px 30px;
+  padding: 5px 5px 5px 30px;
   background-color: #ccffcc;
   border: solid 1px #66cc66;
   background-image: url("/images/check.png");
@@ -176,28 +169,42 @@ a {
 .tipsy-west {
   background-position: left center; }
 
-#team_players {
-  border-top: solid 2px #cecece;
-  padding: 10px;
-  margin-top: 10px; }
-  #team_players #add_player {
-    float: right; }
-    #team_players #add_player .form {
-      position: absolute;
-      right: 200px; }
-    #team_players #add_player .team_players_button {
-      top: 60px;
-      right: 40px;
-      position: relative;
-      font-size: 25px;
+#add_members {
+  min-height: 70px;
+  padding: 15px; }
+  #add_members .buttons {
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 30px; }
+    #add_members .buttons span {
+      font-size: 20px;
+      margin: 15px;
       text-align: center;
       color: white;
       background-color: #26456d;
-      text-decoration: none;
       padding: 10px;
       border-radius: 8px;
       -moz-border-radius: 8px;
       -webkit-border-radius: 8px; }
+      #add_members .buttons span a {
+        color: white;
+        text-decoration: none; }
+  #add_members .form {
+    padding: 20px;
+    border: 2px solid #cecece; }
+    #add_members .form input, #add_members .form select, #add_members .form checkbox {
+      padding: 5px;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px; }
+    #add_members .form th {
+      text-align: left; }
+
+#team_players {
+  border-top: solid 2px #cecece;
+  padding: 10px;
+  margin-top: 10px; }
   #team_players #members_list {
     width: 70%;
     padding: 0 15px;
@@ -229,8 +236,7 @@ a {
     text-align: center;
     padding-right: 15px; }
   .players_team_list .nombres {
-    text-align: left;
-    min-width: 200px; }
+    text-align: left; }
 
 #dashboard .buttons-admin {
   margin: auto;

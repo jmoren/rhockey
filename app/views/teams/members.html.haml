@@ -12,13 +12,10 @@
     .player_name
       = @team.name.capitalize
   .clearfix
-#team_players
-  #add_player
-    = render :partial => 'shared/buttons_players'
-  #members_list
-    #coaches_list
-      = render :partial => 'shared/coaches', :object => @team
-    #players_list
-      = render :partial => 'shared/players', :object => @team
+#add_members
+  = render :partial => 'shared/buttons_players'
+#members_list
+  #players_list
+    = render :partial => 'shared/players', :object => @team
 
 

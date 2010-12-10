@@ -4,6 +4,7 @@
   %th Mas Info
   %th Nombre Completo
   %th Equipo
+  %th Categoria
   %th Email
   %th Opciones
   - for coach in @coaches
@@ -13,6 +14,7 @@
           %small= link_to  image_tag('lupa.png'), coach_path(coach)
       %td= full_name(coach)
       %td= link_to coach.team.name, team_path(coach.team)
+      %td= coach.team.category.name
       %td= coach.email
       %td{:class => "last"}
         %span
