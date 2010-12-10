@@ -1,0 +1,12 @@
+- form_for @referi do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :lastname
+    %br
+    = f.text_field :lastname
+  %p
+    = f.submit

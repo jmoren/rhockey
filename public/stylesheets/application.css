@@ -253,18 +253,20 @@ a {
     -moz-border-radius: 16px;
     -webkit-border-radius: 16px;
     padding: 20px; }
+    #dashboard .buttons-admin .button .hint {
+      width: 150px;
+      padding: 0px 22px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #989e9e; }
     #dashboard .buttons-admin .button a {
       color: #26456d;
       font-weight: bold;
       font-size: 20px; }
     #dashboard .buttons-admin .button:hover {
       background: #26456d; }
+      #dashboard .buttons-admin .button:hover .hint {
+        color: white; }
       #dashboard .buttons-admin .button:hover a {
         background: #26456d;
         color: white; }
-  #dashboard .buttons-admin .hint {
-    width: 150px;
-    padding: 0px 22px;
-    font-size: 15px;
-    font-weight: bold;
-    color: #989e9e; }

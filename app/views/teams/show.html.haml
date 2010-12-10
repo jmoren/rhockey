@@ -38,6 +38,9 @@
       %b Capitan:
       - @team.players.where(:captain => true).each do |c|
         = link_to full_name(c), player_path(c)
+    .player_field
+      %b Cant Jugadores:
+      = @team.players_count
   #team_players
   
     = render 'shared/players'

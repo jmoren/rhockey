@@ -1,4 +1,6 @@
 Rhockey::Application.routes.draw do
+  resources :referis
+
   get "admin/dashboard"
 
   resources :coaches

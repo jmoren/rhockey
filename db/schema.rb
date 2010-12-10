@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203225848) do
+ActiveRecord::Schema.define(:version => 20101210190018) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -46,10 +46,17 @@ ActiveRecord::Schema.define(:version => 20101203225848) do
     t.string   "email"
     t.string   "gender"
     t.date     "birthday"
-    t.boolean  "can_play",   :default => true
-    t.boolean  "captain"
+    t.boolean  "captain",    :default => false
     t.integer  "team_id"
-    t.boolean  "goalkeeper"
+    t.boolean  "goalkeeper", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "can_play",   :default => false, :null => false
+  end
+
+  create_table "referis", :force => true do |t|
+    t.string   "name"
+    t.string   "lastname"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

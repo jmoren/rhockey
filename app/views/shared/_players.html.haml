@@ -7,6 +7,7 @@
   - unless @team.coaches.empty?
     - @team.coaches.each_with_index do |coach,n|
       %tr{:class => "habilitado"}
+        %td= n +1 
         %td
           = image_tag('missing-thumb.png')
         %td{:class => "nombres"}

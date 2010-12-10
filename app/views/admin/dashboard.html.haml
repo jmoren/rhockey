@@ -1,11 +1,11 @@
-- title "Dashboard Rhockey"
+- title "Dashboard Admin - Rhockey"
 
 #dashboard
   .buttons-admin
     .button
       %p= link_to "Campeonatos"
       %p.hint
-        Administran Campeonatos, crear, modificar o eliminar
+        Crear, modificar o eliminar campeonatos
     .button
       %p= link_to "Equipos", teams_path
       %p.hint
@@ -19,7 +19,7 @@
       %p.hint
         Altas, bajas y modificaciones de entrenadores
     .button
-      %p= link_to "Referis"
+      %p= link_to "Referis", referis_path
       %p.hint
         Altas, bajas y modificaciones de referis
     .button
