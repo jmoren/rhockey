@@ -58,12 +58,12 @@ ActiveRecord::Schema.define(:version => 20101210231323) do
     t.string   "email"
     t.string   "gender"
     t.date     "birthday"
+    t.boolean  "can_play",   :default => true,  :null => false
     t.boolean  "captain",    :default => false
     t.integer  "team_id"
-    t.boolean  "goalkeeper", :default => false
+    t.boolean  "goalkeeper", :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "can_play",   :default => true,  :null => false
   end
 
   create_table "referis", :force => true do |t|

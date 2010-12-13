@@ -18,8 +18,8 @@
     = f.text_field :type_options
   %p
     = f.label :category_id
-    = f.autocomplete_field :category_id, autocomplete_category_name_championships_path#,:id_element => '#some_element'
-    =# collection_select(:championship, :category_id, Category.all, :id, :name)
+    =# f.autocomplete_field :category_id, autocomplete_category_name_championships_path#,:id_element => '#some_element'
+    = collection_select(:championship, :category_id, Category.all, :id, :name)
 
   %p
     = f.label :description

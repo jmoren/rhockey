@@ -1,5 +1,4 @@
 class ChampionshipsController < ApplicationController
-  autocomplete :category, :name  
   def index
     @championships = Championship.all
   end
@@ -14,7 +13,6 @@ class ChampionshipsController < ApplicationController
   
   def create
     @championship = Championship.new(params[:championship])
-    @championship.category_id = Category.find_by_name(params[:championship][:category_id]).id
     if @championship.save
       flash[:notice] = "Successfully created championship."
       redirect_to @championship

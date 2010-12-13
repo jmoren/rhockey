@@ -1,9 +1,6 @@
 Rhockey::Application.routes.draw do
   get "admin/dashboard"
-  resources :championships do
-    get :autocomplete_category_name, :on => :collection
-  end
-
+  resources :championships
   resources :referis
   resources :coaches
   resources :players, :except => [:new, :create]
