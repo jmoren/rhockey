@@ -20,6 +20,24 @@ a {
   border: solid 1px black;
   margin-top: 20px; }
 
+#flash_notice,
+#flash_error,
+#flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0; }
+
+#flash_notice {
+  background-color: #ccffcc;
+  border: solid 1px #66cc66; }
+
+#flash_error,
+#flash_alert {
+  background-color: #ffcccc;
+  border: solid 1px #cc6666; }
+
+.fieldWithErrors {
+  display: inline; }
+
 #flash_notice {
   padding: 5px 5px 5px 30px;
   background-color: #ccffcc;
@@ -138,7 +156,7 @@ a {
 .icon-move {
   background-image: url(/images/move.png); }
 
-/* tipsy stles */
+/* tipsy styles */
 .tipsy {
   padding: 5px;
   font-size: 13px;
@@ -254,7 +272,6 @@ a {
     -webkit-border-radius: 16px;
     padding: 20px; }
     #dashboard .buttons-admin .button .hint {
-      width: 150px;
       padding: 0px 22px;
       font-size: 15px;
       font-weight: bold;

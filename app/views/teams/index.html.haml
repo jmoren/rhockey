@@ -22,6 +22,6 @@
         %span
           %small= link_to  image_tag('edit.png'), edit_team_path(team)
         %span
-          %small= link_to image_tag('delete.png'), team, :confirm => 'Are you sure?', :method => :d
+          %small= link_to image_tag('delete.png'), team, :confirm => 'Are you sure?', :method => :delete
 
 %p= link_to "New Team", new_team_path

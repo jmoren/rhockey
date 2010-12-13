@@ -1,0 +1,29 @@
+= form_for @championship do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :start_date
+    %br
+    = f.date_select :start_date
+  %p
+    = f.label :end_date
+    %br
+    = f.date_select :end_date
+  %p
+    = f.label :type_options
+    %br
+    = f.text_field :type_options
+  %p
+    = f.label :category_id
+    = f.autocomplete_field :category_id, autocomplete_category_name_championships_path#,:id_element => '#some_element'
+    =# collection_select(:championship, :category_id, Category.all, :id, :name)
+
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+  %p
+    = f.submit

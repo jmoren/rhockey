@@ -1,0 +1,24 @@
+- title "Championship"
+
+%p
+  %strong Name:
+  = @championship.name
+%p
+  %strong Start Date:
+  = @championship.start_date
+%p
+  %strong End Date:
+  = @championship.end_date
+%p
+  %strong Type Options:
+  = @championship.type_options
+%p
+  %strong Description:
+  = @championship.description
+
+%p
+  = link_to "Edit", edit_championship_path(@championship)
+  |
+  = link_to "Destroy", @championship, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", championships_path
