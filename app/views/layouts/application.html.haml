@@ -5,8 +5,8 @@
     %title
       = yield(:title) || "Untitled"
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
-    = stylesheet_link_tag "application", "tipbox"
-    = javascript_include_tag :defaults,'jquery.inputTip','jquery.tipsy'
+    = stylesheet_link_tag "application"
+    = javascript_include_tag :defaults,'jquery.tipsy'
     = csrf_meta_tag
     = yield(:head)
 
