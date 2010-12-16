@@ -1,0 +1,11 @@
+one:
+  championship_id: 1
+  ganador: MyString
+  finished: false
+  comment: MyText
+
+two:
+  championship_id: 1
+  ganador: MyString
+  finished: false
+  comment: MyText
