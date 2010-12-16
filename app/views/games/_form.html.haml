@@ -1,0 +1,21 @@
+= form_for [@championship,@game] do |f|
+  = f.error_messages
+  %p
+    Campeonato
+    %b= @championship.name.capitalize
+  %h3
+    Rivales:
+  %p
+    %span
+      Local
+      = select_tag(:local,options_from_collection_for_select(@teams, "id", "name"))
+    %span
+      Visitante
+      = select_tag(:visitor,options_from_collection_for_select(@teams, "id", "name"))
+  %p
+    = f.label :comment
+    %br
+    = f.text_area :comment
+  %p
+    = f.submit 
+    == or #{link_to "Cancel", championships_path}

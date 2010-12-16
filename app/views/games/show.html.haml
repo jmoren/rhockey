@@ -1,0 +1,43 @@
+- title "Game"
+
+%p
+  %h3
+    Campeonato
+    = @game.championship.name.capitalize
+%p
+  - if @game.finished
+    %p
+      Estado:
+      %b Terminado
+    %p
+      Ganador:
+      %b= @game.ganador
+  - else
+    %p 
+      Estado:
+      %b En curso
+%p
+  Equipo Local:
+  %p
+    = image_tag(@local.photo.thumb.url)
+    = link_to @local.name, team_path(@local)
+    %table
+      %th Nombre
+      - @local.players.each do |p|
+        %tr
+          %td== p.name
+%p
+  Equipo visitante:
+  %p
+    = image_tag(@visitor.photo.thumb.url)
+    = link_to @visitor.name, team_path(@visitor)
+    %table
+      %th Nombre
+      - @visitor.players.each do |p|
+        %tr
+          %td= p.name
+%p
+  %strong Comment:
+  = @game.comment
+
+
