@@ -33,14 +33,14 @@ class Player < ActiveRecord::Base
     edad = self.edad
     top_age = self.team.category.topage
     min_age = self.team.category.minage
-    if (min_age && (min_age > edad)) || (top_age && (top_age < edad))
+    if (min_age > edad) || (top_age < edad)
       status = true
     end
     self.change_status(status)
     status
   end
   def can_play?
-    self.can_play
+    !self.can_play
   end
   def change_status(new_status)
     if !(new_status == self.can_play)

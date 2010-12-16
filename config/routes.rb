@@ -1,20 +1,16 @@
 Rhockey::Application.routes.draw do
-  resources :referis
-
   get "admin/dashboard"
-
+  resources :championships
+  resources :referis
   resources :coaches
-  resources :players
-
+  resources :players, :except => [:new, :create]
   resources :teams do
     get "/members" => "teams#members"
-
     get "/player/new" => "team_players#new"
     get "/coach/new" => "team_coaches#new"
     post "/players" => "team_players#create"
     post "/coaches" => "team_coaches#create"
   end
-
   match '/' => redirect("/admin/dashboard")
   
   # The priority is based upon order of creation:

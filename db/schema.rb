@@ -10,12 +10,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210190018) do
+ActiveRecord::Schema.define(:version => 20101210231323) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "topage"
     t.integer  "minage"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "championships", :force => true do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "type_options"
+    t.text     "description"
+    t.integer  "category_id"
+    t.boolean  "closed",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,12 +58,12 @@ ActiveRecord::Schema.define(:version => 20101210190018) do
     t.string   "email"
     t.string   "gender"
     t.date     "birthday"
+    t.boolean  "can_play",   :default => true,  :null => false
     t.boolean  "captain",    :default => false
     t.integer  "team_id"
-    t.boolean  "goalkeeper", :default => false
+    t.boolean  "goalkeeper", :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "can_play",   :default => false, :null => false
   end
 
   create_table "referis", :force => true do |t|

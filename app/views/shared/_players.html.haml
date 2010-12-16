@@ -2,12 +2,12 @@
   - flash.each do |name, msg|
     = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"
 %table{:class => "players_team_list"}
-  %th{:colspan => 5, :style => "text-align: left;"}
+  %th{:colspan => 6, :style => "text-align: left;"}
     Entrenadores
   - unless @team.coaches.empty?
     - @team.coaches.each_with_index do |coach,n|
-      %tr{:class => "habilitado"}
-        %td= n +1 
+      %tr
+        %td= n +1        
         %td
           = image_tag('missing-thumb.png')
         %td{:class => "nombres"}
@@ -22,18 +22,19 @@
             %small= link_to image_tag('delete.png'), coach, :confirm => 'Are you sure?', :method => :delete, :remote => true
   - else
     %tr
-      %td{:colspan => 5}
+      %td{:colspan => 6}
         #flash_alert
           No tiene entrenador!
 
 
 %table{:class => "players_team_list"}
-  %th{:colspan => 5, :style => "text-align: left"}
+  %th{:colspan => 6, :style => "text-align: left"}
     Arqueros
   -unless @team.players.arqueros.empty?
     - @team.players.arqueros.each_with_index do |player,n|
-      %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
-        %td= n +1 
+      %tr{:class => "info", :title => "#{player.can_play? ? "Habilitado para jugar" : " No es esta habilitado"}"}
+        %td= n +1
+        %td= player.can_play? ?  image_tag('check.png') : image_tag('error.png')
         %td
           = image_tag('missing-thumb.png')
         %td{:class => "nombres"}
@@ -48,18 +49,19 @@
             %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
   - else
     %tr
-      %td{:colspan => 5}
+      %td{:colspan => 6}
         #flash_error
           No hay Arqueros
   %tr
     %td
-  %th{:colspan => 5, :style => "text-align: left;"}
+  %th{:colspan => 6, :style => "text-align: left;"}
     Jugadores
   %tr
     -unless @team.players.jugadores.empty?
       - @team.players.jugadores.each_with_index do |player,n|
-        %tr{:class => "#{player.recategorizar? ? 'deshabilitado' : 'habilitado'}"}
+        %tr{:class => "info", :title => "#{player.can_play? ? "Habilitado para jugar" : " No es esta habilitado"}"}
           %td= n + 1
+          %td= player.can_play? ?  image_tag('check.png') : image_tag('error.png')
           %td= image_tag('missing-thumb.png')
           %td{:class => "nombres"}
             = full_name(player)
