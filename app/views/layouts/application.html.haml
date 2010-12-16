@@ -14,11 +14,17 @@
     #container
       - if show_title?
         %h1= yield(:title)
-      
-      %p
-        = link_to "Dashboard", admin_dashboard_path
-        = link_to "Equipos", teams_path
-        = link_to "Entrenadores", coaches_path
-        = link_to "Jugadores", players_path
-        = link_to "Referis", referis_path
+      -if current_user
+        Logged as
+        = current_user.email
+        |
+        = link_to "Sign out", destroy_user_session_path
+        - if current_user.admin?
+          %p
+            = link_to "Dashboard", admin_dashboard_path
+            = link_to "Equipos", teams_path
+            = link_to "Entrenadores", coaches_path
+            = link_to "Jugadores", players_path
+            = link_to "Referis", referis_path
+
       = yield

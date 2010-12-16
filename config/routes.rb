@@ -1,5 +1,6 @@
 Rhockey::Application.routes.draw do
   get "admin/dashboard"
+  devise_for :users
   resources :championships
   resources :referis
   resources :coaches
@@ -11,7 +12,7 @@ Rhockey::Application.routes.draw do
     post "/players" => "team_players#create"
     post "/coaches" => "team_coaches#create"
   end
-  match '/' => redirect("/admin/dashboard")
+  root :to => "championships#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
