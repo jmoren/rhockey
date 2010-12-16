@@ -17,8 +17,9 @@
       -if current_user
         Logged as
         = current_user.email
-        |
+        %br
         = link_to "Sign out", destroy_user_session_path
+        =# link_to "Change Pass", edit_user_password_path
         - if current_user.admin?
           %p
             = link_to "Dashboard", admin_dashboard_path

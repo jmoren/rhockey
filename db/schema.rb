@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216143055) do
+ActiveRecord::Schema.define(:version => 20101216181301) do
 
   create_table "authorities", :force => true do |t|
     t.integer  "game_id"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20101216143055) do
     t.integer  "team_id"
     t.integer  "game_id"
     t.boolean  "local"
+    t.boolean  "winner",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

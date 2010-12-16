@@ -11,7 +11,7 @@
       = link_to "Volver", team_path(@team)
   .clearfix
   #player_header
-    =image_tag(@team.photo.thumb.url(:thumb))
+    = @team.photo.thumb.exists? ? image_tag(@team.photo.thumb.url(:thumb)) : image_tag('missing.png')
   .clearfix
   #player_info
     .player_field

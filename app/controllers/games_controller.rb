@@ -13,8 +13,8 @@ class GamesController < ApplicationController
     @championship = Championship.find(params[:championship_id])
     @game = @championship.games.build
     @photo = @game.build_photo
-    @local = @game.build_local
-    @visitor = @game.build_visitor
+    @local = @game.local_rival
+    @visitor = @game.visitor_rival
     @teams = Team.where(:category_id => @championship.category_id)
   end
   
@@ -23,13 +23,13 @@ class GamesController < ApplicationController
     @game = @championship.games.build(params[:game])
     @teams = Team.where(:category_id => @championship.category_id)
     #Add teams
-    if (params[:local].blank? && params[:visitor].blank?) && (params[:local] != params[:visitor] )
+    if (params[:local] && params[:visitor]) && (params[:local] != params[:visitor] )
       @local = @game.rivals.build(:team_id => params[:local], :local => true)
       @visitor = @game.rivals.build(:team_id => params[:visitor], :local => false)
 
       @game.rivals << [@local, @visitor]
 
-      if (params[:referi_1].blank? && params[:referi_2].blank?) && (params[:referi_1] != params[:referi_2])
+      if (params[:referi_1] && params[:referi_2]) && (params[:referi_1] != params[:referi_2])
         @referi1 = @game.authorities.build(:referi_id => params[:referi_1])
         @referi2 = @game.authorities.build(:referi_id => params[:referi_2])
         @referi3 = @game.authorities.build(:referi_id => params[:referi_3])
