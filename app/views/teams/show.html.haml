@@ -11,10 +11,7 @@
       = link_to "Volver", team_path(@team)
   .clearfix
   #player_header
-    - if  @team.photo.thumb.nil?
-      =image_tag(@team.photo.thumb.url(:thumb))
-    - else
-      = image_tag('rails.png')
+    =image_tag(@team.photo.thumb.url(:thumb))
   .clearfix
   #player_info
     .player_field

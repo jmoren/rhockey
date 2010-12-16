@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_filter :set_team
+  before_filter :set_team, :check_status
 
   def index
     if params[:team_id]
@@ -14,9 +14,6 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @team = @player.team
-    if @player.recategorizar?
-      @categorias = Category.where("minage <= ? and topage >= ?", @player.edad, @player.edad)
-    end
   end
   def edit
     @player = Player.find(params[:id])
@@ -41,6 +38,11 @@ class PlayersController < ApplicationController
       respond_to do |format|
         format.js
       end
+    end
+  end
+  def check_status
+     if @player.recategorizar?
+      @categorias = Category.where("minage <= ? and topage >= ?", @player.edad, @player.edad)
     end
   end
   def set_team

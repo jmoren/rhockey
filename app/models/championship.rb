@@ -1,4 +1,5 @@
 class Championship < ActiveRecord::Base
+  has_many :games
   belongs_to :category
   attr_accessible :name, :start_date, :end_date, :type_options, :description, :category_id
 
@@ -7,12 +8,15 @@ class Championship < ActiveRecord::Base
   validate :dates
   before_save :set_matches
   def set_matches
-#    n = Equipos.where(:category_id => self.category_id).size
+#    n = self.category.teams.size
 #    res = 0
 #    for i in n..1
-#      res = res + i*(i-1)
+#      res = res + i-1)
 #    end
 #    self.matches = res
+  end
+  def to_param
+    "#{id}_#{name}-#{self.category.name.gsub(/[' ']/, "_")}-#{start_date.year}"
   end
   def set_closed
     if self.end_date > (Time.now + 1.day)

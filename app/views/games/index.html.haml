@@ -1,0 +1,12 @@
+- title "Games"
+
+%table{:class => "players_team_list"}
+  %tr
+    %th Championship
+    %th Code
+  - for game in @games
+    %tr
+      %td= link_to game.championship.name, championship_path(game.championship)
+      %td= game.code
+      
+

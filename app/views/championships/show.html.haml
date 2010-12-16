@@ -3,22 +3,48 @@
 %p
   %strong Name:
   = @championship.name
+  = @championship.start_date.year
 %p
-  %strong Start Date:
+  %b Categoria:
+  = @championship.category.name
+  %p
+    %small
+      Cantidad de equipos inscriptos en esta categoria:
+      = @championship.category.teams.size
+%p
+  %strong Comienza el:
   = @championship.start_date
 %p
-  %strong End Date:
+  %strong Termina el:
   = @championship.end_date
 %p
-  %strong Type Options:
+  %strong Tipo:
   = @championship.type_options
 %p
-  %strong Description:
+  %strong Descripcion:
   = @championship.description
 
 %p
   = link_to "Edit", edit_championship_path(@championship)
   |
-  = link_to "Destroy", @championship, :confirm => 'Are you sure?', :method => :delete
-  |
   = link_to "View All", championships_path
+  |
+  = link_to "Add Game", new_championship_game_path(@championship)
+%p
+  Games:
+%table{:class => "players_team_list"}
+  %th Ver
+  %th Fecha
+  %th{:colspan => 2}
+    Local
+  %th{:colspan => 2}
+    Visitante
+  - @games.each do |game|
+    %tr
+      %td= link_to image_tag('lupa.png'), championship_game_path(@championship, game)
+      %td= game.created_at.strftime('%d/%m/%Y')
+      %td= image_tag(game.local.photo.thumb.url(:small))
+      %td= game.local.name
+      %td= image_tag(game.visitor.photo.thumb.url(:small))
+      %td= game.visitor.name
+            

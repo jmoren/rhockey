@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210231323) do
+ActiveRecord::Schema.define(:version => 20101213214435) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20101210231323) do
     t.datetime "updated_at"
   end
 
+  create_table "games", :force => true do |t|
+    t.integer  "championship_id"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photos", :force => true do |t|
     t.integer  "photoable_id"
     t.string   "photoable_type"
@@ -55,20 +62,28 @@ ActiveRecord::Schema.define(:version => 20101210231323) do
   create_table "players", :force => true do |t|
     t.string   "name"
     t.string   "lastname"
-    t.string   "email"
+    t.string   "email",      :default => "exapmle@example.com"
     t.string   "gender"
     t.date     "birthday"
-    t.boolean  "captain",    :default => false
     t.integer  "team_id"
+    t.boolean  "can_play",   :default => true
+    t.boolean  "captain",    :default => false
     t.boolean  "goalkeeper", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "can_play",   :default => true,  :null => false
   end
 
   create_table "referis", :force => true do |t|
     t.string   "name"
     t.string   "lastname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rivals", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "game_id"
+    t.boolean  "local"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

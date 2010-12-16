@@ -1,0 +1,18 @@
+%b Categoria: 
+= @championship.category.name
+%br
+%small
+  = Time.now.strftime('%d/%m/%Y')
+= form_for [@championship,@game] do |f|
+  = f.error_messages
+  %h4
+    Add teams:
+  %p
+    Local:
+    = select_tag :local, options_from_collection_for_select(@teams, 'id', 'name')
+    Visitante:
+    = select_tag :visitor, options_from_collection_for_select(@teams, 'id', 'name')
+  %h4
+    Add Referis:
+  %p
+    = f.submit
