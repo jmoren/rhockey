@@ -1,7 +1,9 @@
 class ChampionshipsController < ApplicationController
-  autocomplete :category, :name  
+  autocomplete :category, :name
+  before_filter :check_dates, :only => [:show]
   def index
-    @championships = Championship.all
+    @championships = Championship.open
+    @champ_closed = Championship.closed
   end
   
   def show
@@ -43,5 +45,9 @@ class ChampionshipsController < ApplicationController
     @championship.destroy
     flash[:notice] = "Successfully destroyed championship."
     redirect_to championships_path
+  end
+  def check_dates
+    @championship = Championship.find(params[:id])
+    @championship.closed?
   end
 end

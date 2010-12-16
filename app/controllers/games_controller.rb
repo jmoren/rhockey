@@ -18,21 +18,35 @@ class GamesController < ApplicationController
   def create
     @championship = Championship.find(params[:championship_id])
     @game = @championship.games.build(params[:game])
+    @teams = Team.where(:category_id => @championship.category_id)
     #Add teams
-    if params[:local] && params[:visitor]
+    if (params[:local] && params[:visitor]) && (params[:local] != params[:visitor] )
       @local = @game.rivals.build(:team_id => params[:local], :local => true)
       @visitor = @game.rivals.build(:team_id => params[:visitor], :local => false)
+
       @game.rivals << [@local, @visitor]
+
+      if (params[:referi_1] && params[:referi_2]) && (params[:referi_1] != params[:referi_2])
+        @referi1 = @game.authorities.build(:referi_id => params[:referi_1])
+        @referi2 = @game.authorities.build(:referi_id => params[:referi_2])
+        @referi3 = @game.authorities.build(:referi_id => params[:referi_3])
+        
+        @game.authorities << [@referi1,@referi2,@referi3]
+
+      else
+        flash[:error] = "Debe seleccionar dos referis diferentes"
+        render :action => 'new' and return
+      end
+
       if @game.save
         flash[:notice] = "Successfully created game."
-        redirect_to championship_path(@championship)
+        redirect_to championship_path(@championship) and return
       else
-        @teams = Team.where(:category_id => @championship.category_id)
-        render :action => 'new'
+        render :action => 'new' and return
       end
     else
       flash[:error] = "Debe seleccionar dos equipos diferentes"
-      render :action => 'new'
+      render :action => 'new' and return
     end
   end
   

@@ -1,5 +1,5 @@
 - title "Campeoantos"
-
+%h2 Campeonatos en curso
 %table{:class => "list"}
   %tr
     %th En curso
@@ -11,6 +11,33 @@
     %th Categoria
     %th Opciones
   - for championship in @championships
+    %tr
+      %td= championship.closed ? image_tag('error.png') : image_tag('check.png')
+      %td= championship.name
+      %td= championship.start_date.strftime('%d/%m/%y')
+      %td= championship.end_date.strftime('%d/%m/%y')
+      %td= distance_of_time_in_words(championship.end_date, championship.start_date)
+      %td= championship.type_options
+      %td= championship.category.name
+      %td
+        %span
+          %small= link_to  image_tag('lupa.png'), championship
+        %span
+          %small= link_to  image_tag('edit.png'), edit_championship_path(championship)
+        %span
+          %small= link_to image_tag('delete.png'), championship, :confirm => 'Are you sure?', :method => :delete
+%h2 Campeonatos terminados
+%table{:class => "list"}
+  %tr
+    %th En curso
+    %th Nombre
+    %th Inicio
+    %th Fin
+    %th Duracion
+    %th Tipo
+    %th Categoria
+    %th Opciones
+  - for championship in @champ_closed
     %tr
       %td= championship.closed ? image_tag('error.png') : image_tag('check.png')
       %td= championship.name

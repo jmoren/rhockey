@@ -6,10 +6,17 @@
 %p
   %strong Code:
   = @game.code
+%p
+  %b Referis:
+  - @game.referis.each do |r|
+    %p
+      == Partidos: #{r.games.size}
+      %br
+      == Nombre: #{full_name(r)}
 
 %div{:class => "left", :style =>"width: 45%;" }
   %p
-    %span= image_tag(@local.photo.thumb.url(:thumb))
+    %span= @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
     %h3= @local.name
   - @local.players.each do |p|
     %p
@@ -18,7 +25,7 @@
       %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
 %div{:class => "right", :style =>"width: 45%;" }
   %p
-    %span= image_tag(@visitor.photo.thumb.url(:thumb))
+    %span= @visitor.photo.thumb.exists? ? image_tag(@visitor.photo.thumb.url(:thumb)) : image_tag('missing.png')
     %h3= @visitor.name
   - @visitor.players.each do |p|
     %p

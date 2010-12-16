@@ -35,16 +35,18 @@
 %table{:class => "players_team_list"}
   %th Ver
   %th Fecha
-  %th{:colspan => 2}
+  %th
     Local
-  %th{:colspan => 2}
+  %th
     Visitante
   - @games.each do |game|
     %tr
       %td= link_to image_tag('lupa.png'), championship_game_path(@championship, game)
       %td= game.created_at.strftime('%d/%m/%Y')
-      %td= image_tag(game.local.photo.thumb.url(:small))
-      %td= game.local.name
-      %td= image_tag(game.visitor.photo.thumb.url(:small))
-      %td= game.visitor.name
+      %td
+        = game.local.photo.thumb.exists? ? image_tag(game.local.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
+        = game.local.name
+      %td
+        = game.visitor.photo.thumb.exists? ? image_tag(game.visitor.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
+        = game.visitor.name
             

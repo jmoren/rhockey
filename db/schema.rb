@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213214435) do
+ActiveRecord::Schema.define(:version => 20101216143055) do
+
+  create_table "authorities", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "referi_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"

@@ -1,4 +1,7 @@
 - title "Ficha Jugador"
+%p
+  - flash.each do |name, msg|
+    = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"
 #player
   #controls
     %span.icon.icon-edit
@@ -21,7 +24,7 @@
     %small.icon.icon-edit
       = link_to "edit photo"
     %p
-      - if @player.can_play?
+      - unless @player.can_play?
         %span#flash_error
           Este jugador se encuentra deshabilitado
     .player_field
@@ -48,7 +51,7 @@
         - unless @categorias.empty?
           == Categorias posibles (#{@categorias.size}) :[
           - @categorias.each do |c|
-            %b= c.name.capitalize
+            %b= c.name.titleize
           ]
     - if @player.captain
       %h3
