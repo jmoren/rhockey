@@ -1,43 +1,36 @@
 - title "Game"
 
 %p
-  %h3
-    Campeonato
-    = @game.championship.name.capitalize
+  %strong Championship:
+  = link_to @game.championship.name, championship_path(@game.championship)
 %p
-  - if @game.finished
+  %strong Code:
+  = @game.code
+%p
+  %b Referis:
+  - @game.referis.each do |r|
     %p
-      Estado:
-      %b Terminado
+      == Partidos: #{r.games.size}
+      %br
+      == Nombre: #{full_name(r)}
+
+%div{:class => "left", :style =>"width: 45%;" }
+  %p
+    %span= @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
+    %h3= @local.name
+  - @local.players.each do |p|
     %p
-      Ganador:
-      %b= @game.ganador
-  - else
-    %p 
-      Estado:
-      %b En curso
-%p
-  Equipo Local:
+      %span= image_tag(p.gravatar_url(:size => 20))
+      %span= link_to full_name(p), player_path(p)
+      %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
+%div{:class => "right", :style =>"width: 45%;" }
   %p
-    = image_tag(@local.photo.thumb.url)
-    = link_to @local.name, team_path(@local)
-    %table
-      %th Nombre
-      - @local.players.each do |p|
-        %tr
-          %td== p.name
-%p
-  Equipo visitante:
-  %p
-    = image_tag(@visitor.photo.thumb.url)
-    = link_to @visitor.name, team_path(@visitor)
-    %table
-      %th Nombre
-      - @visitor.players.each do |p|
-        %tr
-          %td= p.name
-%p
-  %strong Comment:
-  = @game.comment
-
-
+    %span= @visitor.photo.thumb.exists? ? image_tag(@visitor.photo.thumb.url(:thumb)) : image_tag('missing.png')
+    %h3= @visitor.name
+  - @visitor.players.each do |p|
+    %p
+      %span= image_tag(p.gravatar_url(:size => 20))
+      %span= link_to full_name(p), player_path(p)
+      %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
+.clear
+            

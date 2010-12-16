@@ -1,11 +1,8 @@
 one:
   championship_id: 1
-  ganador: MyString
-  finished: false
-  comment: MyText
+  code: MyString
 
 two:
   championship_id: 1
-  ganador: MyString
-  finished: false
-  comment: MyText
+  code: MyString
+>>>>>>> feature_add-games

@@ -1,19 +1,11 @@
 - title "Games"
 
-%table
+%table{:class => "players_team_list"}
   %tr
     %th Championship
-    %th Ganador
-    %th Finished
-    %th Comment
+    %th Code
   - for game in @games
     %tr
-      %td= game.championship_id
-      %td= game.ganador
-      %td= game.finished
-      %td= game.comment
-      %td= link_to 'Show', game
-      %td= link_to 'Edit', edit_game_path(game)
-      %td= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete
-
-%p= link_to "New Game", new_game_path
+      %td= link_to game.championship.name, championship_path(game.championship)
+      %td= game.code
+      

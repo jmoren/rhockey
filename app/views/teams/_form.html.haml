@@ -2,7 +2,7 @@
   = form_for @team, :html => {:multipart => true } do |f|
     .formTitle
       %h3 Team information
-    = f.fields_for @photo do |photo_field|
+    = f.fields_for :photo do |photo_field|
       = render 'shared/photo_field', :f => photo_field
     %p
       = f.label :name

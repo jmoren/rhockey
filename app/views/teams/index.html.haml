@@ -2,7 +2,6 @@
 
 %table{:class => "players_team_list"}
   %tr
-    %th Nro
     %th Foto
     %th Nombre
     %th Integrantes
@@ -10,8 +9,7 @@
     %th Opciones
   - @teams.each_with_index do |team, n|
     %tr
-      %td= n + 1
-      %td= image_tag('missing-thumb.png')
+      %td= team.photo.thumb.exists? ? image_tag(team.photo.thumb(:thumb)) : image_tag('missing.png')
       %td{:class => "nombres"}
         = link_to team.name, team_path(team)
       %td= team.players_count

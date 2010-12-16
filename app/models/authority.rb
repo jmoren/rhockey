@@ -1,4 +1,4 @@
 class Authority < ActiveRecord::Base
-  belongs_to :referi
   belongs_to :game
+  belongs_to :referi
 end

@@ -1,21 +1,19 @@
 class Championship < ActiveRecord::Base
+  has_many :games
   belongs_to :category
-  attr_accessible :name, :start_date, :end_date, :type_options, :description, :category_id
+  attr_accessible :name, :start_date, :end_date, :type_options, :description, :category_id, :closed
 
   validates :start_date, :end_date, :name, :type_options, :presence => true
   validates_length_of :name, :within => 3..20
   validate :dates
-  before_save :set_matches
-  def set_matches
-#    n = Equipos.where(:category_id => self.category_id).size
-#    res = 0
-#    for i in n..1
-#      res = res + i*(i-1)
-#    end
-#    self.matches = res
+
+  scope "closed", :conditions => {:closed => true}
+  scope "open", :conditions => {:closed => false}
+  def to_param
+    "#{id}_#{name}-#{self.category.name.gsub(/[' ']/, "_")}-#{start_date.year}"
   end
-  def set_closed
-    if self.end_date > (Time.now + 1.day)
+  def closed?
+    if self.end_date < (Date.today + 1.day)
       self.update_attributes(:closed => true) unless self.closed 
     end
   end

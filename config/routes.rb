@@ -1,7 +1,11 @@
 Rhockey::Application.routes.draw do
+  get "/games" => "games#index"
   get "admin/dashboard"
   devise_for :users
-  resources :championships
+  resources :championships do
+    get :autocomplete_category_name, :on => :collection
+    resources :games, :except => [:index]
+  end
   resources :referis
   resources :coaches
   resources :players, :except => [:new, :create]

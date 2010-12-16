@@ -10,6 +10,7 @@ class Player < ActiveRecord::Base
 #validations
   validates_length_of :name, :lastname, :within => 3..15
   validates :name, :lastname, :birthday, :presence => true
+  after_save :recategorizar?
   before_update do
     #validates_format_of :email, :with => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/
     #validates :email,:uniqueness=>  true
@@ -17,9 +18,11 @@ class Player < ActiveRecord::Base
 
   scope "arqueros", :conditions =>{:goalkeeper => true}
   scope "jugadores", :conditions =>{:goalkeeper => false}
+
   def to_param
     "#{id}-#{name}_#{lastname}"
   end
+
   def edad
     age = Time.now.year - self.birthday.year
     if Time.now.month < self.birthday.month ||
@@ -28,6 +31,7 @@ class Player < ActiveRecord::Base
     end
     return age
   end
+
   def recategorizar?
     status = false
     edad = self.edad
