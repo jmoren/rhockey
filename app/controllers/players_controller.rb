@@ -15,6 +15,22 @@ class PlayersController < ApplicationController
     @team = @player.team
     @categorias = Category.where("minage <= ? && topage >= ?",@player.edad,@player.edad)
   end
+  def new
+    @team = Team.find_by_name(params[:team_id])
+    @player = @team.players.build
+  end
+
+  def create
+    @player = Player.new(params[:player])
+    @player.email ||= "example@example.com"
+    @team = @player.team
+    if @player.save
+      @team.players.reload
+      flash[:notice] = "Successfully created player."
+    else
+      render :action => 'new'
+    end
+  end
   def edit
     @player = Player.find(params[:id])
   end

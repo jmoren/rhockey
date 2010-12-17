@@ -1,20 +1,17 @@
 Rhockey::Application.routes.draw do
-  get "/games" => "games#index"
   get "admin/dashboard"
+  get "/players" => "players#index"
+  get "/coaches" => "coaches#index"
+
   devise_for :users
-  resources :championships do
-    get :autocomplete_category_name, :on => :collection
-    resources :games, :except => [:index]
-  end
   resources :referis
-  resources :coaches
-  resources :players, :except => [:new, :create]
+  resources :championships do
+    #get :autocomplete_category_name, :on => :collection
+    resources :games
+  end
   resources :teams do
-    get "/members" => "teams#members"
-    get "/player/new" => "team_players#new"
-    get "/coach/new" => "team_coaches#new"
-    post "/players" => "team_players#create"
-    post "/coaches" => "team_coaches#create"
+    resources :players
+    resources :coaches
   end
   root :to => "championships#index"
   
