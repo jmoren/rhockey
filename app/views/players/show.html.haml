@@ -4,10 +4,11 @@
     = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"
 #player
   #controls
-    %span.icon.icon-edit
-      = link_to  "editar", edit_player_path(@player)
-    %span.icon.icon-delete
-      = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
+    - if current_user.admin?
+      %span.icon.icon-edit
+        = link_to  "editar", edit_player_path(@player)
+      %span.icon.icon-delete
+        = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
     %span.icon.icon-move
       = link_to "Volver", :back
   .clearfix
@@ -56,7 +57,9 @@
     - if @player.captain
       %h3
         == Capitan #{image_tag('check.png')}
-    %h3 Partidos jugados
+    %h3
+      Partidos jugados:
+      = @player.team.games.size
     %h3 Goles
     %h3 Asistencias
 

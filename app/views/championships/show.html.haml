@@ -1,35 +1,26 @@
-- title "Championship"
+- title "Campeonato #{@championship.name} #{@championship.start_date.year}"
+.buttons
+  - if current_user.admin?
+    = link_to "Edit", edit_championship_path(@championship), :class => "button"
+  = link_to "Add Game", new_championship_game_path(@championship), :class => "button"
 
-%p
-  %strong Name:
-  = @championship.name
-  = @championship.start_date.year
 %p
   %b Categoria:
   = @championship.category.name
-  %p
-    %small
-      Cantidad de equipos inscriptos en esta categoria:
-      = @championship.category.teams.size
 %p
-  %strong Comienza el:
-  = @championship.start_date
+  %b Duracion:
+  %span
+    = nice_date(@championship.start_date)
+    == -
+    = nice_date(@championship.end_date)
+    == ( #{distance_of_time_in_words(@championship.start_date,@championship.end_date)})
 %p
-  %strong Termina el:
-  = @championship.end_date
-%p
-  %strong Tipo:
+  %b Tipo:
   = @championship.type_options
 %p
-  %strong Descripcion:
-  = @championship.description
+  %b Descripcion:
+  = simple_format(@championship.description)
 
-%p
-  = link_to "Edit", edit_championship_path(@championship)
-  |
-  = link_to "View All", championships_path
-  |
-  = link_to "Add Game", new_championship_game_path(@championship)
 %p
   Games:
 %table{:class => "players_team_list"}

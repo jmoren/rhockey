@@ -5,10 +5,7 @@
   %span.icon.icon-move
     = link_to "Volver", team_path(@team)
   #player_header
-    - if  @team.photo.thumb.nil?
-      = image_tag(@team.photo.thumb.url(:thumb))
-    - else
-      = image_tag('rails.png')
+    = @team.photo.thumb.exists? ? image_tag(@team.photo.thumb.url(:thumb)) : image_tag('missing.png')
     .player_name
       = @team.name.capitalize
   .clearfix

@@ -1,7 +1,7 @@
 $primary_color: #4b7399
 
 body
-  background-color: $primary_color
+  background-color: #222
   font:
     family: Verdana, Helvetica, Arial
     size: 14px
@@ -13,14 +13,63 @@ a
   clear: both
   height: 0
   overflow: hidden
+#header
+  text-align: left
+  padding: 15px
+  color: #c4c8cc
+  background: url(/images/header_bg.png)
+  border: 1px solid #000
+  border-radius: 5px
+  img
+    margin-left: 20px
+  #login_menu
+    font-size: 13px
+    color: #c4c8cc
+    float: right
+    #sign_out
+      text-align: right
+      font-size: 13px
+      a
+        color:  #c4c8cc
+#menu_bar
+  float: right
+  position: relative
+  top: 15px
+  right: 20px
+  .menu_button
+    padding: 5px
+    background: #ccc
+    color: #222
+    text-decoration: none
+    border: 1px #222
+    border-radius: 6px
 #container
-  width: 75%
-  margin: 0 auto
-  background: white
+  margin: auto
+  width: 80%
   padding: 20px 40px
-  border: solid 1px black
   margin-top: 20px
-
+  border-radius: 5px
+  
+  #wrap_header
+    padding: 10px
+    color: whiteSmoke
+    #title
+      font-size: 35px
+  #content
+    background: whiteSmoke
+    margin-top: 10px
+    padding: 15px
+    border: 1px solid #c4c8cc
+    border-radius: 15px
+.buttons
+  float: right
+  .button
+    font-size: 18px
+    padding: 5px
+    background: #cecece
+    color: #222
+    text-decoration: none
+    border-radius: 7px
 .flash
   //float: left
   //position: absolute
@@ -89,7 +138,6 @@ a
   input
     padding: 5px
 #player
-  border: solid 3px #cecece
   border-radius: 8px
   -moz-border-radius: 8px
   -webkit-border-radius: 8px
@@ -178,16 +226,10 @@ a
   min-height: 70px
   padding: 15px
   .buttons
-    text-align: center
-    :margin auto
-    :position relative
-    :top 30px
     span
-      font-size: 20px
       margin: 15px
-      text-align: center
       color: #fff
-      background-color: #26456D
+      background-color: #222
       padding: 10px
       border-radius: 8px
       -moz-border-radius: 8px

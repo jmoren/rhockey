@@ -11,21 +11,25 @@
     = yield(:head)
 
   %body
-    #container
-      - if show_title?
-        %h1= yield(:title)
-      -if current_user
-        Logged as
-        = current_user.email
-        %br
-        = link_to "Sign out", destroy_user_session_path
-        =# link_to "Change Pass", edit_user_password_path
+    #header
+      #login_menu
+        - if user_signed_in?
+          Logged as
+          = current_user.admin? ? "Admin: " : "User: "
+          = current_user.email
+          #sign_out
+            = link_to "Sign out", destroy_user_session_path
+      = image_tag('logo.png')
+    #menu_bar
+      - if current_user
+        = link_to "Inicio", root_path, :class => "menu_button"
+        = link_to "Volver", :back, :class => "menu_button"
         - if current_user.admin?
-          %p
-            = link_to "Dashboard", admin_dashboard_path
-            = link_to "Equipos", teams_path
-            = link_to "Entrenadores", coaches_path
-            = link_to "Jugadores", players_path
-            = link_to "Referis", referis_path
-
-      = yield
+          = link_to "Admin", admin_dashboard_path, :class => "menu_button"
+    #container
+      #wrap_header
+        - if show_title?
+          #title
+            = yield(:title)
+      #content
+        = yield

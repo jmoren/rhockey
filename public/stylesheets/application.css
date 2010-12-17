@@ -1,5 +1,5 @@
 body {
-  background-color: #4b7399;
+  background-color: #222222;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px; }
 
@@ -13,13 +13,65 @@ a {
   height: 0;
   overflow: hidden; }
 
+#header {
+  text-align: left;
+  padding: 15px;
+  color: #c4c8cc;
+  background: url(/images/header_bg.png);
+  border: 1px solid black;
+  border-radius: 5px; }
+  #header img {
+    margin-left: 20px; }
+  #header #login_menu {
+    font-size: 13px;
+    color: #c4c8cc;
+    float: right; }
+    #header #login_menu #sign_out {
+      text-align: right;
+      font-size: 13px; }
+      #header #login_menu #sign_out a {
+        color: #c4c8cc; }
+
+#menu_bar {
+  float: right;
+  position: relative;
+  top: 15px;
+  right: 20px; }
+  #menu_bar .menu_button {
+    padding: 5px;
+    background: #cccccc;
+    color: #222222;
+    text-decoration: none;
+    border: 1px #222222;
+    border-radius: 6px; }
+
 #container {
-  width: 75%;
-  margin: 0 auto;
-  background: white;
+  margin: auto;
+  width: 80%;
   padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px; }
+  margin-top: 20px;
+  border-radius: 5px; }
+  #container #wrap_header {
+    padding: 10px;
+    color: whiteSmoke; }
+    #container #wrap_header #title {
+      font-size: 35px; }
+  #container #content {
+    background: whiteSmoke;
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #c4c8cc;
+    border-radius: 15px; }
+
+.buttons {
+  float: right; }
+  .buttons .button {
+    font-size: 18px;
+    padding: 5px;
+    background: #cecece;
+    color: #222222;
+    text-decoration: none;
+    border-radius: 7px; }
 
 #flash_notice {
   padding: 5px 5px 5px 30px;
@@ -85,7 +137,6 @@ a {
   padding: 5px; }
 
 #player {
-  border: solid 3px #cecece;
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -173,24 +224,17 @@ a {
 #add_members {
   min-height: 70px;
   padding: 15px; }
-  #add_members .buttons {
-    text-align: center;
-    margin: auto;
-    position: relative;
-    top: 30px; }
-    #add_members .buttons span {
-      font-size: 20px;
-      margin: 15px;
-      text-align: center;
+  #add_members .buttons span {
+    margin: 15px;
+    color: white;
+    background-color: #222222;
+    padding: 10px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px; }
+    #add_members .buttons span a {
       color: white;
-      background-color: #26456d;
-      padding: 10px;
-      border-radius: 8px;
-      -moz-border-radius: 8px;
-      -webkit-border-radius: 8px; }
-      #add_members .buttons span a {
-        color: white;
-        text-decoration: none; }
+      text-decoration: none; }
   #add_members .form {
     padding: 20px;
     border: 2px solid #cecece; }

@@ -25,3 +25,5 @@
     = select_tag :referi_3, options_from_collection_for_select(Referi.all, 'id', 'name')
   %p
     = f.submit
+    or
+    = link_to "Cancelar", championship_path(@championship)

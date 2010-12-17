@@ -22,10 +22,11 @@
       %td
         %span
           %small= link_to  image_tag('lupa.png'), championship
-        %span
-          %small= link_to  image_tag('edit.png'), edit_championship_path(championship)
-        %span
-          %small= link_to image_tag('delete.png'), championship, :confirm => 'Are you sure?', :method => :delete
+        - if current_user.admin?
+          %span
+            %small= link_to  image_tag('edit.png'), edit_championship_path(championship)
+          %span
+            %small= link_to image_tag('delete.png'), championship, :confirm => 'Are you sure?', :method => :delete
 %h2 Campeonatos terminados
 %table{:class => "list"}
   %tr
@@ -49,10 +50,8 @@
       %td
         %span
           %small= link_to  image_tag('lupa.png'), championship
-        %span
-          %small= link_to  image_tag('edit.png'), edit_championship_path(championship)
-        %span
-          %small= link_to image_tag('delete.png'), championship, :confirm => 'Are you sure?', :method => :delete
-
-
-%p= link_to "New Championship", new_championship_path
+        - if current_user.admin?
+          %span
+            %small= link_to  image_tag('edit.png'), edit_championship_path(championship)
+          %span
+            %small= link_to image_tag('delete.png'), championship, :confirm => 'Are you sure?', :method => :delete

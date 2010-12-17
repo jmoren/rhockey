@@ -1,5 +1,8 @@
-- title "Referis"
-
+- title "Referis" 
+- if current_user.admin?
+  .buttons
+    = link_to 'New Referi', new_referi_path, :class => 'button'
+  .clear
 %table{:class => "players_team_list"}
   %tr
     %th Numero
@@ -19,4 +22,4 @@
         %span
           %small= link_to image_tag('delete.png'), referi, :confirm => 'Are you sure?', :method => :delete
 
-%p= link_to "New Referi", new_referi_path
+
