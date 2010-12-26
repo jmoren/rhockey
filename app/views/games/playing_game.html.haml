@@ -19,7 +19,7 @@
       = f.hidden_field :game_id, :value => @game.id
       %p
         Action
-        = f.select :action,options_from_collection_for_select(Actions.all, 'name', 'name'), :prompt => true
+        = f.select :action,options_from_collection_for_select(Action.all, 'name', 'name'), :prompt => true
       %p
         Player
         = f.select :player_id,options_from_collection_for_select(@local.players, 'id', 'name'),:prompt => true
@@ -32,7 +32,7 @@
       = f.hidden_field :game_id, :value => @game.id
       %p
         Action
-        = f.select :action,options_from_collection_for_select(Actions.all, 'name', 'name'),:prompt => true
+        = f.select :action,options_from_collection_for_select(Action.all, 'name', 'name'),:prompt => true
       %p
         Player
         = f.select :player_id,options_from_collection_for_select(@visitor.players, 'id', 'name'),:prompt => true

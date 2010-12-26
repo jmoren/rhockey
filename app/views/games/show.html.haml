@@ -33,7 +33,7 @@
   - @local.players.each do |p|
     %p
       %span= image_tag(p.gravatar_url(:size => 20))
-      %span= link_to full_name(p), team_player_path(p)
+      %span= link_to full_name(p), player_path(p)
       %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
 %div{:class => "right", :style =>"width: 45%;" }
   %p
@@ -42,7 +42,7 @@
   - @visitor.players.each do |p|
     %p
       %span= image_tag(p.gravatar_url(:size => 20))
-      %span= link_to full_name(p), team_player_path(p)
+      %span= link_to full_name(p), player_path(p)
       %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
 .clear
             
