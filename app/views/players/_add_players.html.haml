@@ -1,0 +1,7 @@
+%p
+  = link_to_function "Add Players", "$('#player_form').slideToggle('slow')",:class => "add_player_button"
+  = link_to_function "Add Coach", "$('#coach_form').slideToggle()",:class => "add_player_button"
+  #player_form.hide
+    = render 'players/new'
+  #coach_form.hide
+    = render 'coaches/new'

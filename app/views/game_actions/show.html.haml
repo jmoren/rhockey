@@ -1,0 +1,24 @@
+- title "Game Action"
+
+%p
+  %strong Championship:
+  = @game_action.championship_id
+%p
+  %strong Game:
+  = @game_action.game_id
+%p
+  %strong Team:
+  = @game_action.team_id
+%p
+  %strong Player:
+  = @game_action.player_id
+%p
+  %strong Action:
+  = @game_action.action
+
+%p
+  = link_to "Edit", edit_game_action_path(@game_action)
+  |
+  = link_to "Destroy", @game_action, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", game_actions_path

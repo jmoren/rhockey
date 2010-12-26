@@ -1,0 +1,24 @@
+- form_for @game_action do |f|
+  = f.error_messages
+  %p
+    = f.label :championship_id
+    %br
+    = f.text_field :championship_id
+  %p
+    = f.label :game_id
+    %br
+    = f.text_field :game_id
+  %p
+    = f.label :team_id
+    %br
+    = f.text_field :team_id
+  %p
+    = f.label :player_id
+    %br
+    = f.text_field :player_id
+  %p
+    = f.label :action
+    %br
+    = f.text_field :action
+  %p
+    = f.submit

@@ -1,32 +1,3 @@
-%p
-  - flash.each do |name, msg|
-    = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"
-%table{:class => "players_team_list"}
-  %th{:colspan => 6, :style => "text-align: left;"}
-    Entrenadores
-  - unless @team.coaches.empty?
-    - @team.coaches.each_with_index do |coach,n|
-      %tr
-        %td= n +1        
-        %td
-          = image_tag('missing-thumb.png')
-        %td{:class => "nombres"}
-          = full_name(coach)
-        %td sin info
-        %td{:class => "last"}
-          %span
-            %small= link_to  image_tag('lupa.png'), coach_path(coach)
-          %span
-            %small= link_to  image_tag('edit.png'), edit_coach_path(coach)
-          %span
-            %small= link_to image_tag('delete.png'), coach, :confirm => 'Are you sure?', :method => :delete, :remote => true
-  - else
-    %tr
-      %td{:colspan => 6}
-        #flash_alert
-          No tiene entrenador!
-
-
 %table{:class => "players_team_list"}
   %th{:colspan => 6, :style => "text-align: left"}
     Arqueros
@@ -46,7 +17,7 @@
           %span
             %small= link_to  image_tag('edit.png'), edit_player_path(player)
           %span
-            %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
+            %small= link_to image_tag('delete.png'), player_path(player), :confirm => 'Are you sure?', :method => :delete
   - else
     %tr
       %td{:colspan => 6}
@@ -72,7 +43,7 @@
             %span
               %small= link_to  image_tag('edit.png'), edit_player_path(player)
             %span
-              %small= link_to image_tag('delete.png'), player, :confirm => 'Are you sure?', :method => :delete, :remote => true
+              %small= link_to image_tag('delete.png'),  player_path(player), :confirm => 'Are you sure?', :method => :delete
     - else
       %tr
         %td{:colspan => 5}

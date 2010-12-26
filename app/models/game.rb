@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :championship
   has_one :photo, :as => :photoable, :dependent => :destroy
-
+  has_many :game_actions
   has_many :rivals
   has_many :teams, :through => :rivals
 
@@ -12,9 +12,10 @@ class Game < ActiveRecord::Base
   has_one :visitor_rival, :class_name => "Rival", :conditions => {:local => false}
   has_one :local, :through => :local_rival, :source => :team
   has_one :visitor, :through => :visitor_rival, :source => :team
-
-  attr_accessible :championship_id,:code, :ganador, :finished, :comment, :photo_attributes
-  before_save :set_code
+  has_one :winner
+  has_one :team_winner, :through => :winner, :source => :team
+  attr_accessible :championship_id,:code, :finished, :comment, :photo_attributes
+  after_create :set_code
   #validates :code, :presence => true
   validates_associated :rivals, :authorities
 
@@ -22,4 +23,5 @@ class Game < ActiveRecord::Base
     ini = self.championship.category.name.first + self.championship.category.name.last
     self.code = ini + rand(9999).to_s
   end
+
 end

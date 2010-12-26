@@ -1,0 +1,43 @@
+- title "Playing Game"
+%h1 Datos estaticos
+%p
+  %b Torneo:
+  = @championship.name
+  == #{@championship.start_date.year}/#{@championship.end_date.year}
+  %br
+  %b Categoria
+  = @championship.category.name
+#game_data{:style => "margin: auto;width:60%;font-size: 30px"}
+  = render 'game_data', :game => @game
+       
+#form_game_data{:style => "margin: auto;width:60%;font-size: 15px"}
+  %div.left
+    %h2 Local
+    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true do |f|
+      = f.hidden_field :team_id,:value => @local.id
+      = f.hidden_field :championship_id, :value => @championship.id
+      = f.hidden_field :game_id, :value => @game.id
+      %p
+        Action
+        = f.select :action,options_from_collection_for_select(Actions.all, 'name', 'name'), :prompt => true
+      %p
+        Player
+        = f.select :player_id,options_from_collection_for_select(@local.players, 'id', 'name'),:prompt => true
+      = f.submit "Add"
+  %div.right
+    %h2 Visitor
+    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true do |f|
+      = f.hidden_field :team_id,:value => @visitor.id
+      = f.hidden_field :championship_id, :value => @championship.id
+      = f.hidden_field :game_id, :value => @game.id
+      %p
+        Action
+        = f.select :action,options_from_collection_for_select(Actions.all, 'name', 'name'),:prompt => true
+      %p
+        Player
+        = f.select :player_id,options_from_collection_for_select(@visitor.players, 'id', 'name'),:prompt => true
+      = f.submit "Add"
+.clearfix
+
+%p{:style => "text-align: center;"}
+  = link_to "Finish Game", finish_championship_game_path(@championship,@game), :confirm => "Esta seguro que quiere terminar el partido?", :method => "put"

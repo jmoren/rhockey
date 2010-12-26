@@ -7,7 +7,7 @@
     %span.icon.icon-edit
       = link_to  "editar", edit_player_path(@player)
     %span.icon.icon-delete
-      = link_to "eliminar", @player, :confirm => 'Are you sure?', :method => :delete
+      = link_to "eliminar", player_path(@team,@player), :confirm => 'Are you sure?', :method => :delete
     %span.icon.icon-move
       = link_to "Volver", :back
   .clearfix

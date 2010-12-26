@@ -9,7 +9,7 @@
       = link_to "Volver", team_path(@team)
   .clearfix
   #player_header
-    = @team.photo.thumb.exists? ? image_tag(@team.photo.thumb.url(:thumb)) : image_tag('missing.png')
+    = !@team.photo.nil? && @team.photo.thumb.exists? ? image_tag(@team.photo.thumb.url(:thumb)) : image_tag('missing.png')
   .clearfix
   #player_info
     .player_field
@@ -24,14 +24,13 @@
     .player_field
       %b Cant Jugadores:
       = @team.players_count
+- if current_user.admin?
+  %p
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"
   #add_player
-    
-    %p
-      = link_to_function "Add Players", "$('#player_form').slideToggle()",:class => "add_player_button"
-      = link_to_function "Add Coach", "$('#coach_form').slideToggle()",:class => "add_player_button"
-    #player_form{:style => "display:none"}
-      Hola!
-    #coach_form{:style => "display:none"}
-      Hola!
-  #players_list
-    = render :partial => 'shared/players', :object => @team
+    = render 'players/add_players'
+#coaches_list
+  = render :partial => 'shared/coaches', :object => @team
+#players_list
+  = render :partial => 'shared/players', :object => @team

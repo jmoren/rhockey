@@ -13,12 +13,13 @@ class CoachesController < ApplicationController
   end
 
   def create
-    @coach = Coach.new(params[:coach])
+    @team = Team.find_by_name(params[:team_id])
+    @coach = @team.coaches.build(params[:coach])
     @coach.email ||= "example@example.com"
     @team = @coach.team
     if @coach.save
-      @team.coaches.reload
       flash[:notice] = "Successfully created coach."
+      redirect_to team_path(@team)
     else
       render :action => 'new'
     end
@@ -26,11 +27,6 @@ class CoachesController < ApplicationController
   
   def edit
     @coach = Coach.find(params[:id])
-    if @coach.photo
-      @photo = @coach.photo
-    else
-      @photo = @coach.build_photo
-    end
   end
   
   def update
@@ -47,11 +43,8 @@ class CoachesController < ApplicationController
     @coach = Coach.find(params[:id])
     @team = @coach.team
     if @coach.destroy
-      @team.coaches.reload
       flash[:notice] = "Successfully destroyed player."
-      respond_to do |format|
-        format.js
-      end
+      redirect_to team_path(@team)
     end
   end
 end

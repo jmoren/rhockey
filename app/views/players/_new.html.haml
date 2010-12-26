@@ -1,0 +1,21 @@
+= form_for [@team,@team.players.new]  do |f|
+  %p
+    = f.label :name, "Nombre"
+    %br
+    = f.text_field :name, :id => "name_field"
+    
+  %p
+    = f.label :lastname, "Apellido"
+    %br
+    = f.text_field :lastname, :id => "lastname_field"
+    
+  %p
+    = f.label :birthday, "Nacimiento"
+    = f.date_select :birthday, :start_year => 1950, :end_year => Time.now.year
+  %p
+    = f.label :goalkeepper, "Arquero?"
+    = f.check_box :goalkeeper
+  %p
+    = f.submit
+    or
+    = link_to_function "Cancel", "$('#player_form').slideToggle('slow')"

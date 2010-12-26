@@ -10,7 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216181301) do
+ActiveRecord::Schema.define(:version => 20101226161602) do
+
+  create_table "actions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "authorities", :force => true do |t|
     t.integer  "game_id"
@@ -48,11 +54,22 @@ ActiveRecord::Schema.define(:version => 20101216181301) do
     t.datetime "updated_at"
   end
 
+  create_table "game_actions", :force => true do |t|
+    t.integer  "championship_id"
+    t.integer  "game_id"
+    t.integer  "team_id"
+    t.integer  "player_id"
+    t.string   "action"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "games", :force => true do |t|
     t.integer  "championship_id"
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "finished",        :default => false
   end
 
   create_table "photos", :force => true do |t|
@@ -123,5 +140,12 @@ ActiveRecord::Schema.define(:version => 20101216181301) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "winners", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

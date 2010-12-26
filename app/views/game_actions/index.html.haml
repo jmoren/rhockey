@@ -1,0 +1,21 @@
+- title "Game Actions"
+
+%table
+  %tr
+    %th Championship
+    %th Game
+    %th Team
+    %th Player
+    %th Action
+  - for game_action in @game_actions
+    %tr
+      %td= game_action.championship_id
+      %td= game_action.game_id
+      %td= game_action.team_id
+      %td= game_action.player_id
+      %td= game_action.action
+      %td= link_to 'Show', game_action
+      %td= link_to 'Edit', edit_game_action_path(game_action)
+      %td= link_to 'Destroy', game_action, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Game Action", new_game_action_path
