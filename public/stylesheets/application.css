@@ -273,3 +273,10 @@ a {
       #dashboard .buttons-admin .button:hover a {
         background: #26456d;
         color: white; }
+
+.button_action {
+  background: #222222;
+  color: white;
+  border: 2px #222222 solid;
+  border-radius: 5px;
+  padding: 5px; }

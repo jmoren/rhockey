@@ -81,14 +81,15 @@ class GamesController < ApplicationController
   end
   def finish
     @game = Game.find(params[:id])
-    #closing game
-    @game.update_attributes(:finished => true)
-    #setting winner
+    @game.update_attributes(:finished => true)    
     if @game.local.goals(@game.id) > @game.visitor.goals(@game.id)
       @game.winner = Winner.create(:team_id => @game.local.id)
-    else
+    elsif @game.local.goals(@game.id) < @game.visitor.goals(@game.id)
       @game.winner = Winner.create(:team_id => @game.visitor.id)
+    else
+      @game.winner = nil
     end
     redirect_to championship_game_path(@game)
   end
+  
 end

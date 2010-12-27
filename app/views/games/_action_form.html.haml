@@ -1,0 +1,8 @@
+= form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true,:html => {:onsubmit => "setTime()", :id => "#{action}_player_#{p.id}" } do |f|
+  = f.hidden_field :team_id,:value => team.id
+  = f.hidden_field :championship_id, :value => @championship.id
+  = f.hidden_field :game_id, :value => @game.id
+  = f.hidden_field :time
+  = f.hidden_field :action, :value => action
+  = f.hidden_field :player_id, :value => p.id
+  = f.submit action.capitalize, :confirm => "Esta seguro?", :class => 'button_action'

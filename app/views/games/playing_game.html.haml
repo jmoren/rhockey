@@ -38,35 +38,30 @@
 #game_data{:style => "margin: auto;width:60%;font-size: 30px"}
   = render 'game_data', :game => @game
        
-#form_game_data{:style => "margin: auto;width:60%;font-size: 15px"}
+#form_game_data{:style => "margin: auto;width:90%;font-size: 15px"}
   %div.left
-    %h2 Local
-    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true,:html => {:onsubmit => "setTime()", :id => "local_form" } do |f|
-      = f.hidden_field :team_id,:value => @local.id
-      = f.hidden_field :championship_id, :value => @championship.id
-      = f.hidden_field :game_id, :value => @game.id
-      = f.hidden_field :time
-      %p
-        Action
-        = f.select :action,options_from_collection_for_select(Action.all, 'name', 'name'), :prompt => true
-      %p
-        Player
-        = f.select :player_id,options_from_collection_for_select(@local.players, 'id', 'name'),:prompt => true
-      = f.submit "Add", :confirm => "Esta seguro?"
+    %h2{:style => "text-align: center"} 
+      Local
+    %table
+      - @local.players.each do |p|
+        %tr
+          %td= full_name(p)
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'goal', :team => @local}
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'penalty', :team => @local}
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'assistance', :team => @local}
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'save', :team => @local}
+
   %div.right
-    %h2 Visitor
-    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true,:html => {:onsubmit => "setTime()" } do |f|
-      = f.hidden_field :team_id,:value => @visitor.id
-      = f.hidden_field :championship_id, :value => @championship.id
-      = f.hidden_field :game_id, :value => @game.id
-      = f.hidden_field :time
-      %p
-        Action
-        = f.select :action,options_from_collection_for_select(Action.all, 'name', 'name'),:prompt => true
-      %p
-        Player
-        = f.select :player_id,options_from_collection_for_select(@visitor.players, 'id', 'name'),:prompt => true
-      = f.submit "Add", :confirm => "Esta seguro?"
+    %h2{:style => "text-align: center"} 
+      Visitor
+    %table
+      - @visitor.players.each do |p|
+        %tr
+          %td= full_name(p)
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'goal', :team => @visitor}
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'penalty', :team => @visitor}
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'assistance', :team => @visitor}
+          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'save', :team => @visitor}
 .clearfix
 
 %p{:style => "text-align: center;"}
