@@ -7,36 +7,66 @@
   %br
   %b Categoria
   = @championship.category.name
+#time_area
+  %button{:type => "text",:id => "reset_btn"}
+    Start/Reset
+  %img{:id => "play_btn", :src => "/images/play.png"}
+  %img{:id => "pause_btn", :src => "/images/pause.png"}
+  %br
+  %input{:type => "text",:id => "countdown_timer"}
+  %script
+    window.onload = function() {
+    timer = new Countdown();
+    timer.init();
+    $('#pause_btn').click(function() {
+    timer.pause();
+    //could insert code here to hide pause and show play.
+    });
+    $('#play_btn').click(function() {
+    timer.resume();
+    //could insert code here to hide play and show pause.
+    });
+    $('#reset_btn').click(function() {
+    timer.reset();
+    //could insert code here to show play and hide pause.
+    });
+    };
+  %script
+    function setTime(){
+    $("#game_action_time").val($("#countdown_timer").val())
+    }
 #game_data{:style => "margin: auto;width:60%;font-size: 30px"}
   = render 'game_data', :game => @game
        
 #form_game_data{:style => "margin: auto;width:60%;font-size: 15px"}
   %div.left
     %h2 Local
-    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true do |f|
+    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true,:html => {:onsubmit => "setTime()", :id => "local_form" } do |f|
       = f.hidden_field :team_id,:value => @local.id
       = f.hidden_field :championship_id, :value => @championship.id
       = f.hidden_field :game_id, :value => @game.id
+      = f.hidden_field :time
       %p
         Action
         = f.select :action,options_from_collection_for_select(Action.all, 'name', 'name'), :prompt => true
       %p
         Player
         = f.select :player_id,options_from_collection_for_select(@local.players, 'id', 'name'),:prompt => true
-      = f.submit "Add"
+      = f.submit "Add", :confirm => "Esta seguro?"
   %div.right
     %h2 Visitor
-    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true do |f|
+    = form_for [@championship,@game,@game.game_actions.build], :method => "post", :remote => true,:html => {:onsubmit => "setTime()" } do |f|
       = f.hidden_field :team_id,:value => @visitor.id
       = f.hidden_field :championship_id, :value => @championship.id
       = f.hidden_field :game_id, :value => @game.id
+      = f.hidden_field :time
       %p
         Action
         = f.select :action,options_from_collection_for_select(Action.all, 'name', 'name'),:prompt => true
       %p
         Player
         = f.select :player_id,options_from_collection_for_select(@visitor.players, 'id', 'name'),:prompt => true
-      = f.submit "Add"
+      = f.submit "Add", :confirm => "Esta seguro?"
 .clearfix
 
 %p{:style => "text-align: center;"}

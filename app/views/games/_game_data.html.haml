@@ -6,8 +6,8 @@
     %tr
       - @game.local.data(@game.id).each do |a|
         %tr{:style => "font-size: 12px; color: #666666;"}
-          %td= a.action
-          %td= a.created_at.strftime('%M:%S')
+          %td= a.action.capitalize
+          %td= a.time
           %td= full_name(a.player)
 .right
   %table
@@ -18,7 +18,7 @@
       - @game.visitor.data(@game.id).each do |a|
         %tr{:style => "font-size: 12px; color: #666666;"}
           %td
-          %td= a.action
-          %td= a.created_at.strftime('%M:%S')
+          %td= a.action.capitalize
+          %td= a.time
           %td= full_name(a.player)
 .clear
