@@ -1,6 +1,7 @@
 class Player < ActiveRecord::Base
   include Gravtastic
   has_gravatar
+  has_many :game_actions
   belongs_to :team, :counter_cache => true
   has_one :photo, :as => :photoable, :dependent => :destroy
   accepts_nested_attributes_for :photo, :allow_destroy => true

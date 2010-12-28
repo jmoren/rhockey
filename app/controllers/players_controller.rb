@@ -1,19 +1,32 @@
 class PlayersController < ApplicationController
 
   def index
-    if params[:team_id]
-      @team = Team.find_by_name(params[:team_id])
-      @players = @team.players
-    else
-      @jugadores = Player.jugadores
-      @arqueros = Player.arqueros
-    end
+    @jugadores = Player.jugadores
+    @arqueros = Player.arqueros
   end
   
   def show
     @player = Player.find(params[:id])
     @team = @player.team
     @categorias = Category.where("minage <= ? && topage >= ?",@player.edad,@player.edad)
+  end
+  def new
+    @team = Team.find_by_name(params[:team_id])
+    @player = @team.players.build
+  end
+
+  def create
+    @team = Team.find_by_name(params[:team_id])
+    @player = @team.players.build(params[:player])
+    @player.email ||= "example@example.com"
+    @team = @player.team
+    if @player.save
+      flash[:notice] = "Successfully created player..."
+      redirect_to team_path(@team)
+    else
+      flash[:error] = "Se encontraron algunos errores"
+       redirect_to team_path(@team)
+    end
   end
   def edit
     @player = Player.find(params[:id])
@@ -33,11 +46,8 @@ class PlayersController < ApplicationController
     @player = Player.find(params[:id])
     @team = @player.team
     if @player.destroy
-      @team.players.reload
       flash[:notice] = "Successfully destroyed player."
-      respond_to do |format|
-        format.js
-      end
+      redirect_to team_path(@team)
     end
   end
 end

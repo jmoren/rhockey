@@ -1,18 +1,15 @@
 - title "Equipo #{@team.name}"
 #player
   #controls
-    - if current_user.admin?
-      %span.icon.icon-edit
-        = link_to  "editar", edit_team_path(@team)
-      %span.icon.icon-add
-        = link_to  "players", team_members_path(@team)
-      %span.icon.icon-delete
-        = link_to "eliminar", @team, :confirm => 'Are you sure?', :method => :delete
+    %span.icon.icon-edit
+      = link_to  "editar", edit_team_path(@team)
+    %span.icon.icon-delete
+      = link_to "eliminar", @team, :confirm => 'Are you sure?', :method => :delete
     %span.icon.icon-move
       = link_to "Volver", team_path(@team)
   .clearfix
   #player_header
-    = @team.photo.thumb.exists? ? image_tag(@team.photo.thumb.url(:thumb)) : image_tag('missing.png')
+    = !@team.photo.nil? && @team.photo.thumb.exists? ? image_tag(@team.photo.thumb.url(:thumb)) : image_tag('missing.png')
   .clearfix
   #player_info
     .player_field
@@ -24,14 +21,16 @@
     .player_field
       %b Categoria:
       = @team.category.name
-    - unless @team.coaches.empty?
-      .player_field
-        %b Entrenadores
-        - @team.coaches.each do |c|
-          = link_to full_name(c), player_path(c)
     .player_field
       %b Cant Jugadores:
       = @team.players_count
-  #team_players
-  
-    = render 'shared/players'
+- if current_user.admin?
+  %p
+    - flash.each do |name, msg|
+      = content_tag :div, msg, :id => "flash_#{name}", :class => "flash"
+  #add_player
+    = render 'players/add_players'
+#coaches_list
+  = render :partial => 'shared/coaches', :object => @team
+#players_list
+  = render :partial => 'shared/players', :object => @team

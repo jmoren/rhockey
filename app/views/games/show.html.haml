@@ -1,4 +1,7 @@
 - title "Game #{@game.code}"
+- unless @game.finished?
+  %p
+    = link_to "Start Game", game_playing_path(@game.championship, @game), :confirm => "Confirma que iniciara el partido?"
 
 %p
   %strong Championship:
@@ -8,14 +11,27 @@
   %b Referis:
   - @game.referis.each do |r|
     %p
-      == Partidos: #{r.games.size}
-      %br
-      == Nombre: #{full_name(r)}
+      %span{:class => "info", :title => "#{r.games.size} partidos refereados"}
+        == #{full_name(r)}
 .clear
+- if @game.finished?
+  
+  %h2
+    Ganador:
+    = @game.team_winner.name
+  %p
+    - @game.game_actions.goals.each do |g|
+      %span{:style => "font-size: 12px; color: #666666;", :class => "info", :title => "Goles en el campeonato: #{g.player.game_actions.goals.size}"}
+        = g.created_at.strftime('%M:%S')
+        = full_name(g.player)
+        = g.team.name
+      %br
 %div{:class => "left", :style =>"width: 45%;" }
   %p
-    %span= @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    %h3= @local.name
+    %span= !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
+    %h2
+      = @local.name
+      = @local.goals(@game.id) if @game.finished?
   - @local.players.each do |p|
     %p
       %span= image_tag(p.gravatar_url(:size => 20))
@@ -23,8 +39,10 @@
       %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
 %div{:class => "right", :style =>"width: 45%;" }
   %p
-    %span= @visitor.photo.thumb.exists? ? image_tag(@visitor.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    %h3= @visitor.name
+    %span= !@visitor.photo.nil? && @visitor.photo.thumb.exists? ? image_tag(@visitor.photo.thumb.url(:thumb)) : image_tag('missing.png')
+    %h2
+      = @visitor.goals(@game.id) if @game.finished?
+      = @visitor.name
   - @visitor.players.each do |p|
     %p
       %span= image_tag(p.gravatar_url(:size => 20))

@@ -1,0 +1,14 @@
+#form
+  = form_for [@team,@team.coaches.new] do |f|
+    %p
+      = f.label :name, "Nombre"
+      %br
+      = f.text_field :name, :id => "name_field"
+    %p
+      = f.label :lastname, "Apellido"
+      %br
+      = f.text_field :lastname, :id => "lastname_field"
+    %p
+      = f.submit
+      or
+      = link_to_function "Cancel", "$('#coach_form').slideToggle('slow')"

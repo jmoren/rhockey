@@ -73,4 +73,23 @@ class GamesController < ApplicationController
     flash[:notice] = "Successfully destroyed game."
     redirect_to games_url
   end
+  def playing_game
+    @game = Game.find(params[:game_id])
+    @championship = Championship.find(params[:championship_id])
+    @local = @game.local
+    @visitor = @game.visitor    
+  end
+  def finish
+    @game = Game.find(params[:id])
+    @game.update_attributes(:finished => true)    
+    if @game.local.goals(@game.id) > @game.visitor.goals(@game.id)
+      @game.winner = Winner.create(:team_id => @game.local.id)
+    elsif @game.local.goals(@game.id) < @game.visitor.goals(@game.id)
+      @game.winner = Winner.create(:team_id => @game.visitor.id)
+    else
+      @game.winner = nil
+    end
+    redirect_to championship_game_path(@game)
+  end
+  
 end

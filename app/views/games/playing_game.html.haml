@@ -1,0 +1,60 @@
+- title "Playing Game"
+%p
+  %b Torneo:
+  = @championship.name
+  == #{@championship.start_date.year}/#{@championship.end_date.year}
+  %br
+  %b Categoria
+  = @championship.category.name
+#time_area
+  %input{:type => "text",:id => "countdown_timer"}
+  %br
+  %button{:id => "reset_btn",:class => "info2", :title => "Reset/Stop"}
+    %img{ :src => "/images/reload.png"}
+  %button{:id => "play_btn",:class => "info2", :title => "Start"}
+    %img{ :src => "/images/play.png"}
+  %button{:id => "pause_btn",:class => "info2", :title => "Pause"}
+    %img{ :src => "/images/pause.png"}
+  %script
+    window.onload = function() {
+    timer = new Countdown();
+    timer.init();
+    $('#pause_btn').click(function() {
+    timer.pause();
+    //could insert code here to hide pause and show play.
+    });
+    $('#play_btn').click(function() {
+    timer.resume();
+    //could insert code here to hide play and show pause.
+    });
+    $('#reset_btn').click(function() {
+    timer.reset();
+    //could insert code here to show play and hide pause.
+    });
+    };
+  %script
+    function setTime(){
+    $("#game_action_time").val($("#countdown_timer").val())
+    }
+#title{:style => "margin: auto;width:50%;font-size: 15px"}
+  %div.left
+    %h1{:style => "text-align: center"}
+      Local
+  %div.right
+    %h1{:style => "text-align: center"}
+      Visitor
+.clear
+%br
+#game_data{:style => "margin: auto;width:60%;font-size: 30px"}
+  = render 'game_data', :game => @game
+%br
+#form_game_data{:style => "margin: auto;width:80%;font-size: 15px"}
+  %div.left
+    = render :partial => 'team_table', :locals => {:team => @local}
+  %div.right
+    = render :partial => 'team_table', :locals => {:team => @visitor}
+
+.clearfix
+
+%p{:style => "text-align: center;"}
+  = link_to "Finish Game", finish_championship_game_path(@championship,@game), :confirm => "Esta seguro que quiere terminar el partido?", :method => "put"

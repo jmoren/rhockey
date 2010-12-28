@@ -1,0 +1,9 @@
+%table
+  - team.players.each do |p|
+    %tr
+      %td= full_name(p)
+      %td= render :partial => 'action_form', :locals => {:p => p, :action => 'goal', :team => team}
+      %td= render :partial => 'action_form', :locals => {:p => p, :action => 'penalty', :team => team}
+      %td= render :partial => 'action_form', :locals => {:p => p, :action => 'assistance', :team => team}
+      - if p.goalkeeper?
+        %td= render :partial => 'action_form', :locals => {:p => p, :action => 'save', :team => @local}

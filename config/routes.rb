@@ -1,21 +1,27 @@
 Rhockey::Application.routes.draw do
-  get "/games" => "games#index"
+  
+
   get "admin/dashboard"
+
   devise_for :users
-  resources :championships do
-    get :autocomplete_category_name, :on => :collection
-    resources :games, :except => [:index]
-  end
   resources :referis
-  resources :coaches
-  resources :players, :except => [:new, :create]
-  resources :teams do
-    get "/members" => "teams#members"
-    get "/player/new" => "team_players#new"
-    get "/coach/new" => "team_coaches#new"
-    post "/players" => "team_players#create"
-    post "/coaches" => "team_coaches#create"
+  resources :game_actions
+  resources :championships do
+    resources :games do
+      member do
+        put :finish
+      end
+      get "/playing" => "games#playing_game"
+      resources :game_actions, :only => [:new,:create,:destroy]
+    end
   end
+  resources :teams do
+    resources :players, :only => [:new, :create]
+    resources :coaches, :only => [:new, :create]
+  end
+  resources :players, :except => [:new, :create]
+  resources :coaches, :except => [:new, :create]
+
   root :to => "championships#index"
   
   # The priority is based upon order of creation:
