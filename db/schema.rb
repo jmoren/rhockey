@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20101227182125) do
     t.integer  "team_id"
     t.integer  "game_id"
     t.boolean  "local"
+    t.boolean  "winner",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
