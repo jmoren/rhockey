@@ -36,18 +36,20 @@
     function setTime(){
     $("#game_action_time").val($("#countdown_timer").val())
     }
-#title{:style => "margin: auto;width:50%;font-size: 15px"}
-  %div.left
-    %h1{:style => "text-align: center"}
-      Local
-  %div.right
-    %h1{:style => "text-align: center"}
-      Visitor
-.clear
+#game_info_panel
+  #title{:style => "margin: auto;width:50%;font-size: 15px"}
+    %div.left
+      %h2{:style => "text-align: center"}
+        Local
+    %div.right
+      %h2{:style => "text-align: center"}
+        Visitor
+  .clear
+  #game_data{:style => "margin: auto;width:60%;font-size: 30px"}
+    = render 'game_data', :game => @game
 %br
-#game_data{:style => "margin: auto;width:60%;font-size: 30px"}
-  = render 'game_data', :game => @game
-%br
+%h1{:style => "text-align: center"}
+  Players
 #form_game_data{:style => "margin: auto;width:80%;font-size: 15px"}
   %div.left
     = render :partial => 'team_table', :locals => {:team => @local}

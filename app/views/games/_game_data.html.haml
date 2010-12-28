@@ -2,32 +2,31 @@
   $('.info').tipsy({gravity: 'w', fade: true});
   $('.info1').tipsy({gravity: 'e', fade: true});
 .left
-  %table
-    %th{:colspan => "5"}
+  %table{:class => "game_data_row"}
+    %th{:colspan => "4"}
       = @local.name
     %th= @local.goals(@game.id)
-    %tr
-      - @game.local.data(@game.id).each do |a|
-        %tr{:style => "font-size: 12px; color: #666666;"}
-          %td{:class => "info1", :title => "Delete this #{a.action}"}
-            = link_to image_tag('error.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
-          %td
-          %td= a.action.capitalize
-          %td= a.time
-          %td= full_name(a.player)
+    
+    - @game.local.data(@game.id).each do |a|
+      %tr
+        %td{:class => "info1", :title => "Delete this #{a.action}"}
+          = link_to image_tag('error.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
+        %td
+        %td= a.action.capitalize
+        %td= a.time
+        %td= full_name(a.player)
 .right
-  %table
+  %table{:class => "game_data_row"}
     %th= @visitor.goals(@game.id)
     %th{:colspan => "5"}
       = @visitor.name
-    %tr
-      - @game.visitor.data(@game.id).each do |a|
-        %tr{:style => "font-size: 12px; color: #666666;"}
-          %td
-          %td= a.action.capitalize
-          %td= a.time
-          %td= full_name(a.player)
-          %td
-          %td{:class => "info", :title => "Delete this #{a.action}"}
-            = link_to image_tag('error.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
+    - @game.visitor.data(@game.id).each do |a|
+      %tr{:style => "font-size: 12px; color: #666666;"}
+        %td
+        %td= a.action.capitalize
+        %td= a.time
+        %td= full_name(a.player)
+        %td
+        %td{:class => "info", :title => "Delete this #{a.action}"}
+          = link_to image_tag('error.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
 .clear

@@ -1,12 +1,8 @@
 body {
   background-color: #222222;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 14px; }
-
-a {
-  color: blue; }
-  a img {
-    border: none; }
+  font-size: 14px;
+  color: white; }
 
 .clear {
   clear: both;
@@ -14,49 +10,29 @@ a {
   overflow: hidden; }
 
 #header {
+  padding: 20px;
   text-align: left;
-  padding: 15px;
-  color: #c4c8cc;
-  background: url(/images/header_bg.png);
-  border: 1px solid black;
-  border-radius: 5px; }
-  #header img {
-    margin-left: 20px; }
-  #header #login_menu {
-    font-size: 13px;
-    color: #c4c8cc;
-    float: right; }
-    #header #login_menu #sign_out {
-      text-align: right;
-      font-size: 13px; }
-      #header #login_menu #sign_out a {
-        color: #c4c8cc; }
+  color: #c4c8cc; }
 
 #menu_bar {
-  float: right;
-  position: relative;
-  top: 15px;
-  right: 20px; }
-  #menu_bar .menu_button {
-    padding: 5px;
-    background: #cccccc;
+  background: WhiteSmoke;
+  border-radius: 3px;
+  padding: 10px; }
+  #menu_bar #user_menu {
     color: #222222;
-    text-decoration: none;
-    border: 1px #222222;
-    border-radius: 6px; }
+    float: left; }
+  #menu_bar #app_menu {
+    color: #222222;
+    float: right; }
 
 #container {
   margin: auto;
   width: 80%;
   padding: 20px 40px;
-  margin-top: 20px;
-  border-radius: 5px; }
-  #container #wrap_header {
-    padding: 10px;
-    color: whiteSmoke; }
-    #container #wrap_header #title {
-      font-size: 35px; }
+  border-radius: 5px;
+  color: whiteSmoke; }
   #container #content {
+    color: #222222;
     background: whiteSmoke;
     margin-top: 10px;
     padding: 15px;
@@ -193,7 +169,6 @@ a {
 .icon-move {
   background-image: url(/images/move.png); }
 
-/* tipsy styles */
 .tipsy {
   margin: auto;
   padding: 5px;
@@ -228,31 +203,6 @@ a {
 .tipsy-west {
   margin-right: 5px;
   background-position: left center; }
-
-#add_members {
-  min-height: 70px;
-  padding: 15px; }
-  #add_members .buttons span {
-    margin: 15px;
-    color: white;
-    background-color: #222222;
-    padding: 10px;
-    border-radius: 8px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px; }
-    #add_members .buttons span a {
-      color: white;
-      text-decoration: none; }
-  #add_members .form {
-    padding: 20px;
-    border: 2px solid #cecece; }
-    #add_members .form input, #add_members .form select, #add_members .form checkbox {
-      padding: 5px;
-      border-radius: 5px;
-      -moz-border-radius: 5px;
-      -webkit-border-radius: 5px; }
-    #add_members .form th {
-      text-align: left; }
 
 #team_players {
   border-top: solid 2px #cecece;
@@ -296,7 +246,7 @@ a {
   display: inline; }
   #dashboard .buttons-admin .button {
     float: left;
-    width: 220px;
+    width: 200px;
     margin: 15px;
     height: 120px;
     text-align: center;
@@ -334,3 +284,20 @@ a {
   padding: 6px; }
 #time_area button {
   padding: 5px; }
+
+#game_info_panel {
+  border: 1px solid #222222;
+  padding: 10px;
+  min-height: 300px; }
+  #game_info_panel .game_data_row {
+    margin: 10px;
+    text-align: left; }
+    #game_info_panel .game_data_row th {
+      font-size: 40px;
+      color: #222222;
+      text-align: right;
+      padding: 15px 0; }
+    #game_info_panel .game_data_row tr {
+      font-size: 13px;
+      color: #666666;
+      line-height: 1.7em; }

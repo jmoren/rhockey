@@ -5,57 +5,33 @@ body
   font:
     family: Verdana, Helvetica, Arial
     size: 14px
-a
-  color: blue
-  img
-    border: none
+  color: white
 .clear
   clear: both
   height: 0
   overflow: hidden
 #header
+  padding: 20px
   text-align: left
-  padding: 15px
   color: #c4c8cc
-  background: url(/images/header_bg.png)
-  border: 1px solid #000
-  border-radius: 5px
-  img
-    margin-left: 20px
-  #login_menu
-    font-size: 13px
-    color: #c4c8cc
-    float: right
-    #sign_out
-      text-align: right
-      font-size: 13px
-      a
-        color:  #c4c8cc
 #menu_bar
-  float: right
-  position: relative
-  top: 15px
-  right: 20px
-  .menu_button
-    padding: 5px
-    background: #ccc
+  background: WhiteSmoke
+  border-radius: 3px
+  padding: 10px
+  #user_menu
     color: #222
-    text-decoration: none
-    border: 1px #222
-    border-radius: 6px
+    float: left
+  #app_menu
+    color: #222
+    float: right
 #container
   margin: auto
   width: 80%
   padding: 20px 40px
-  margin-top: 20px
   border-radius: 5px
-  
-  #wrap_header
-    padding: 10px
-    color: whiteSmoke
-    #title
-      font-size: 35px
+  color: whiteSmoke
   #content
+    color: #222
     background: whiteSmoke
     margin-top: 10px
     padding: 15px
@@ -140,6 +116,7 @@ a
 #form
   input
     padding: 5px
+// Players styles
 #player
   border-radius: 8px
   -moz-border-radius: 8px
@@ -177,9 +154,9 @@ a
       border-radius: 8px
       -moz-border-radius: 8px
       -webkit-border-radius: 8px
-
   #controls
     float: right
+// control icons
 .icon
   background-position: 0% 50%
   background-repeat: no-repeat
@@ -194,7 +171,7 @@ a
   background-image: url(/images/delete.png)
 .icon-move
   background-image: url(/images/move.png)
-/* tipsy styles */
+// tipsy styles 
 .tipsy
   margin: auto
   padding: 5px
@@ -203,7 +180,6 @@ a
   filter: alpha(opacity = 60)
   background-repeat: no-repeat
   background-image: url(/images/tipsy.gif)
-
 .tipsy-inner
   padding: 7px
   background-color: black
@@ -213,48 +189,18 @@ a
   text-align: left
   -moz-border-radius: 5px
   -webkit-border-radius: 5px
-
 .tipsy-north
   margin-bottom: 5px
   background-position: top center
-
 .tipsy-south
   margin-top: 5px
   background-position: bottom center
-
 .tipsy-east
   margin-left: 5px
   background-position: right center
-
 .tipsy-west
   margin-right: 5px
   background-position: left center
-
-#add_members
-  min-height: 70px
-  padding: 15px
-  .buttons
-    span
-      margin: 15px
-      color: #fff
-      background-color: #222
-      padding: 10px
-      border-radius: 8px
-      -moz-border-radius: 8px
-      -webkit-border-radius: 8px
-      a
-        color: #fff
-        text-decoration: none
-  .form
-    padding: 20px
-    border: 2px solid #cecece
-    input, select, checkbox
-      padding: 5px
-      border-radius: 5px
-      -moz-border-radius: 5px
-      -webkit-border-radius: 5px
-    th
-      text-align: left
 
 #team_players
   border-top: solid 2px #cecece
@@ -265,7 +211,6 @@ a
     padding: 0 15px
     min-height: 250px
 .players_team_list
-  //border: 1px #cecece solid
   width: 100%
   border-collapse: collapse
   margin: 10px 0 15px 0
@@ -299,7 +244,7 @@ a
     display: inline
     .button
       float: left
-      width: 220px
+      width: 200px
       margin: 15px
       height: 120px
       text-align: center
@@ -336,3 +281,19 @@ a
     padding: 6px
   button
     padding: 5px
+#game_info_panel
+  border: 1px solid #222
+  padding: 10px
+  min-height: 300px
+  .game_data_row
+    margin: 10px
+    text-align: left
+    th
+      font-size: 40px
+      color: #222
+      text-align: right
+      padding: 15px 0
+    tr
+      font-size: 13px
+      color: #666666
+      line-height: 1.7em

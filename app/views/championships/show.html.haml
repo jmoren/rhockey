@@ -1,43 +1,42 @@
-- title "Campeonato #{@championship.name} #{@championship.start_date.year}"
+%h2== Campeonato #{@championship.name} #{@championship.start_date.year}
 .buttons
   - if current_user.admin?
     = link_to "Edit", edit_championship_path(@championship), :class => "button"
   = link_to "Add Game", new_championship_game_path(@championship), :class => "button"
 
-%p
-  %b Categoria:
-  = @championship.category.name
-%p
-  %b Duracion:
-  %span
-    = nice_date(@championship.start_date)
-    == -
-    = nice_date(@championship.end_date)
-    == ( #{distance_of_time_in_words(@championship.start_date,@championship.end_date)})
-%p
-  %b Tipo:
-  = @championship.type_options
-%p
-  %b Descripcion:
-  = simple_format(@championship.description)
-
-%p
-  Games:
-%table{:class => "players_team_list"}
-  %th Ver
-  %th Fecha
-  %th
-    Local
-  %th
-    Visitante
-  - @games.each do |game|
-    %tr
-      %td= link_to image_tag('lupa.png'), championship_game_path(@championship, game)
-      %td= game.created_at.strftime('%d/%m/%Y')
-      %td
-        = !game.photo.nil? && game.local.photo.thumb.exists? ? image_tag(game.local.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
-        = game.local.name
-      %td
-        = !game.photo.nil? && game.visitor.photo.thumb.exists? ? image_tag(game.visitor.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
-        = game.visitor.name
+#championship_info
+  %p
+    %b Categoria:
+    = @championship.category.name
+  %p
+    %b Duracion:
+    %span
+      = nice_date(@championship.start_date)
+      == -
+      = nice_date(@championship.end_date)
+      == ( #{distance_of_time_in_words(@championship.start_date,@championship.end_date)})
+  %p
+    %b Tipo:
+    = @championship.type_options
+  %p
+    %b Descripcion:
+    = simple_format(@championship.description)
+#championship_games
+  %table{:class => "players_team_list"}
+    %th Ver
+    %th Fecha
+    %th
+      Local
+    %th
+      Visitante
+    - @games.each do |game|
+      %tr
+        %td= link_to image_tag('lupa.png'), championship_game_path(@championship, game)
+        %td= game.created_at.strftime('%d/%m/%Y')
+        %td
+          = !game.photo.nil? && game.local.photo.thumb.exists? ? image_tag(game.local.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
+          = game.local.name
+        %td
+          = !game.photo.nil? && game.visitor.photo.thumb.exists? ? image_tag(game.visitor.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
+          = game.visitor.name
             
