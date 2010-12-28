@@ -1,5 +1,4 @@
 - title "Playing Game"
-%h1 Datos estaticos
 %p
   %b Torneo:
   = @championship.name
@@ -8,12 +7,14 @@
   %b Categoria
   = @championship.category.name
 #time_area
-  %button{:type => "text",:id => "reset_btn"}
-    Start/Reset
-  %img{:id => "play_btn", :src => "/images/play.png"}
-  %img{:id => "pause_btn", :src => "/images/pause.png"}
-  %br
   %input{:type => "text",:id => "countdown_timer"}
+  %br
+  %button{:id => "reset_btn",:class => "info2", :title => "Reset/Stop"}
+    %img{ :src => "/images/reload.png"}
+  %button{:id => "play_btn",:class => "info2", :title => "Start"}
+    %img{ :src => "/images/play.png"}
+  %button{:id => "pause_btn",:class => "info2", :title => "Pause"}
+    %img{ :src => "/images/pause.png"}
   %script
     window.onload = function() {
     timer = new Countdown();
@@ -35,33 +36,24 @@
     function setTime(){
     $("#game_action_time").val($("#countdown_timer").val())
     }
+#title{:style => "margin: auto;width:50%;font-size: 15px"}
+  %div.left
+    %h1{:style => "text-align: center"}
+      Local
+  %div.right
+    %h1{:style => "text-align: center"}
+      Visitor
+.clear
+%br
 #game_data{:style => "margin: auto;width:60%;font-size: 30px"}
   = render 'game_data', :game => @game
-       
-#form_game_data{:style => "margin: auto;width:90%;font-size: 15px"}
+%br
+#form_game_data{:style => "margin: auto;width:80%;font-size: 15px"}
   %div.left
-    %h2{:style => "text-align: center"} 
-      Local
-    %table
-      - @local.players.each do |p|
-        %tr
-          %td= full_name(p)
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'goal', :team => @local}
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'penalty', :team => @local}
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'assistance', :team => @local}
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'save', :team => @local}
-
+    = render :partial => 'team_table', :locals => {:team => @local}
   %div.right
-    %h2{:style => "text-align: center"} 
-      Visitor
-    %table
-      - @visitor.players.each do |p|
-        %tr
-          %td= full_name(p)
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'goal', :team => @visitor}
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'penalty', :team => @visitor}
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'assistance', :team => @visitor}
-          %td= render :partial => 'action_form', :locals => {:p => p, :action => 'save', :team => @visitor}
+    = render :partial => 'team_table', :locals => {:team => @visitor}
+
 .clearfix
 
 %p{:style => "text-align: center;"}

@@ -2,6 +2,8 @@
 // This file is automatically included by javascript_include_tag :defaults
 $(document).ready(function() {
     $('.info').tipsy({gravity: 'w', fade: true});
+    $('.info1').tipsy({gravity: 'e', fade: true});
+    $('.info2').tipsy({gravity: 'n', fade: true});
     //hideflash();
 });
 function hideFlash() {
