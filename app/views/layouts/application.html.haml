@@ -21,7 +21,7 @@
           %span= link_to "Sign Out", destroy_user_session_path
           %span= link_to "Edit Profile", edit_user_registration_path
       #app_menu
-        -  if current_user.admin?
+        -  if current_user && current_user.admin?
           = link_to_unless_current "Dashboard", admin_dashboard_path
           = link_to_unless_current "Equipos", teams_path
           = link_to_unless_current "Entrenadores", coaches_path

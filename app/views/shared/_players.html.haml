@@ -2,9 +2,9 @@
   %th{:colspan => 6, :style => "text-align: left"}
     Arqueros
   -unless @team.players.arqueros.empty?
-    - @team.players.arqueros.each_with_index do |player,n|
+    - @team.players.arqueros.each do |player|
       %tr{:class => "info", :title => "#{player.can_play? ? "Habilitado para jugar" : " No es esta habilitado"}"}
-        %td= n +1
+        %td= player.number.nil? ? "-" : player.number
         %td= player.can_play? ?  image_tag('check.png') : image_tag('error.png')
         %td
           = image_tag('missing-thumb.png')
@@ -29,9 +29,9 @@
     Jugadores
   %tr
     -unless @team.players.jugadores.empty?
-      - @team.players.jugadores.each_with_index do |player,n|
+      - @team.players.jugadores.each do |player|
         %tr{:class => "info", :title => "#{player.can_play? ? "Habilitado para jugar" : " No es esta habilitado"}"}
-          %td= n + 1
+          %td= player.number.nil? ? "-" : player.number
           %td= player.can_play? ?  image_tag('check.png') : image_tag('error.png')
           %td= image_tag('missing-thumb.png')
           %td{:class => "nombres"}
