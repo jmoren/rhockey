@@ -7,4 +7,7 @@ class GameAction < ActiveRecord::Base
   attr_accessible :championship_id, :game_id, :team_id, :player_id, :action, :time
 
   scope :goals, lambda {where("action = ?", "goal")}
+  scope :assistances, lambda {where("action = ?", "assistance")}
+  scope :saves, lambda {where("action = ?", "save")}
+  scope :penalties, lambda {where("action = ?", "penalty")}
 end

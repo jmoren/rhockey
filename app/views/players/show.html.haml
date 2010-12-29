@@ -57,13 +57,16 @@
       %h3
         == Capitan #{image_tag('check.png')}
     %h3
-      Partidos jugados:
-      = @player.team.games.size
-    %h3 Goles
-    %h3 Asistencias
+      == Partidos jugados: #{@player.team.games_played.size}
+    %h3 
+      == Goles: #{@player.game_actions.goals.size}
+    %h3 
+      == Asistencias: #{@player.game_actions.assistances.size}
 
     - if @player.goalkeeper
       %h3
         == Arquero: #{image_tag('check.png')}
-      %h3 Saves
+      %h3 
+        == Saves: #{@player.game_actions.saves.size}
+
 
