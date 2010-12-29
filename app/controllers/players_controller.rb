@@ -8,7 +8,7 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
     @team = @player.team
-    @categorias = Category.where("minage <= ? && topage >= ?",@player.edad,@player.edad)
+    @categorias = Category.where("minage <= ? and topage >= ?",@player.edad,@player.edad)
   end
   def new
     @team = Team.find_by_name(params[:team_id])
