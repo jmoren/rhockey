@@ -1,14 +1,11 @@
 = form_for [@team,@team.players.new]  do |f|
   %p
+    = f.label :number, "Numero"
+    = f.text_field :number
     = f.label :name, "Nombre"
-    %br
     = f.text_field :name, :id => "name_field"
-    
-  %p
     = f.label :lastname, "Apellido"
-    %br
     = f.text_field :lastname, :id => "lastname_field"
-    
   %p
     = f.label :birthday, "Nacimiento"
     = f.date_select :birthday, :start_year => 1950, :end_year => Time.now.year

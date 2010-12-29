@@ -7,15 +7,11 @@ class Player < ActiveRecord::Base
   accepts_nested_attributes_for :photo, :allow_destroy => true
 
   attr_accessible :name, :lastname, :email, :team_id, :captain, :gender, :goalkeeper, 
-                  :age, :birthday, :photo_attributes, :can_play
+                  :age, :birthday, :photo_attributes, :can_play, :number
 #validations
   validates_length_of :name, :lastname, :within => 3..15
-  validates :name, :lastname, :birthday, :presence => true
+  validates :name, :lastname, :birthday, :number, :presence => true
   after_save :recategorizar?
-  before_update do
-    #validates_format_of :email, :with => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/
-    #validates :email,:uniqueness=>  true
-  end
 
   scope "arqueros", :conditions =>{:goalkeeper => true}
   scope "jugadores", :conditions =>{:goalkeeper => false}
