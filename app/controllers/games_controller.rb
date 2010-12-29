@@ -7,6 +7,8 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @local = @game.local
     @visitor = @game.visitor
+    @gunner = @game.set_gunner if @game.finished?
+    @dirty_player = @game.set_dirty_player if @game.finished?
   end
   
   def new

@@ -1,0 +1,25 @@
+%h2
+  - if @game.winner.nil?
+    Empate
+  - else
+    Ganador:
+    = @game.team_winner.name
+%p
+  - @game.game_actions.goals.each do |g|
+    %span{:style => "font-size: 12px; color: #666666;", :class => "info", :title => "Goles en el campeonato: #{g.player.game_actions.goals.size}"}
+      = g.created_at.strftime('%M:%S')
+      = full_name(g.player)
+      == (#{g.team.name})
+    %br
+  %h3
+    El mas goleador:
+  = image_tag(@gunner.gravatar_url(:size => 20))
+  = @gunner.number
+  = @gunner.full_name
+  == (#{@gunner.game_actions.goals.where(:game_id => @game.id).count} goals)
+  %h3
+    El mas penalizado:
+  = image_tag(@dirty_player.gravatar_url(:size => 20))
+  = @dirty_player.number
+  = @dirty_player.full_name
+  == (#{@dirty_player.game_actions.penalties.where(:game_id => @game.id).count * 2} min of penalties)

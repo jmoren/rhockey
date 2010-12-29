@@ -19,7 +19,7 @@ Countdown.prototype.update_target = function()
     minutes = this.minutes;
     seconds = this.seconds;
     if(seconds < 10) seconds = "0" + seconds;
-    $("#" + this.target_id).val(minutes + ":" + seconds);
+    $("#" + this.target_id).html(minutes + ":" + seconds);
 }
 
 Countdown.prototype.pause = function()

@@ -23,5 +23,10 @@ class Game < ActiveRecord::Base
     ini = self.championship.category.name.first + self.championship.category.name.last
     self.code = ini + rand(9999).to_s
   end
-
+  def set_gunner
+    self.game_actions.goals.collect(&:player).sort {|a,b| b.game_actions.goals.where(:game_id => self.id).count <=> a.game_actions.goals.where(:game_id => self.id).count}.first
+  end
+  def set_dirty_player
+    self.game_actions.penalties.collect(&:player).sort {|a,b| b.game_actions.penalties.where(:game_id => self.id).count <=> a.game_actions.penalties.where(:game_id => self.id).count}.first
+  end
 end

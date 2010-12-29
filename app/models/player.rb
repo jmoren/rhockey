@@ -23,7 +23,9 @@ class Player < ActiveRecord::Base
   def to_param
     "#{id}-#{name}_#{lastname}"
   end
-
+  def full_name
+    "#{self.name} #{self.lastname}"
+  end
   def edad
     age = Time.now.year - self.birthday.year
     if Time.now.month < self.birthday.month ||

@@ -7,7 +7,8 @@
   %b Categoria
   = @championship.category.name
 #time_area
-  %input{:type => "text",:id => "countdown_timer"}
+  //%input{:type => "text",:id => "countdown_timer"}
+  %span{:id => "countdown_timer"}
   %br
   %button{:id => "reset_btn",:class => "info2", :title => "Reset/Stop"}
     %img{ :src => "/images/reload.png"}
@@ -34,7 +35,7 @@
     };
   %script
     function setTime(){
-    $("#game_action_time").val($("#countdown_timer").val())
+    $(".new_game_action #game_action_time").val($("#countdown_timer").text())
     }
 #game_info_panel
   #title{:style => "margin: auto;width:50%;font-size: 15px"}

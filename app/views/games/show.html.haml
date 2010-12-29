@@ -15,17 +15,8 @@
         == #{full_name(r)}
 .clear
 - if @game.finished?
-  
-  %h2
-    Ganador:
-    = @game.winner.nil? ? "Empate" : @game.team_winner.name
-  %p
-    - @game.game_actions.goals.each do |g|
-      %span{:style => "font-size: 12px; color: #666666;", :class => "info", :title => "Goles en el campeonato: #{g.player.game_actions.goals.size}"}
-        = g.created_at.strftime('%M:%S')
-        = full_name(g.player)
-        = g.team.name
-      %br
+  #data_finished_game
+    = render 'finished_data_game'
 %div{:class => "left", :style =>"width: 45%;" }
   %p
     %span= !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')

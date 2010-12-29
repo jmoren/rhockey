@@ -242,6 +242,7 @@ body {
     text-align: left; }
 
 #dashboard .buttons-admin {
+  float: left;
   margin: auto;
   display: inline; }
   #dashboard .buttons-admin .button {

@@ -18,10 +18,10 @@
 .right
   %table{:class => "game_data_row"}
     %th= @visitor.goals(@game.id)
-    %th{:colspan => "5"}
+    %th{:colspan => "4"}
       = @visitor.name
     - @game.visitor.data(@game.id).each do |a|
-      %tr{:style => "font-size: 12px; color: #666666;"}
+      %tr
         %td
         %td= a.action.capitalize
         %td= a.time
