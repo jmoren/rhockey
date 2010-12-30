@@ -1,21 +1,20 @@
-- title "Playing Game"
-%p
-  %b Torneo:
-  = @championship.name
-  == #{@championship.start_date.year}/#{@championship.end_date.year}
-  %br
-  %b Categoria
-  = @championship.category.name
-#time_area
-  //%input{:type => "text",:id => "countdown_timer"}
-  %span{:id => "countdown_timer"}
-  %br
-  %button{:id => "reset_btn",:class => "info2", :title => "Reset/Stop"}
-    %img{ :src => "/images/reload.png"}
-  %button{:id => "play_btn",:class => "info2", :title => "Start"}
-    %img{ :src => "/images/play.png"}
-  %button{:id => "pause_btn",:class => "info2", :title => "Pause"}
-    %img{ :src => "/images/pause.png"}
+#game_information.left
+  %p
+    %b Torneo:
+    = @championship.name
+    == #{@championship.start_date.year}/#{@championship.end_date.year}
+  %p
+    %b Categoria
+    = @championship.category.name
+#time_area.right
+  %div{:id => "countdown_timer"}
+  %p{:id => "time_controls"}
+    %button{:id => "reset_btn",:class => "info2", :title => "Reset"}
+      %img{ :src => "/images/reload.png"}
+    %button{:id => "play_btn",:class => "info2", :title => "Start"}
+      %img{ :src => "/images/play.png"}
+    %button{:id => "pause_btn",:class => "info2", :title => "Pause"}
+      %img{ :src => "/images/pause.png"}
   %script
     window.onload = function() {
     timer = new Countdown();
@@ -35,19 +34,21 @@
     };
   %script
     function setTime(){
-    $(".new_game_action #game_action_time").val($("#countdown_timer").text())
+    var act_time = $("#countdown_timer").text()
+    var time_ary = act_time.split(":");
+    var minutes = parseInt(time_ary[0]);
+    var seconds = parseInt(time_ary[1]);
+
+    var final_min = 40 - minutes -1
+    var final_sec = 60 - seconds
+    if(final_min < 10) final_min = "0" + final_min
+    if(final_sec < 10) final_sec = "0" + final_sec;
+    $(".new_game_action #game_action_time").val(final_min + ":" + final_sec)
     }
+.clear
 #game_info_panel
-  #title{:style => "margin: auto;width:50%;font-size: 15px"}
-    %div.left
-      %h2{:style => "text-align: center"}
-        Local
-    %div.right
-      %h2{:style => "text-align: center"}
-        Visitor
-  .clear
-  #game_data{:style => "margin: auto;width:80%;font-size: 30px"}
-    = render 'game_data', :game => @game
+  #game_data{:style => "margin: auto;width:80%"}
+    = render 'game_data', :locals => {:game => @game}
 %br
 %h1{:style => "text-align: center"}
   Players

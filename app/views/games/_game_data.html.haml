@@ -1,36 +1,45 @@
 %script
   $('.info').tipsy({gravity: 'w', fade: true});
   $('.info1').tipsy({gravity: 'e', fade: true});
-.left
-  %table{:class => "game_data_row"}
-    %th
+#panel_control{:style => "width: 55%; margin: auto; text-align:center;"}
+  #left_team{:class => "left", :style => "text-align: right;"}
+    %span{:style => "font-size: 65px;float:left;margin-right:15px;position:relative;top:15px"}
+      = @local.goals(@game.id) < 10 ? "0" + @local.goals(@game.id).to_s : @local.goals(@game.id)
+    %span{:class => "right", :style => "border: 1px solid"}
       = !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    %th{:colspan => "4"}
-      = @local.name
-    %th= @local.goals(@game.id)
-    
-    - @game.local.data(@game.id).each do |a|
-      %tr
-        %td
-        %td{:class => "info1", :title => "Delete this #{a.action}"}
-          = link_to image_tag('error.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
-        %td
-        %td= a.action.capitalize
-        %td= a.time
-        %td= full_name(a.player)
-.right
-  %table{:class => "game_data_row"}
-    %th= @visitor.goals(@game.id)
-    %th{:colspan => "4"}
-      = @visitor.name
-    %th
+    .clear
+    %br
+    %span
+      %span
+        Local
+      %br
+      %span{:style => "font-size:25px"}
+        %b== #{@local.name}
+  %span{:id => "versus"}
+    vs.
+  #right_team{:class => "right", :style => "text-align: left;"}
+    %span{:class => "left", :style => "border: 1px solid"}
       = !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    - @game.visitor.data(@game.id).each do |a|
-      %tr
-        %td= a.action.capitalize
+    %span{:style => "font-size: 65px;float:right;margin-left:15px;position:relative;top:15px"}
+      = @visitor.goals(@game.id) < 10 ? "0" + @visitor.goals(@game.id).to_s : @visitor.goals(@game.id)
+    .clear
+    %br
+    %span
+      %span
+        Visitante
+      %br
+      %span{:style => "font-size:25px"}
+        %b== #{@visitor.name}
+.clear
+#table_data
+  %table{:class => "game_data"}
+    - @game.game_actions.each do |a|
+      %tr{:class => cycle("even", "odd")}
         %td= a.time
+        %td= a.action.capitalize 
+        %td= !a.team.photo.nil? && a.team.photo.thumb.exists? ? image_tag(a.team.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
+        %td= a.team.name
         %td= full_name(a.player)
-        %td
-        %td{:class => "info", :title => "Delete this #{a.action}"}
+        %td{:class => "info last_col", :title => "Delete this #{a.action}"}
           = link_to image_tag('error.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
 .clear

@@ -1,6 +1,6 @@
 function Countdown()
 {
-    this.start_time = "20:00";
+    this.start_time = "40:00";
     this.end_time = "00:00";
     this.target_id = "countdown_timer";
     this.paused = true;
@@ -65,28 +65,7 @@ Countdown.prototype.start = function()
     this.reset();
     this.paused = false;
 }
-Countdown.prototype.addSecond = function()
-{
-  this.seconds = this.seconds + 1;
-  this.update_target();
-}
-Countdown.prototype.lessSecond = function()
-{
-  this.seconds = this.seconds - 1;
-  this.update_target();
-}
 
-Countdown.prototype.addMinute = function()
-{
-  this.minutes = this.minutes + 1;
-  this.update_target();
-}
-Countdown.prototype.lessMinute = function()
-
-{
-  this.minutes = this.minutes - 1;
-  this.update_target();
-}
 Countdown.prototype.reset = function(time)
 {
     if(time == undefined) time = this.start_time;

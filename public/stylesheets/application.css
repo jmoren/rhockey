@@ -1,6 +1,6 @@
 body {
   background-color: #222222;
-  font-family: Verdana, Helvetica, Arial;
+  font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
   font-size: 14px;
   color: white; }
 
@@ -288,17 +288,48 @@ body {
 
 #game_info_panel {
   border: 1px solid #222222;
-  padding: 10px;
-  min-height: 300px; }
-  #game_info_panel .game_data_row {
-    margin: 10px;
-    text-align: left; }
-    #game_info_panel .game_data_row th {
+  padding: 10px; }
+  #game_info_panel #versus {
+    float: left;
+    top: 30px;
+    left: 20px;
+    font-size: 35px;
+    position: relative; }
+  #game_info_panel .game_data {
+    width: 80%;
+    margin-top: 20px;
+    margin-left: 70px;
+    text-align: left;
+    padding: 20px;
+    border-collapse: collapse; }
+    #game_info_panel .game_data th {
       font-size: 40px;
       color: #222222;
       text-align: right;
       padding: 15px 0; }
-    #game_info_panel .game_data_row tr {
+    #game_info_panel .game_data tr {
       font-size: 13px;
       color: #666666;
       line-height: 1.7em; }
+    #game_info_panel .game_data td {
+      font-size: 15px;
+      color: #222222;
+      padding: 5px; }
+      #game_info_panel .game_data td img {
+        vertical-align: middle; }
+    #game_info_panel .game_data .even {
+      background: #cccccc; }
+
+#game_information {
+  position: relative;
+  top: 20px;
+  left: 20px; }
+
+#time_area {
+  text-align: center;
+  width: 20%; }
+  #time_area div {
+    border: 1px solid #222222;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 50px; }

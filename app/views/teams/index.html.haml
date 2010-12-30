@@ -9,7 +9,7 @@
     %th Opciones
   - @teams.each_with_index do |team, n|
     %tr
-      %td= !team.photo.nil? && team.photo.thumb.exists? ? image_tag(team.photo.thumb(:thumb)) : image_tag('missing.png')
+      %td= !team.photo.nil? && team.photo.thumb.exists? ? image_tag(team.photo.thumb(:small)) : image_tag('missing.png')
       %td{:class => "nombres"}
         = link_to team.name, team_path(team)
       %td= team.players_count

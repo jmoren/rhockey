@@ -25,6 +25,7 @@ class TeamsController < ApplicationController
   
   def edit
     @team = Team.find_by_name(params[:id])
+    @photo = @team.photo
   end
   
   def update
