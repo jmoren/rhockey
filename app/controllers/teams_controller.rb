@@ -9,10 +9,12 @@ class TeamsController < ApplicationController
   
   def new
     @team = Team.new
+    @team.photo = Photo.create
   end
   
   def create
     @team = Team.new(params[:team])
+    @photo = @team.build_photo
     if @team.save
       flash[:notice] = "Successfully created team."
       redirect_to @team

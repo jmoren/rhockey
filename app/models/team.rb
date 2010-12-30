@@ -13,8 +13,8 @@ class Team < ActiveRecord::Base
 
   accepts_nested_attributes_for :photo, :allow_destroy => true
 
-  attr_accessible :name, :category_id, :players_count,
-                  :photo_attributes
+  attr_accessible :name, :category_id, :players_count,:photo_attributes
+                  
                 
   validates :name, :presence => true
   validates_uniqueness_of :name

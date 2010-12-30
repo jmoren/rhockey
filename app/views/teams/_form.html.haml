@@ -1,13 +1,11 @@
 #form
   = form_for @team, :html => {:multipart => true } do |f|
-    .formTitle
-      %h3 Team information
+    %h3 Team information
     = f.fields_for :photo do |photo_field|
       = render 'shared/photo_field', :f => photo_field
     %p
       = f.label :name
-      = f.text_field :name, :id => "name_field"
-      %span{:class => "inputTipContainer"}
+      = f.text_field :name
     %p
       = f.label :category_id
       = collection_select(:team,:category_id, Category.all, :id, :name)
