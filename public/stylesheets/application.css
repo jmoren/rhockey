@@ -281,24 +281,39 @@ body {
   border-radius: 5px;
   padding: 5px; }
 
-#time_area input {
-  padding: 6px; }
-#time_area button {
-  padding: 5px; }
+#game_playing_panel {
+  padding: 10px;
+  margin-right: 20px;
+  text-align: center;
+  width: 18%; }
+  #game_playing_panel span {
+    border: 1px solid #222222;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 50px;
+    font-weight: bold; }
 
 #game_info_panel {
   border: 1px solid #222222;
-  padding: 10px; }
+  padding: 10px;
+  width: 75%;
+  border-radius: 5px; }
+  #game_info_panel #panel_control {
+    background: #222222;
+    color: whiteSmoke; }
+    #game_info_panel #panel_control #panel_wrap {
+      width: 80%;
+      margin: auto;
+      padding: 15px; }
   #game_info_panel #versus {
-    float: left;
     top: 30px;
-    left: 20px;
+    left: 30px;
     font-size: 35px;
     position: relative; }
   #game_info_panel .game_data {
     width: 80%;
     margin-top: 20px;
-    margin-left: 70px;
+    margin-left: 50px;
     text-align: left;
     padding: 20px;
     border-collapse: collapse; }
@@ -324,12 +339,3 @@ body {
   position: relative;
   top: 20px;
   left: 20px; }
-
-#time_area {
-  text-align: center;
-  width: 20%; }
-  #time_area div {
-    border: 1px solid #222222;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 50px; }

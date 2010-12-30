@@ -1,4 +1,4 @@
-#game_information.left
+#game_information
   %p
     %b Torneo:
     = @championship.name
@@ -6,50 +6,53 @@
   %p
     %b Categoria
     = @championship.category.name
-#time_area.right
-  %div{:id => "countdown_timer"}
-  %p{:id => "time_controls"}
-    %button{:id => "reset_btn",:class => "info2", :title => "Reset"}
-      %img{ :src => "/images/reload.png"}
-    %button{:id => "play_btn",:class => "info2", :title => "Start"}
-      %img{ :src => "/images/play.png"}
-    %button{:id => "pause_btn",:class => "info2", :title => "Pause"}
-      %img{ :src => "/images/pause.png"}
-  %script
-    window.onload = function() {
-    timer = new Countdown();
-    timer.init();
-    $('#pause_btn').click(function() {
-    timer.pause();
-    //could insert code here to hide pause and show play.
-    });
-    $('#play_btn').click(function() {
-    timer.resume();
-    //could insert code here to hide play and show pause.
-    });
-    $('#reset_btn').click(function() {
-    timer.reset();
-    //could insert code here to show play and hide pause.
-    });
-    };
-  %script
-    function setTime(){
-    var act_time = $("#countdown_timer").text()
-    var time_ary = act_time.split(":");
-    var minutes = parseInt(time_ary[0]);
-    var seconds = parseInt(time_ary[1]);
+%br
+#game_playing_panel.right
+  #time_area
+    %span{:id => "countdown_timer"}
+    %p{:id => "time_controls"}
+      %button{:id => "reset_btn",:class => "info2", :title => "Reset"}
+        %img{ :src => "/images/reload.png"}
+      %button{:id => "play_btn",:class => "info2", :title => "Start"}
+        %img{ :src => "/images/play.png"}
+      %button{:id => "pause_btn",:class => "info2", :title => "Pause"}
+        %img{ :src => "/images/pause.png"}
+    %script
+      window.onload = function() {
+      timer = new Countdown();
+      timer.init();
+      $('#pause_btn').click(function() {
+      timer.pause();
+      //could insert code here to hide pause and show play.
+      });
+      $('#play_btn').click(function() {
+      timer.resume();
+      //could insert code here to hide play and show pause.
+      });
+      $('#reset_btn').click(function() {
+      timer.reset();
+      //could insert code here to show play and hide pause.
+      });
+      };
+    %script
+      function setTime(){
+      var act_time = $("#countdown_timer").text()
+      var time_ary = act_time.split(":");
+      var minutes = parseInt(time_ary[0]);
+      var seconds = parseInt(time_ary[1]);
 
-    var final_min = 40 - minutes -1
-    var final_sec = 60 - seconds
-    if(final_min < 10) final_min = "0" + final_min
-    if(final_sec < 10) final_sec = "0" + final_sec;
-    $(".new_game_action #game_action_time").val(final_min + ":" + final_sec)
-    }
-.clear
-#game_info_panel
+      var final_min = 40 - minutes -1
+      var final_sec = 60 - seconds
+      if(final_min < 10) final_min = "0" + final_min
+      if(final_sec < 10) final_sec = "0" + final_sec;
+      $(".new_game_action #game_action_time").val(final_min + ":" + final_sec)
+      }
+  #players_penalty
+    = @game.game_actions.penalties.last.player.name
+#game_info_panel.left
   #game_data{:style => "margin: auto;width:80%"}
     = render 'game_data', :locals => {:game => @game}
-%br
+.clear
 %h1{:style => "text-align: center"}
   Players
 #form_game_data{:style => "margin: auto;width:80%;font-size: 15px"}
@@ -58,7 +61,7 @@
   %div.right
     = render :partial => 'team_table', :locals => {:team => @visitor}
 
-.clearfix
+.clear
 
 %p{:style => "text-align: center;"}
   = link_to "Finish Game", finish_championship_game_path(@championship,@game), :confirm => "Esta seguro que quiere terminar el partido?", :method => "put"

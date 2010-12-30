@@ -1,39 +1,38 @@
 %script
   $('.info').tipsy({gravity: 'w', fade: true});
   $('.info1').tipsy({gravity: 'e', fade: true});
-#panel_control{:style => "width: 55%; margin: auto; text-align:center;"}
-  #left_team{:class => "left", :style => "text-align: right;"}
-    %span{:style => "font-size: 65px;float:left;margin-right:15px;position:relative;top:15px"}
-      = @local.goals(@game.id) < 10 ? "0" + @local.goals(@game.id).to_s : @local.goals(@game.id)
-    %span{:class => "right", :style => "border: 1px solid"}
-      = !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    .clear
-    %br
-    %span
+#panel_control
+  #panel_wrap
+    #left_team{:class => "left", :style => "text-align: right;"}
+      %span{:style => "font-size: 65px;float:left;margin-right:15px;position:relative;top:15px"}
+        = @local.goals(@game.id) < 10 ? "0" + @local.goals(@game.id).to_s : @local.goals(@game.id)
+      %span{:class => "right"}
+        = !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
+      .clear
       %span
-        Local
-      %br
-      %span{:style => "font-size:25px"}
-        %b== #{@local.name}
-  %span{:id => "versus"}
-    vs.
-  #right_team{:class => "right", :style => "text-align: left;"}
-    %span{:class => "left", :style => "border: 1px solid"}
-      = !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    %span{:style => "font-size: 65px;float:right;margin-left:15px;position:relative;top:15px"}
-      = @visitor.goals(@game.id) < 10 ? "0" + @visitor.goals(@game.id).to_s : @visitor.goals(@game.id)
-    .clear
-    %br
-    %span
+        %span{:style => "font-size:25px"}
+          %b== #{@local.name}
+        %br
+        %span
+          Local
+    %span{:id => "versus", :class => "left"}
+      vs.
+    #right_team{:class => "right", :style => "text-align: left"}
+      %span{:class => "left", :style => ""}
+        = !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
+      %span{:style => "font-size: 65px;float:right;margin-left:15px;position:relative;top:15px"}
+        = @visitor.goals(@game.id) < 10 ? "0" + @visitor.goals(@game.id).to_s : @visitor.goals(@game.id)
+      .clear
       %span
-        Visitante
-      %br
-      %span{:style => "font-size:25px"}
-        %b== #{@visitor.name}
-.clear
+        %span{:style => "font-size:25px"}
+          %b== #{@visitor.name}
+        %br
+        %span
+          Visitante
+    .clear
 #table_data
   %table{:class => "game_data"}
-    - @game.game_actions.each do |a|
+    - @game.game_actions.goals.each do |a|
       %tr{:class => cycle("even", "odd")}
         %td= a.time
         %td= a.action.capitalize 
