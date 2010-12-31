@@ -47,6 +47,7 @@
       if(final_min < 10) final_min = "0" + final_min
       if(final_sec < 10) final_sec = "0" + final_sec;
       if(final_sec == 60) final_sec = "00"
+      if(final_sec < 10) final_sec = "0" + final_sec;
       $(".new_game_action #game_action_time").val(final_min + ":" + final_sec)
       }
   #referis{:style => "text-align: left"}
@@ -63,7 +64,7 @@
 .clear
 %h1{:style => "text-align: center"}
   Players
-#form_game_data{:style => "margin: auto;width:85%;font-size: 15px"}
+#form_game_data{:style => "margin: auto;width:60%;font-size: 15px"}
   %div.left
     %h3= @local.name  
     = render :partial => 'team_table', :locals => {:team => @local}

@@ -40,5 +40,5 @@
         %td= a.team.name
         %td= full_name(a.player)
         %td{:class => "info last_col", :title => "Delete this #{a.action}"}
-          = link_to image_tag('error.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
+          = link_to image_tag('delete2.png'), championship_game_game_action_path(@championship,@game,a),:confirm => "Esta seguro que queres borrar este #{a.action}",:method => :delete, :remote => true
 .clear
