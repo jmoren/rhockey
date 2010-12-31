@@ -13,13 +13,20 @@
     %br
   %h3
     El mas goleador:
-  = image_tag(@gunner.gravatar_url(:size => 20))
-  = @gunner.number
-  = @gunner.full_name
-  == (#{@gunner.game_actions.goals.where(:game_id => @game.id).count} goals)
+  - unless @gunner.nil?
+    %td= !@gunner.team.photo.nil? && @gunner.team.photo.thumb.exists? ? image_tag(@gunner.team.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
+    = @gunner.number
+    = @gunner.full_name
+    == (#{@gunner.game_actions.goals.where(:game_id => @game.id).count} goals)
+    = image_tag(@gunner.gravatar_url(:size => 20))
+  - else
+    No hay goleador
   %h3
     El mas penalizado:
-  = image_tag(@dirty_player.gravatar_url(:size => 20))
-  = @dirty_player.number
-  = @dirty_player.full_name
-  == (#{@dirty_player.game_actions.penalties.where(:game_id => @game.id).count * 2} min of penalties)
+  - unless @dirty_player.nil?    
+    = image_tag(@dirty_player.gravatar_url(:size => 20))
+    = @dirty_player.number
+    = @dirty_player.full_name
+    == (#{@dirty_player.game_actions.penalties.where(:game_id => @game.id).count * 2} min of penalties)
+  - else
+    No hubo penalizaciones

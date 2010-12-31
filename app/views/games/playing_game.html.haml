@@ -1,11 +1,12 @@
-#game_information
+#game_information{:style=>"text-align:center"}
   %p
-    %b Torneo:
-    = @championship.name
-    == #{@championship.start_date.year}/#{@championship.end_date.year}
-  %p
-    %b Categoria
-    = @championship.category.name
+    %span.torneo
+      Torneo:
+      = @championship.name
+      == #{@championship.start_date.year}/#{@championship.end_date.year}
+    %span.categoria
+      Categoria
+      = @championship.category.name
 %br
 #game_playing_panel.right
   #time_area
@@ -45,10 +46,17 @@
       var final_sec = 60 - seconds
       if(final_min < 10) final_min = "0" + final_min
       if(final_sec < 10) final_sec = "0" + final_sec;
+      if(final_sec == 60) final_sec = "00"
       $(".new_game_action #game_action_time").val(final_min + ":" + final_sec)
       }
+  #referis{:style => "text-align: left"}
+    - unless @game.referis.empty?
+      %h3 Referis:
+      - @game.referis.each do |r|
+        = full_name(r)
+        %br
   #players_penalty
-    = @game.game_actions.penalties.last.player.name
+    = @game.game_actions.penalties.last.player.name unless @game.game_actions.penalties.empty?
 #game_info_panel.left
   #game_data{:style => "margin: auto;width:80%"}
     = render 'game_data', :locals => {:game => @game}
@@ -57,10 +65,11 @@
   Players
 #form_game_data{:style => "margin: auto;width:80%;font-size: 15px"}
   %div.left
+    %h3= @local.name  
     = render :partial => 'team_table', :locals => {:team => @local}
   %div.right
+    %h3= @visitor.name
     = render :partial => 'team_table', :locals => {:team => @visitor}
-
 .clear
 
 %p{:style => "text-align: center;"}
