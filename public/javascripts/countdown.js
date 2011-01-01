@@ -47,7 +47,7 @@ Countdown.prototype.tick = function()
     if(!this.paused && !(this.seconds <= 0 && this.minutes <=0)){
         this.complete = false;
         this.seconds = this.seconds - 1;
-        if(this.seconds <= 0 && this.minutes > 0){
+        if(this.seconds < 0 && this.minutes > 0){
             this.minutes--;
             this.seconds = 59;
         }

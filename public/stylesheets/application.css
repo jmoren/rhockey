@@ -274,13 +274,6 @@ body {
         background: #26456d;
         color: white; }
 
-.button_action {
-  background: #222222;
-  color: white;
-  border: 2px #222222 solid;
-  border-radius: 5px;
-  padding: 5px; }
-
 #game_playing_panel {
   padding: 10px;
   margin-right: 20px;
@@ -291,18 +284,28 @@ body {
     border-radius: 5px;
     padding: 10px;
     font-size: 50px;
-    font-weight: bold; }
+    font-weight: bold;
+    margin: 10px 0; }
+  #game_playing_panel #finish_game_button {
+    font-size: 15px;
+    background: #222222;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #222222; }
+    #game_playing_panel #finish_game_button a {
+      color: white; }
 
 #game_info_panel {
   border: 1px solid #222222;
   padding: 10px;
   width: 75%;
-  border-radius: 5px; }
+  border-radius: 5px;
+  min-height: 300px; }
   #game_info_panel #panel_control {
     background: #222222;
     color: whiteSmoke; }
     #game_info_panel #panel_control #panel_wrap {
-      width: 80%;
+      width: 65%;
       margin: auto;
       padding: 15px; }
   #game_info_panel #versus {

@@ -14,8 +14,6 @@ gem 'gravtastic'
 gem 'dynamic_form'
 gem 'devise'
 gem 'will_paginate', '3.0.pre'
-gem 'rails3-jquery-autocomplete'
-gem 'on_the_spot'
 # Use unicorn as the web server
 # gem 'unicorn'
 

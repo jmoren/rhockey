@@ -22,6 +22,10 @@ class Player < ActiveRecord::Base
   def full_name
     "#{self.name} #{self.lastname}"
   end
+  def short_name
+    "#{self.name.first.upcase}. #{self.lastname.capitalize}"
+  end
+
   def edad
     age = Time.now.year - self.birthday.year
     if Time.now.month < self.birthday.month ||

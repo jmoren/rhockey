@@ -1,5 +1,4 @@
 class PlayersController < ApplicationController
-
   def index
     @jugadores = Player.jugadores
     @arqueros = Player.arqueros

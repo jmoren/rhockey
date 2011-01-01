@@ -12,12 +12,9 @@
   #time_area
     %span{:id => "countdown_timer"}
     %p{:id => "time_controls"}
-      %button{:id => "reset_btn",:class => "info2", :title => "Reset"}
-        %img{ :src => "/images/reload.png"}
-      %button{:id => "play_btn",:class => "info2", :title => "Start"}
-        %img{ :src => "/images/play.png"}
-      %button{:id => "pause_btn",:class => "info2", :title => "Pause"}
-        %img{ :src => "/images/pause.png"}
+      = link_to_function image_tag("/images/reload.png"),:id => "reset_btn",:class => "info2", :title => "Reset"
+      = link_to_function image_tag("/images/play.png"),:id => "play_btn",:class => "info2", :title => "Start"
+      = link_to_function image_tag("/images/pause.png"),:id => "pause_btn",:class => "info2", :title => "Pause"
     %script
       window.onload = function() {
       timer = new Countdown();
@@ -42,29 +39,32 @@
       var minutes = parseInt(time_ary[0]);
       var seconds = parseInt(time_ary[1]);
 
-      var final_min = 40 - minutes -1
-      var final_sec = 60 - seconds
-      if(final_min < 10) final_min = "0" + final_min
+      var final_min = 40 - minutes -1;
+      var final_sec = 60 - seconds;
+      if(final_min < 10) final_min = "0" + final_min;
       if(final_sec < 10) final_sec = "0" + final_sec;
-      if(final_sec == 60) final_sec = "00"
-      if(final_sec < 10) final_sec = "0" + final_sec;
+      if(final_sec == 60) final_sec = "00";
       $(".new_game_action #game_action_time").val(final_min + ":" + final_sec)
       }
-  #referis{:style => "text-align: left"}
-    - unless @game.referis.empty?
-      %h3 Referis:
-      - @game.referis.each do |r|
-        = full_name(r)
-        %br
-  #players_penalty
-    = @game.game_actions.penalties.last.player.name unless @game.game_actions.penalties.empty?
+    #referis{:style => "text-align: left;margin-left: 10px"}
+      - unless @game.referis.empty?
+        %b Referis:
+        %ol
+          - @game.referis.each do |r|
+            %li= full_name(r)
+        
+    #players_penalty
+      = @game.game_actions.penalties.last.player.name unless @game.game_actions.penalties.empty?
+    %br
+    %span{:id => "finish_game_button"}
+      = link_to "Finish Game", finish_championship_game_path(@championship,@game), :confirm => "Esta seguro que quiere terminar el partido?", :method => "put"
 #game_info_panel.left
-  #game_data{:style => "margin: auto;width:80%"}
+  #game_data
     = render 'game_data', :locals => {:game => @game}
 .clear
 %h1{:style => "text-align: center"}
   Players
-#form_game_data{:style => "margin: auto;width:60%;font-size: 15px"}
+#form_game_data{:style => "margin: auto;width:65%;font-size: 15px"}
   %div.left
     %h3= @local.name  
     = render :partial => 'team_table', :locals => {:team => @local}
@@ -72,6 +72,3 @@
     %h3= @visitor.name
     = render :partial => 'team_table', :locals => {:team => @visitor}
 .clear
-
-%p{:style => "text-align: center;"}
-  = link_to "Finish Game", finish_championship_game_path(@championship,@game), :confirm => "Esta seguro que quiere terminar el partido?", :method => "put"
