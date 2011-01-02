@@ -1,5 +1,4 @@
 class ChampionshipsController < ApplicationController
-  autocomplete :category, :name
   before_filter :check_dates, :only => [:show]
   def index
     @championships = Championship.open
