@@ -29,6 +29,7 @@
           Este jugador se encuentra deshabilitado
     .player_field
       %b Email:
+      %br
       = on_the_spot_edit @player, :email
     .player_field
       %b Fec. Nacimiento:
@@ -46,7 +47,7 @@
     .player_field
       %b Numero Camiseta: 
       %br
-      = on_the_spot_edit @player, :number
+      %div= on_the_spot_edit @player, :number
   #hockey_info
     #title
       Informacion General
