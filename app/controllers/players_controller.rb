@@ -37,6 +37,7 @@ class PlayersController < ApplicationController
       flash[:notice] = "Successfully updated player."
       redirect_to @player
     else
+      flash[:notice] = "Error..."
       render :action => 'edit'
     end
   end
