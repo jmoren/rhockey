@@ -39,7 +39,11 @@
       var minutes = parseInt(time_ary[0]);
       var seconds = parseInt(time_ary[1]);
 
-      var final_min = 40 - minutes -1;
+      if(minutes == 40) 
+      var final_min = 40 - minutes;
+      else
+      var final_min = 39 - minutes;
+
       var final_sec = 60 - seconds;
       if(final_min < 10) final_min = "0" + final_min;
       if(final_sec < 10) final_sec = "0" + final_sec;
@@ -53,10 +57,7 @@
           - @game.referis.each do |r|
             %li= full_name(r)
         
-    #players_penalty
-      = @game.game_actions.penalties.last.player.name unless @game.game_actions.penalties.empty?
-    %br
-    %span{:id => "finish_game_button"}
+    #finish_game_button
       = link_to "Finish Game", finish_championship_game_path(@championship,@game), :confirm => "Esta seguro que quiere terminar el partido?", :method => "put"
 #game_info_panel.left
   #game_data
@@ -64,11 +65,12 @@
 .clear
 %h1{:style => "text-align: center"}
   Players
-#form_game_data{:style => "margin: auto;width:65%;font-size: 15px"}
-  %div.left
-    %h3= @local.name  
-    = render :partial => 'team_table', :locals => {:team => @local}
-  %div.right
-    %h3= @visitor.name
-    = render :partial => 'team_table', :locals => {:team => @visitor}
-.clear
+#form_game_data
+  #teams
+    %div.left
+      %h3= @local.name
+      = render :partial => 'team_table', :locals => {:team => @local}
+    %div.right
+      %h3= @visitor.name
+      = render :partial => 'team_table', :locals => {:team => @visitor}
+    .clear

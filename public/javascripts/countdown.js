@@ -52,7 +52,7 @@ Countdown.prototype.tick = function()
             this.seconds = 59;
         }
     }else{
-        if(this.seconds <= 0 && this.minutes <=0 && !this.complete) {
+        if(this.seconds < 0 && this.minutes <=0 && !this.complete) {
             this.fire('complete');
             this.complete = true;
         }

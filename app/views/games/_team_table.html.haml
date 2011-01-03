@@ -1,4 +1,4 @@
-%table
+%table.list
   %th Nro
   %th Nombre
   %th G
@@ -10,10 +10,13 @@
     %tr
       %td
         %b= p.number
-      %td= p.short_name
+      %td.name
+        = p.short_name
       %td= render :partial => 'action_form', :locals => {:p => p, :action => 'goal', :team => team}
       %td= render :partial => 'action_form', :locals => {:p => p, :action => 'penalty', :team => team}
       %td= render :partial => 'action_form', :locals => {:p => p, :action => 'assistance', :team => team}
       - if p.goalkeeper?
         %td= render :partial => 'action_form', :locals => {:p => p, :action => 'save', :team => team}
+      - else
+        %td= image_tag('add.png')
 

@@ -277,15 +277,16 @@ body {
 #game_playing_panel {
   padding: 10px;
   margin-right: 20px;
-  text-align: center;
-  width: 18%; }
-  #game_playing_panel span {
-    border: 1px solid #222222;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 50px;
-    font-weight: bold;
-    margin: 10px 0; }
+  width: 16%; }
+  #game_playing_panel #time_area {
+    text-align: center; }
+    #game_playing_panel #time_area #countdown_timer {
+      border: 1px solid #222222;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 50px;
+      font-weight: bold;
+      margin: 10px 0; }
   #game_playing_panel #finish_game_button {
     font-size: 15px;
     background: #222222;
@@ -314,7 +315,7 @@ body {
     font-size: 35px;
     position: relative; }
   #game_info_panel .game_data {
-    width: 80%;
+    width: 85%;
     margin-top: 20px;
     margin-left: 50px;
     text-align: left;
@@ -342,3 +343,28 @@ body {
   position: relative;
   top: 20px;
   left: 20px; }
+
+#form_game_data {
+  padding: 15px;
+  border: 1px solid; }
+  #form_game_data #teams {
+    margin: auto;
+    width: 60%; }
+    #form_game_data #teams h3 {
+      text-align: center; }
+    #form_game_data #teams .list {
+      border-collapse: collapse;
+      margin: 10px 0 15px 0;
+      line-height: 0.5em;
+      text-align: center; }
+      #form_game_data #teams .list th {
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 5px; }
+      #form_game_data #teams .list td {
+        border-bottom: 1px solid #cccccc;
+        font-size: 14px;
+        padding: 5px; }
+        #form_game_data #teams .list td .name {
+          width: 20px; }
+      #form_game_data #teams .list tr:hover {
+        background: #f2f07e; }
