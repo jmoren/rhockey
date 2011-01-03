@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  can_edit_on_the_spot 
   def index
     @jugadores = Player.jugadores
     @arqueros = Player.arqueros

@@ -19,7 +19,11 @@ Rhockey::Application.routes.draw do
     resources :players, :only => [:new, :create]
     resources :coaches, :only => [:new, :create]
   end
-  resources :players, :except => [:new, :create]
+  resources :players, :except => [:new, :create] do
+    collection do
+      post :update_attribute_on_the_spot
+    end
+  end
   resources :coaches, :except => [:new, :create]
 
   root :to => "championships#index"

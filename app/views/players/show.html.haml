@@ -29,17 +29,24 @@
           Este jugador se encuentra deshabilitado
     .player_field
       %b Email:
-      = @player.email
+      = on_the_spot_edit @player, :email
     .player_field
       %b Fec. Nacimiento:
+      %br
       = @player.birthday.strftime('%d de %B, %Y')
     .player_field
       %b Edad:
+      %br
       = @player.edad
+      anios
     .player_field
       %b Equipo:
+      %br
       = link_to @player.team.name, team_path(@player.team), :class =>'info', :title => "Categoria:  #{@player.team.category.name}"
-
+    .player_field
+      %b Numero Camiseta: 
+      %br
+      = on_the_spot_edit @player, :number
   #hockey_info
     #title
       Informacion General

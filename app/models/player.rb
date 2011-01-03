@@ -16,9 +16,6 @@ class Player < ActiveRecord::Base
   scope "arqueros", :conditions =>{:goalkeeper => true}
   scope "jugadores", :conditions =>{:goalkeeper => false}
 
-  def to_param
-    "#{id}-#{name}_#{lastname}"
-  end
   def full_name
     "#{self.name} #{self.lastname}"
   end

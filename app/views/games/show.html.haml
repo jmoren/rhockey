@@ -27,6 +27,7 @@
     %p
       %span= image_tag(p.gravatar_url(:size => 20))
       %span= link_to full_name(p), player_path(p)
+      %span= p.number
       %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
 %div{:class => "right", :style =>"width: 45%;" }
   %p
