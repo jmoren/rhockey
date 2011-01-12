@@ -10,7 +10,7 @@
         = !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
       .clear
       %span
-        %span{:style => "font-size:25px"}
+        %span{:style => "font-size:25px;"}
           %b== #{@local.name}
         %br
         %span
@@ -24,13 +24,15 @@
         = @visitor.goals(@game.id) < 10 ? "0" + @visitor.goals(@game.id).to_s : @visitor.goals(@game.id)
       .clear
       %span
-        %span{:style => "font-size:25px"}
+        %span{:style => "font-size:25px;margin-left: 10px"}
           %b== #{@visitor.name}
         %br
         %span
           Visitante
     .clear
-#table_data
+%p
+  = link_to_function "Ver tabla", "$('#table_data').slideToggle('slow')"    
+#table_data{:style => "display:none"}
   %table{:class => "game_data"}
     - @game.game_actions.goals.each do |a|
       %tr{:class => cycle("even", "odd")}

@@ -13,7 +13,7 @@ gem 'paperclip','2.3.6'
 gem 'gravtastic'
 gem 'dynamic_form'
 gem 'devise'
-gem 'will_paginate', '3.0.pre'
+gem 'will_paginate', '3.0.pre2'
 gem 'on_the_spot'
 # Use unicorn as the web server
 # gem 'unicorn'

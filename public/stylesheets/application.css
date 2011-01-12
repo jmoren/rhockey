@@ -217,8 +217,7 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin: 10px 0 15px 0;
-  line-height: 0.5em;
-  text-align: center; }
+  line-height: 0.5em; }
   .players_team_list th {
     line-height: 1.7em;
     color: white;
@@ -227,12 +226,21 @@ body {
     margin: 10px 0; }
     .players_team_list th .last {
       margin-right: 35px; }
+    .players_team_list th .local {
+      text-align: right; }
+    .players_team_list th .visitor {
+      text-align: left; }
   .players_team_list td {
     padding: 6px 30px;
     border-bottom: 1px solid #cccccc;
     font-size: 18px; }
     .players_team_list td img {
-      vertical-align: middle; }
+      vertical-align: middle;
+      padding: 0 15px; }
+    .players_team_list td .local {
+      text-align: right; }
+    .players_team_list td .visitor {
+      text-align: left; }
   .players_team_list tr:hover {
     background: #f2f07e; }
   .players_team_list .last {
@@ -299,14 +307,13 @@ body {
 #game_info_panel {
   border: 1px solid #222222;
   padding: 10px;
-  width: 75%;
   border-radius: 5px;
-  min-height: 300px; }
+  min-height: 200px; }
   #game_info_panel #panel_control {
     background: #222222;
     color: whiteSmoke; }
     #game_info_panel #panel_control #panel_wrap {
-      width: 65%;
+      width: 50%;
       margin: auto;
       padding: 15px; }
   #game_info_panel #versus {
@@ -315,9 +322,8 @@ body {
     font-size: 35px;
     position: relative; }
   #game_info_panel .game_data {
-    width: 85%;
-    margin-top: 20px;
-    margin-left: 50px;
+    width: 90%;
+    margin: 20px 50px;
     text-align: left;
     padding: 20px;
     border-collapse: collapse; }
@@ -345,14 +351,18 @@ body {
   left: 20px; }
 
 #form_game_data {
+  float: left;
+  width: 75%;
   padding: 15px;
   border: 1px solid; }
   #form_game_data #teams {
-    margin: auto;
-    width: 60%; }
+    margin: auto; }
     #form_game_data #teams h3 {
       text-align: center; }
+    #form_game_data #teams #team_left, #form_game_data #teams #team_right {
+      width: 45%; }
     #form_game_data #teams .list {
+      width: 100%;
       border-collapse: collapse;
       margin: 10px 0 15px 0;
       line-height: 0.5em;

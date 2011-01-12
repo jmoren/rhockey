@@ -59,18 +59,19 @@
         
     #finish_game_button
       = link_to "Finish Game", finish_championship_game_path(@championship,@game), :confirm => "Esta seguro que quiere terminar el partido?", :method => "put"
-#game_info_panel.left
-  #game_data
-    = render 'game_data', :locals => {:game => @game}
-.clear
-%h1{:style => "text-align: center"}
-  Players
+
 #form_game_data
   #teams
-    %div.left
+    #team_left.left
       %h3= @local.name
       = render :partial => 'team_table', :locals => {:team => @local}
-    %div.right
+    #team_right.right
       %h3= @visitor.name
       = render :partial => 'team_table', :locals => {:team => @visitor}
     .clear
+.clear
+%br
+#game_info_panel
+  #game_data
+    = render 'game_data', :locals => {:game => @game}
+.clear
