@@ -18,7 +18,7 @@ class Game < ActiveRecord::Base
   after_create :set_code
   #validates :code, :presence => true
   validates_associated :rivals, :authorities
-
+  
   def set_code
     ini = self.championship.category.name.first + self.championship.category.name.last
     self.code = ini + rand(9999).to_s

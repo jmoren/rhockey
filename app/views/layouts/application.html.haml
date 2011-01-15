@@ -9,27 +9,27 @@
     = csrf_meta_tag
     = yield(:head)
   %body
-    #header
-      %span
-        = image_tag('logo.png')
-    %br
-    #menu_bar
-      #user_menu
-        -if current_user
-          User
-          = current_user.email
-          %span= link_to "Sign Out", destroy_user_session_path
-          %span= link_to "Edit Profile", edit_user_registration_path
-      #app_menu
-        -  if current_user && current_user.admin?
-          = link_to_unless_current "Dashboard", admin_dashboard_path
-          = link_to_unless_current "Equipos", teams_path
-          = link_to_unless_current "Entrenadores", coaches_path
-          = link_to_unless_current "Jugadores", players_path
-          = link_to_unless_current "Referis", referis_path
-      .clear
     #container
+      #header
+        %span
+          = image_tag('logo.png')
+        %br
+        #user_menu
+          -if current_user
+            = current_user.email
+            = current_user.admin? ? "(Admin)" : "User"
+            |
+            %span.user_link= link_to "logout", destroy_user_session_path, :confirm => "Are you sure?"
+            == -
+            %span.user_link= link_to "profile", edit_user_registration_path
+      #menu_bar
+        #app_menu
+          -  if current_user && current_user.admin?
+            %span.menu_link= link_to_unless_current "Dashboard", admin_dashboard_path
+            %span.menu_link= link_to_unless_current "Equipos", teams_path
+            %span.menu_link= link_to_unless_current "Entrenadores", coaches_path
+            %span.menu_link= link_to_unless_current "Jugadores", players_path
+            %span.menu_link= link_to_unless_current "Referis", referis_path
+      %br
       #content
-        #title
-          =yield(:title) || "Rhockey"
         = yield

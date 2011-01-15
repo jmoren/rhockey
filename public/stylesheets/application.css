@@ -9,35 +9,61 @@ body {
   height: 0;
   overflow: hidden; }
 
-#header {
-  padding: 20px;
-  text-align: left;
-  color: #c4c8cc; }
-
-#menu_bar {
-  background: WhiteSmoke;
-  border-radius: 3px;
-  padding: 10px; }
-  #menu_bar #user_menu {
-    color: #222222;
-    float: left; }
-  #menu_bar #app_menu {
-    color: #222222;
-    float: right; }
+img {
+  border: none; }
 
 #container {
   margin: auto;
   width: 80%;
   padding: 20px 40px;
   border-radius: 5px;
+  -moz-border-radius: 5px;
   color: whiteSmoke; }
+  #container #header {
+    color: #c4c8cc;
+    border-bottom: solid 2px whiteSmoke;
+    padding-bottom: 20px; }
+    #container #header #user_menu {
+      float: right;
+      text-align: right;
+      color: white;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 0 5px; }
+      #container #header #user_menu .user_link {
+        border-radius: 3px;
+        -moz-border-radius: 3px; }
+        #container #header #user_menu .user_link a {
+          font-weight: bold;
+          color: white;
+          text-decoration: none;
+          padding: 2px 5px; }
+          #container #header #user_menu .user_link a:hover {
+            background: whitesmoke;
+            color: #222222;
+            border-radius: 3px;
+            -moz-border-radius: 3px; }
+  #container #menu_bar {
+    padding: 10px; }
+    #container #menu_bar #app_menu {
+      color: #222222;
+      text-align: center; }
+      #container #menu_bar #app_menu .menu_link {
+        padding: 3px 8px;
+        margin: 3px;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        background: whiteSmoke; }
+        #container #menu_bar #app_menu .menu_link a {
+          text-decoration: none;
+          color: #222222; }
   #container #content {
     color: #222222;
     background: whiteSmoke;
-    margin-top: 10px;
     padding: 15px;
-    border: 1px solid #c4c8cc;
-    border-radius: 15px; }
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #c4c8cc; }
 
 .buttons {
   float: right; }
@@ -47,7 +73,8 @@ body {
     background: #cecece;
     color: #222222;
     text-decoration: none;
-    border-radius: 7px; }
+    border-radius: 7px;
+    -moz-border-radius: 7px; }
 
 #flash_notice {
   padding: 5px 5px 5px 30px;
@@ -227,9 +254,11 @@ body {
     .players_team_list th .last {
       margin-right: 35px; }
     .players_team_list th .local {
-      text-align: right; }
+      text-align: right;
+      margin-right: 80px; }
     .players_team_list th .visitor {
-      text-align: left; }
+      text-align: left;
+      margin-left: 80px; }
   .players_team_list td {
     padding: 6px 30px;
     border-bottom: 1px solid #cccccc;
@@ -241,6 +270,8 @@ body {
       text-align: right; }
     .players_team_list td .visitor {
       text-align: left; }
+    .players_team_list td .ganador {
+      background: #f2f07e; }
   .players_team_list tr:hover {
     background: #f2f07e; }
   .players_team_list .last {
@@ -249,43 +280,46 @@ body {
   .players_team_list .nombres {
     text-align: left; }
 
-#dashboard .buttons-admin {
-  float: left;
-  margin: auto;
-  display: inline; }
-  #dashboard .buttons-admin .button {
+#dashboard {
+  width: 90%;
+  margin: auto; }
+  #dashboard .buttons-admin {
     float: left;
-    width: 200px;
-    margin: 15px;
-    height: 120px;
-    text-align: center;
-    vertical-align: middle;
-    border: solid 5px #26456d;
-    border-radius: 16px;
-    -moz-border-radius: 16px;
-    -webkit-border-radius: 16px;
-    padding: 20px; }
-    #dashboard .buttons-admin .button .hint {
-      padding: 0px 22px;
-      font-size: 15px;
-      font-weight: bold;
-      color: #989e9e; }
-    #dashboard .buttons-admin .button a {
-      color: #26456d;
-      font-weight: bold;
-      font-size: 20px; }
-    #dashboard .buttons-admin .button:hover {
-      background: #26456d; }
-      #dashboard .buttons-admin .button:hover .hint {
-        color: white; }
-      #dashboard .buttons-admin .button:hover a {
-        background: #26456d;
-        color: white; }
+    margin: auto;
+    display: inline; }
+    #dashboard .buttons-admin .button {
+      float: left;
+      width: 200px;
+      margin: 15px;
+      height: 120px;
+      text-align: center;
+      vertical-align: middle;
+      border: solid 5px #26456d;
+      border-radius: 16px;
+      -moz-border-radius: 16px;
+      -webkit-border-radius: 16px;
+      padding: 20px; }
+      #dashboard .buttons-admin .button .hint {
+        padding: 0px 22px;
+        font-size: 15px;
+        font-weight: bold;
+        color: #989e9e; }
+      #dashboard .buttons-admin .button a {
+        color: #26456d;
+        font-weight: bold;
+        font-size: 20px; }
+      #dashboard .buttons-admin .button:hover {
+        background: #26456d; }
+        #dashboard .buttons-admin .button:hover .hint {
+          color: white; }
+        #dashboard .buttons-admin .button:hover a {
+          background: #26456d;
+          color: white; }
 
 #game_playing_panel {
   padding: 10px;
-  margin-right: 20px;
-  width: 16%; }
+  width: 16%;
+  border: solid 1px; }
   #game_playing_panel #time_area {
     text-align: center; }
     #game_playing_panel #time_area #countdown_timer {
@@ -295,6 +329,8 @@ body {
       font-size: 50px;
       font-weight: bold;
       margin: 10px 0; }
+    #game_playing_panel #time_area #time_controls {
+      text-align: center; }
   #game_playing_panel #finish_game_button {
     font-size: 15px;
     background: #222222;
@@ -308,10 +344,12 @@ body {
   border: 1px solid #222222;
   padding: 10px;
   border-radius: 5px;
+  -moz-border-radius: 5px;
   min-height: 200px; }
   #game_info_panel #panel_control {
     background: #222222;
-    color: whiteSmoke; }
+    color: whiteSmoke;
+    -moz-border-radius: 5px; }
     #game_info_panel #panel_control #panel_wrap {
       width: 50%;
       margin: auto;
@@ -368,8 +406,8 @@ body {
       line-height: 0.5em;
       text-align: center; }
       #form_game_data #teams .list th {
-        border-bottom: 1px solid #cccccc;
-        padding-bottom: 5px; }
+        padding: 8px;
+        border-bottom: 1px solid #cccccc; }
       #form_game_data #teams .list td {
         border-bottom: 1px solid #cccccc;
         font-size: 14px;
@@ -378,3 +416,35 @@ body {
           width: 20px; }
       #form_game_data #teams .list tr:hover {
         background: #f2f07e; }
+
+#signup {
+  margin: auto;
+  width: 30%;
+  padding: 10px; }
+  #signup h2 {
+    text-align: center; }
+  #signup input[type=submit] {
+    float: right;
+    margin: 5px; }
+  #signup label {
+    font-size: 13px; }
+  #signup #links {
+    font-size: 13px; }
+    #signup #links a {
+      color: #222222; }
+
+.list {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 15px 0;
+  line-height: 0.5em;
+  text-align: center; }
+  .list th {
+    background: #222222;
+    color: white;
+    padding: 8px;
+    border-bottom: 1px solid #cccccc; }
+  .list td {
+    border-bottom: 1px solid #cccccc;
+    font-size: 14px;
+    padding: 5px; }

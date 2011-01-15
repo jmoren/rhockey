@@ -1,16 +1,17 @@
 #game_information{:style=>"text-align:center"}
   %p
     %span.torneo
-      Torneo:
-      = @championship.name
-      == #{@championship.start_date.year}/#{@championship.end_date.year}
+      %b
+        = @championship.name
+        == #{@championship.start_date.year}/#{@championship.end_date.year}
+    |
     %span.categoria
-      Categoria
-      = @championship.category.name
+      %b= @championship.category.name
 %br
 #game_playing_panel.right
   #time_area
-    %span{:id => "countdown_timer"}
+    %p
+      %span{:id => "countdown_timer"}
     %p{:id => "time_controls"}
       = link_to_function image_tag("/images/reload.png"),:id => "reset_btn",:class => "info2", :title => "Reset"
       = link_to_function image_tag("/images/play.png"),:id => "play_btn",:class => "info2", :title => "Start"
