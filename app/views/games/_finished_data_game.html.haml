@@ -1,32 +1,57 @@
-%h2
-  - if @game.winner.nil?
-    Empate
-  - else
-    Ganador:
-    = @game.team_winner.name
-%p
-  - @game.game_actions.goals.each do |g|
-    %span{:style => "font-size: 12px; color: #666666;", :class => "info", :title => "Goles en el campeonato: #{g.player.game_actions.goals.size}"}
-      = g.created_at.strftime('%M:%S')
-      = full_name(g.player)
-      == (#{g.team.name})
-    %br
-  %h3
-    El mas goleador:
-  - unless @gunner.nil?
-    %td= !@gunner.team.photo.nil? && @gunner.team.photo.thumb.exists? ? image_tag(@gunner.team.photo.thumb.url(:small)) : image_tag('missing-thumb.png')
-    = @gunner.number
-    = @gunner.full_name
-    == (#{@gunner.game_actions.goals.where(:game_id => @game.id).count} goals)
-    = image_tag(@gunner.gravatar_url(:size => 20))
-  - else
-    No hay goleador
-  %h3
-    El mas penalizado:
-  - unless @dirty_player.nil?    
-    = image_tag(@dirty_player.gravatar_url(:size => 20))
-    = @dirty_player.number
-    = @dirty_player.full_name
-    == (#{@dirty_player.game_actions.penalties.where(:game_id => @game.id).count * 2} min of penalties)
-  - else
-    No hubo penalizaciones
+#res_panel
+  #resultado
+    %span.left
+      %span.nombre= @local.name
+      %span.goal= @local.goals(@game.id) if @game.finished?
+    %span.right
+      %span.goal= @visitor.goals(@game.id) if @game.finished?
+      %span.nombre= @visitor.name
+    .clear
+  #ganador
+    - if @game.winner.nil?
+      Empate
+    - else
+      Ganador:
+      = @game.team_winner.name
+  #goles
+    %p
+      - @game.game_actions.goals.each do |g|
+        %span{:style => "font-size: 12px; color: #666;"}
+          |
+          = g.time
+          %u= full_name(g.player)
+          == (#{g.team.name})
+          
+#info_game
+  %span#referis.left
+    %h3.title Referis:
+    - @game.referis.each do |r|
+      %p
+        %span
+          == #{full_name(r)}
+  %span#goleador.right
+    %h3.title
+      Goleador:
+    %table
+      - unless @gunner.nil?
+        %tr
+          %td= image_tag(@gunner.gravatar_url(:size => 20))
+          %td= @gunner.number
+          %td= link_to @gunner.full_name, player_path(@gunner)
+          %td== (#{@gunner.game_actions.goals.where(:game_id => @game.id).count} goals)
+      - else
+        %tr
+          %td No hay goleador
+    %h3.title
+      El mas penalizado:
+    %table
+      - unless @dirty_player.nil?
+        %tr
+          %td= image_tag(@dirty_player.gravatar_url(:size => 20))
+          %td= @dirty_player.number
+          %td= @dirty_player.full_name
+          %td== (#{@dirty_player.game_actions.penalties.where(:game_id => @game.id).count * 2} min of penalties)
+      - else
+        %tr
+          %td No hubo penalizaciones
+  .clear

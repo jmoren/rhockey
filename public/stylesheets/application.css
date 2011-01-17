@@ -14,7 +14,7 @@ img {
 
 #container {
   margin: auto;
-  width: 80%;
+  width: 85%;
   padding: 20px 40px;
   border-radius: 5px;
   -moz-border-radius: 5px;
@@ -27,9 +27,11 @@ img {
       float: right;
       text-align: right;
       color: white;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: bold;
       padding: 0 5px; }
+      #container #header #user_menu img {
+        float: left; }
       #container #header #user_menu .user_link {
         border-radius: 3px;
         -moz-border-radius: 3px; }
@@ -44,18 +46,20 @@ img {
             border-radius: 3px;
             -moz-border-radius: 3px; }
   #container #menu_bar {
-    padding: 10px; }
-    #container #menu_bar #app_menu {
-      color: #222222;
-      text-align: center; }
-      #container #menu_bar #app_menu .menu_link {
-        padding: 3px 8px;
-        margin: 3px;
-        border-radius: 3px;
-        -moz-border-radius: 3px;
-        background: whiteSmoke; }
-        #container #menu_bar #app_menu .menu_link a {
-          text-decoration: none;
+    margin: 12px 0; }
+    #container #menu_bar #admin_link {
+      padding: 5px; }
+      #container #menu_bar #admin_link a {
+        text-decoration: none;
+        color: whiteSmoke; }
+    #container #menu_bar #admin_menu {
+      background: whiteSmoke;
+      padding: 3px 8px;
+      border-radius: 3px;
+      -moz-border-radius: 3px; }
+      #container #menu_bar #admin_menu .menu_link {
+        padding: 3px 8px; }
+        #container #menu_bar #admin_menu .menu_link a {
           color: #222222; }
   #container #content {
     color: #222222;
@@ -280,41 +284,12 @@ img {
   .players_team_list .nombres {
     text-align: left; }
 
-#dashboard {
-  width: 90%;
-  margin: auto; }
-  #dashboard .buttons-admin {
-    float: left;
-    margin: auto;
-    display: inline; }
-    #dashboard .buttons-admin .button {
-      float: left;
-      width: 200px;
-      margin: 15px;
-      height: 120px;
-      text-align: center;
-      vertical-align: middle;
-      border: solid 5px #26456d;
-      border-radius: 16px;
-      -moz-border-radius: 16px;
-      -webkit-border-radius: 16px;
-      padding: 20px; }
-      #dashboard .buttons-admin .button .hint {
-        padding: 0px 22px;
-        font-size: 15px;
-        font-weight: bold;
-        color: #989e9e; }
-      #dashboard .buttons-admin .button a {
-        color: #26456d;
-        font-weight: bold;
-        font-size: 20px; }
-      #dashboard .buttons-admin .button:hover {
-        background: #26456d; }
-        #dashboard .buttons-admin .button:hover .hint {
-          color: white; }
-        #dashboard .buttons-admin .button:hover a {
-          background: #26456d;
-          color: white; }
+#game_teams .table_players {
+  width: 50%;
+  border-collapse: collapse;
+  margin: 10px 0 15px 0;
+  line-height: 0.5em;
+  text-align: center; }
 
 #game_playing_panel {
   padding: 10px;
@@ -448,3 +423,66 @@ img {
     border-bottom: 1px solid #cccccc;
     font-size: 14px;
     padding: 5px; }
+
+#res_panel {
+  width: 94%;
+  border: #cecece solid 2px;
+  margin: 0 30px 0 30px; }
+  #res_panel #resultado {
+    width: 80%;
+    margin: auto;
+    padding: 20px; }
+    #res_panel #resultado span.nombre {
+      font-size: 40px;
+      font-weight: bold; }
+    #res_panel #resultado span.goal {
+      margin: 0 10px;
+      background: #234567;
+      color: whiteSmoke;
+      padding: 1px 20px;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      font-size: 40px;
+      font-weight: bold; }
+  #res_panel #ganador {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold; }
+  #res_panel #goles {
+    width: 70%;
+    margin: auto;
+    padding-left: 20px;
+    border-top: solid 2px #234567;
+    font-size: 13px;
+    font-weight: bold; }
+
+#info_game {
+  margin: 20px 0 0 30px;
+  padding: 10px 20px;
+  border: 2px solid #cecece;
+  width: 90%; }
+  #info_game .title {
+    background: #234567;
+    padding: 5px;
+    color: white; }
+  #info_game #referis {
+    border-right: solid 2px #cccccc;
+    padding: 20px 60px 20px 20px;
+    margin-left: 20px;
+    width: 40%; }
+  #info_game #goleador {
+    margin-left: 20px;
+    padding: 20px;
+    width: 40%; }
+
+#game_teams {
+  margin: 20px 0 0 30px;
+  padding: 20px;
+  border: 2px solid #cecece;
+  width: 90%; }
+  #game_teams .team_table {
+    margin: 0 20px;
+    width: 80%; }
+    #game_teams .team_table td {
+      padding: 2px 5px; }

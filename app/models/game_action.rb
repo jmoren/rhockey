@@ -10,4 +10,5 @@ class GameAction < ActiveRecord::Base
   scope :assistances, lambda {where("action = ?", "assistance")}
   scope :saves, lambda {where("action = ?", "save")}
   scope :penalties, lambda {where("action = ?", "penalty")}
+  scope :all_actions, lambda{where("action != ?","goal")}
 end

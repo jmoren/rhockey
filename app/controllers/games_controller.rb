@@ -1,10 +1,13 @@
 class GamesController < ApplicationController
+  
+  before_filter :check_finished_game, :only => [:playing_game]
+
   def index
     @games = Game.all
   end
   
   def show
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:id]||params[:game_id])
     @local = @game.local
     @visitor = @game.visitor
     if @game.finished? 
@@ -47,7 +50,7 @@ class GamesController < ApplicationController
 
       if @game.save
         flash[:notice] = "Successfully created game."
-        redirect_to championship_path(@championship) and return
+        redirect_to championship_game_path(@championship ,@game) and return
       else
         render :action => 'new' and return
       end
@@ -95,5 +98,12 @@ class GamesController < ApplicationController
     end
     redirect_to championship_game_path(@game)
   end
-  
+  def check_finished_game
+    @game = Game.find(params[:game_id])
+    @championship = Championship.find(params[:championship_id])
+    if @game.finished?
+      flash[:notice] = "Ya se jugo este partido, no puede volver a jugarse"
+      redirect_to championship_game_path(@championship,@game)
+    end
+  end
 end

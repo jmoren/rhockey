@@ -1,44 +1,42 @@
-- title "Game #{@game.code}"
+- flash.each do |name, msg|
+  = content_tag :div, msg, :id => "flash_#{name}",:class => "flash"
 - unless @game.finished?
   %p
     = link_to "Start Game", game_playing_path(@game.championship, @game), :confirm => "Confirma que iniciara el partido?"
 
-%p
-  %strong Championship:
+
+%h2{:style => "text-align:center;"}
+  Campeonato:
   = link_to @game.championship.name, championship_path(@game.championship)
 
-%p
-  %b Referis:
-  - @game.referis.each do |r|
-    %p
-      %span{:class => "info", :title => "#{r.games.size} partidos refereados"}
-        == #{full_name(r)}
-.clear
 - if @game.finished?
   #data_finished_game
     = render 'finished_data_game'
-%div{:class => "left", :style =>"width: 45%;" }
-  %p
-    %span= !@local.photo.nil? && @local.photo.thumb.exists? ? image_tag(@local.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    %h2
-      = @local.name
-      = @local.goals(@game.id) if @game.finished?
-  - @local.players.each do |p|
-    %p
-      %span= image_tag(p.gravatar_url(:size => 20))
-      %span= link_to full_name(p), player_path(p)
-      %span= p.number
-      %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
-%div{:class => "right", :style =>"width: 45%;" }
-  %p
-    %span= !@visitor.photo.nil? && @visitor.photo.thumb.exists? ? image_tag(@visitor.photo.thumb.url(:thumb)) : image_tag('missing.png')
-    %h2
-      = @visitor.goals(@game.id) if @game.finished?
-      = @visitor.name
-  - @visitor.players.each do |p|
-    %p
-      %span= image_tag(p.gravatar_url(:size => 20))
-      %span= link_to full_name(p), player_path(p)
-      %span= p.can_play? ? image_tag('check.png') : image_tag('error.png')
-.clear
+
+#game_teams
+  .team_table
+    %table.left
+      %tr
+        %td
+          %h3
+            = @local.name
+      - @local.players.each do |p|
+        %tr
+          %td= image_tag(p.gravatar_url(:size => 20))
+          %td= link_to full_name(p), player_path(p)
+          %td= p.number
+          %td= p.can_play? ? image_tag('check.png') : image_tag('error.png')
+  .team_table
+    %table.right
+      %tr
+        %td
+          %h3
+            = @visitor.name
+      - @visitor.players.each do |p|
+        %tr
+          %td= image_tag(p.gravatar_url(:size => 20))
+          %td= link_to full_name(p), player_path(p)
+          %td= p.number
+          %td= p.can_play? ? image_tag('check.png') : image_tag('error.png')
+  .clear
             

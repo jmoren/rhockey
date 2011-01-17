@@ -12,24 +12,26 @@
     #container
       #header
         %span
-          = image_tag('logo.png')
-        %br
-        #user_menu
-          -if current_user
-            = current_user.email
-            = current_user.admin? ? "(Admin)" : "User"
-            |
-            %span.user_link= link_to "logout", destroy_user_session_path, :confirm => "Are you sure?"
-            == -
-            %span.user_link= link_to "profile", edit_user_registration_path
+          = image_tag('logo2.png')
+        %p
+          #user_menu
+            -if current_user
+              = current_user.email
+              = current_user.admin? ? "(Admin)" : "User"
+              |
+              %span.user_link= link_to "logout", destroy_user_session_path, :confirm => "Are you sure?"
+              == -
+              %span.user_link= link_to "profile", edit_user_registration_path
       #menu_bar
-        #app_menu
-          -  if current_user && current_user.admin?
-            %span.menu_link= link_to_unless_current "Dashboard", admin_dashboard_path
+        -  if current_user && current_user.admin?
+          %span#admin_menu{:style => "display:none"}
+            %span.menu_link= link_to_unless_current "Inicio", root_url
             %span.menu_link= link_to_unless_current "Equipos", teams_path
             %span.menu_link= link_to_unless_current "Entrenadores", coaches_path
             %span.menu_link= link_to_unless_current "Jugadores", players_path
             %span.menu_link= link_to_unless_current "Referis", referis_path
-      %br
+          %span#admin_link.closed= link_to_function "Menu", "$('#admin_menu').toggle('slow')"
+        #date{:style => "float:right"}
+          = Time.now.strftime('%d de %B, %Y')
       #content
         = yield
