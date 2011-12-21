@@ -1,5 +1,5 @@
 class Championship < ActiveRecord::Base
-  has_many :games
+  has_many :games, :dependent => :destroy
   has_many :game_actions
   belongs_to :category
   attr_accessible :name, :start_date, :end_date, :type_options, :description, :category_id, :closed
@@ -14,7 +14,7 @@ class Championship < ActiveRecord::Base
     "#{id}_#{name}-#{self.category.name.gsub(/[' ']/, "_")}-#{start_date.year}"
   end
   def closed?
-    if self.end_date < (Date.today + 1.day)
+    if self.end_date == (Date.today + 1.day)
       self.update_attributes(:closed => true) unless self.closed 
     end
   end
